@@ -9,7 +9,7 @@ boost= 0
 counter= 0
 flake8 = 0
 
-debug = False
+debug = 1
 
 for test_data in dataset:
     code = extract_code(test_data)
@@ -17,7 +17,7 @@ for test_data in dataset:
     success, runtime, error, flake8_error = test_code(test_data)
     
     #pass code to LLM for optimize
-    test_data['code'] = LLM_revise(code, model= 'GPT3.5')
+    test_data['code'] = LLM_revise(code, model= 'naive RAG')
     LLM_success, LLM_runtime, LLM_error, LLM_flake8_error = test_code(test_data)
 
     accurate = (LLM_success==1)
