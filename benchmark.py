@@ -1,12 +1,14 @@
 import argparse
 from tools.extract import get_data, extract_code
 from tools.python_exec import test_code
+from tools.bleu import code_bleu
 from LLMs.LLM_api import LLM_revise
 
 def benchmark_process(dataset, model, debug = False):
     accuracy = 0 
     boost= 0 
     flake8 = 0
+    bleu_sum = 0
 
     for test_data in dataset:
 
@@ -21,17 +23,21 @@ def benchmark_process(dataset, model, debug = False):
         accurate = (LLM_success==1)
         effi_boost = (runtime - LLM_runtime)/LLM_runtime > 0  # Modify to % with threashold
         
+        BLEU = code_bleu(code, test_data['code'])
+        bleu_sum += BLEU
         accuracy += accurate
         boost += effi_boost
         flake8 += int(flake8_error) - int(LLM_flake8_error)
         if debug:
             print("Original cade: ", success, runtime, error, flake8_error)
             print("ChatGPT: ",LLM_success, LLM_runtime, LLM_error, LLM_flake8_error)
+            print("BLEU: ", BLEU)
         # counter += 1
         # if counter%10 == 0:
         #     print(counter/10, "0%", " done")
     accuracy /= len(dataset) 
-    print("accuracy: ",accuracy * 100,"Code boosted: ", boost, "flake8 fixed: ", flake8)
+    bleu_sum /= len(dataset)
+    print("accuracy: ",accuracy * 100,"Code boosted: ", boost, "flake8 fixed: ", flake8, "BLEU: ", bleu_sum)
 
 
 def parse_arguments():

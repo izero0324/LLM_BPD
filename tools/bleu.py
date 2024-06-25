@@ -23,6 +23,7 @@ evaluation metrics for machine translation. COLING 2004.
 
 import collections
 import math
+import tempfile
 
 
 def _get_ngrams(segment, max_order):
@@ -132,3 +133,18 @@ def _bleu(ref_file, trans_file, subword_option=None):
             translations.append(line.strip().split())
     bleu_score, _, _, _, _, _ = compute_bleu(per_segment_references, translations, max_order, smooth)
     return round(100 * bleu_score,2)
+
+def write_temp(code):
+    with tempfile.NamedTemporaryFile('w', suffix='.py', delete=False) as f:
+        func_code = code
+        f.write(f"{func_code}")
+        temp_filename = f.name
+    return   temp_filename
+   
+
+def code_bleu(code1, code2):
+    temp1 = write_temp(code1)
+    temp2 = write_temp(code2)
+    return _bleu(temp1, temp2)
+   
+  
