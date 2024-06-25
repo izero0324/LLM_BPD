@@ -1,7 +1,7 @@
 import json
 
 def get_data(subset):
-    with open('./mbpp.jsonl') as f:
+    with open('./dataset/mbpp.jsonl') as f:
         data = [json.loads(line) for line in f]
 
     # Choose partition
