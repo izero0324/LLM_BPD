@@ -1,6 +1,5 @@
 import json
 import os
-
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -27,7 +26,7 @@ llm = ChatOpenAI(
 
 # Define a prompt to simulate the role of the system
 prompt_template = ChatPromptTemplate.from_messages([
-    ("system", "You are a expert Python programmer, and here is your task:\n 1. I will give you a python code and you will rewrite to make it execute faster.\n 2. Do not change the function name!  \n 3. Only return the code.\n 4. Do not output ```python and ```\n 5. Be sure the return is inside th function"),
+    ("system", "You are a expert Python programmer, and here is your task:\n 1. I will give you a python code and you will rewrite to make it execute faster.\n 2. Do not change the function name!  \n 3. Only return the code.\n 4. Do not output ```python and ```\n 5. Be sure the return is inside the function"),
     ("user", "{input}"),
 ])
 

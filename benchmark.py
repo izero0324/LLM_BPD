@@ -3,7 +3,6 @@ from tools.extract import get_data, extract_code
 from tools.python_exec import test_code
 from LLMs.LLM_api import LLM_revise
 
-
 def benchmark_process(dataset, model, debug = False):
     accuracy = 0 
     boost= 0 
@@ -53,5 +52,7 @@ def main():
     
 
 if __name__ == '__main__':
+    print("==================================================")
     print("Start Python code optimize evaluation benchmark...")
+    print("==================================================")
     main()
