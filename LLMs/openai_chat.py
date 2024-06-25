@@ -27,7 +27,7 @@ llm = ChatOpenAI(
 
 # Define a prompt to simulate the role of the system
 prompt_template = ChatPromptTemplate.from_messages([
-    ("system", "You are a professional python developer, I will give you a code and you will make it run faster.\n 1. Do not change the function name!\n 2. Only return the code.\n 3. Do not output ```python and ```"),
+    ("system", "You are a expert Python programmer, and here is your task:\n 1. I will give you a python code and you will rewrite to make it execute faster.\n 2. Do not change the function name!  \n 3. Only return the code.\n 4. Do not output ```python and ```\n 5. Be sure the return is inside th function"),
     ("user", "{input}"),
 ])
 

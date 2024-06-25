@@ -29,6 +29,8 @@ def test_code(data, debug = False):
     result = subprocess.run(['python3', temp_filename], capture_output=True, text=True, timeout=10)
     run_time = time.time() - start_time
     
+    flake8_result = subprocess.run(['flake8', temp_filename, '--count'], capture_output=True, text=True, timeout=10)
+    flake8_errors = flake8_result.stdout.split("\n")[-2]
     if debug:
         # Print the results
         if result.returncode == 0:
@@ -45,4 +47,4 @@ def test_code(data, debug = False):
     except OSError as e:
         print(f"Error: {e.strerror}")
 
-    return 1 - result.returncode, run_time, result.stderr
+    return 1 - result.returncode, run_time, result.stderr, flake8_errors
