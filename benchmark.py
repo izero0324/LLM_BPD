@@ -10,11 +10,12 @@ def benchmark_process(dataset, model, debug = False):
     flake8 = 0
 
     for test_data in dataset:
+
         code = extract_code(test_data)
         # original run
         success, runtime, error, flake8_error = test_code(test_data)
         
-        #pass code to LLM for optimize
+        # pass code to LLM for optimize
         test_data['code'] = LLM_revise(code, model = model)
         LLM_success, LLM_runtime, LLM_error, LLM_flake8_error = test_code(test_data)
 
@@ -30,10 +31,7 @@ def benchmark_process(dataset, model, debug = False):
         # counter += 1
         # if counter%10 == 0:
         #     print(counter/10, "0%", " done")
-
-
     accuracy /= len(dataset) 
-
     print("accuracy: ",accuracy * 100,"Code boosted: ", boost, "flake8 fixed: ", flake8)
 
 
