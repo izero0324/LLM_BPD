@@ -62,5 +62,5 @@ def use_RAG(RAG_dataset, code):
         f"You are a expert Python programmer,rewrite the code make it execute faster. Do not change the function name!  Only return the code. Do not output ```python and ```. Be sure the return is inside th function. \n code to be optimized: {code}"
     )
 
-    print(response)
+    #print(response)
     return response
