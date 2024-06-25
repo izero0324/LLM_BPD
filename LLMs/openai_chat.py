@@ -42,22 +42,3 @@ def optimize_code(code):
         return response
     except Exception as e:
         print("An error occurred:", str(e))
-
-def chat_with_bot(initial_message="Hello, I'm your assistant. How can I help you today?"):
-    print(initial_message)
-    while True:
-        try:
-            user_input = input("You: ")  # Get user input
-            if user_input.lower() in ["exit", "quit", "stop"]:
-                print("Exiting chat...")
-                break
-
-            response = pipeline.invoke({"input": user_input})
-            print("Bot:", response)
-        except Exception as e:
-            print("An error occurred:", str(e))
-            break
-
-# Execute the chat session
-if __name__ == "__main__":
-    chat_with_bot()
