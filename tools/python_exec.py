@@ -1,7 +1,7 @@
-import time
 import tempfile
 import subprocess
 import resource
+from time import perf_counter
 
 # Testing data dictionary
 data = {
@@ -29,12 +29,13 @@ def test_code(data, debug = False, warmup = 0):
     if warmup > 0:
         subprocess.run(['python3', temp_filename], capture_output=True, text=True, timeout=10)
         warmup -= 1
-    
+
     start_mem = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1024.0/1024.0
-    start_time = time.time()
+    start_time = perf_counter()
     # Run the temporary python file and capture output
     result = subprocess.run(['python3', temp_filename], capture_output=True, text=True, timeout=10)
-    run_time = time.time() - start_time
+    stop_time = perf_counter()
+    run_time = stop_time - start_time
     memMb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1024.0
     mem_used_kb = (memMb- start_mem) # KByte
     
