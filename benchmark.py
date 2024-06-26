@@ -31,7 +31,7 @@ def benchmark_process(dataset, model, debug = False):
         mem_reduce += (mem_kb - LLM_mem_kb)>0
         flake8 += int(flake8_error) - int(LLM_flake8_error)
         if debug:
-            print("Original cade: ", success, runtime, error, flake8_error, mem_kb)
+            print("Original code: ", success, runtime, error, flake8_error, mem_kb)
             print("ChatGPT: ",LLM_success, LLM_runtime, LLM_error, LLM_flake8_error, LLM_mem_kb)
             print("BLEU: ", BLEU)
         # counter += 1
