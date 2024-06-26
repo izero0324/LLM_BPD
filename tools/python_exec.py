@@ -1,6 +1,7 @@
 import time
 import tempfile
 import subprocess
+import resource
 
 # Testing data dictionary
 data = {
@@ -24,10 +25,14 @@ def test_code(data, debug = False):
         f.write(f"{func_code}\n{tests}\n")
         temp_filename = f.name
 
+    time.sleep(0.5)
+    start_mem = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1024.0/1024.0
     start_time = time.time()
     # Run the temporary python file and capture output
     result = subprocess.run(['python3', temp_filename], capture_output=True, text=True, timeout=10)
     run_time = time.time() - start_time
+    memMb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1024.0
+    mem_used_kb = (memMb- start_mem) # KByte
     
     flake8_result = subprocess.run(['flake8', temp_filename, '--count'], capture_output=True, text=True, timeout=10)
     flake8_errors = flake8_result.stdout.split("\n")[-2]
@@ -47,4 +52,4 @@ def test_code(data, debug = False):
     except OSError as e:
         print(f"Error: {e.strerror}")
 
-    return 1 - result.returncode, run_time, result.stderr, flake8_errors
+    return 1 - result.returncode, run_time, result.stderr, flake8_errors, mem_used_kb

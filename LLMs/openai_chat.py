@@ -17,7 +17,7 @@ os.environ["OPENAI_API_KEY"] = api_key
 
 # Initialize the LLM with OpenAI
 llm = ChatOpenAI(
-    model="gpt-3.5-turbo",
+    model="gpt-3.5-turbo",  # insert Change model option!!!
     temperature=0,
     max_tokens=None,
     timeout=None,

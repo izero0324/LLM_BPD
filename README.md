@@ -10,3 +10,7 @@ simply run `python3 benchmark.py --debug True --model "GPT3.5"` you will get the
 
 ## Reference
 MBPP database from [link](https://github.com/google-research/google-research/blob/master/mbpp/README.md)
+
+## TBD
+1. OpenAI change model 
+2. memory usage
