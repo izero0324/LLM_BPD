@@ -10,6 +10,7 @@ def benchmark_process(dataset, model, debug = False):
     mem_reduce = 0
     flake8 = 0
     bleu_sum = 0
+    total_flake8 = 0
 
     for test_data in dataset:
 
@@ -30,6 +31,7 @@ def benchmark_process(dataset, model, debug = False):
         boost += effi_boost
         mem_reduce += (mem_kb - LLM_mem_kb)>0
         flake8 += int(flake8_error) - int(LLM_flake8_error)
+        total_flake8 += int(flake8_error)
         if debug:
             print("Original code: ", success, runtime, error, flake8_error, mem_kb)
             print("ChatGPT: ",LLM_success, LLM_runtime, LLM_error, LLM_flake8_error, LLM_mem_kb)
@@ -39,7 +41,8 @@ def benchmark_process(dataset, model, debug = False):
         #     print(counter/10, "0%", " done")
     accuracy /= len(dataset) 
     bleu_sum /= len(dataset)
-    print("accuracy: ",accuracy * 100,"Code boosted: ", boost,"Memory reduced: ", mem_reduce,  "flake8 fixed: ", flake8, "BLEU: ", bleu_sum)
+    print("accuracy: ",accuracy * 100,"Code boosted: ", boost, "/", len(dataset),"Memory reduced: ", mem_reduce,  "flake8 fixed: ", flake8,
+          "/", total_flake8, "BLEU: ", bleu_sum)
     return accuracy * 100, boost, mem_reduce, flake8, bleu_sum
 
 
