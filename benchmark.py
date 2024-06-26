@@ -7,6 +7,7 @@ from LLMs.LLM_api import LLM_revise
 def benchmark_process(dataset, model, debug = False):
     accuracy = 0 
     boost= 0 
+    mem_reduce = 0
     flake8 = 0
     bleu_sum = 0
 
@@ -14,11 +15,11 @@ def benchmark_process(dataset, model, debug = False):
 
         code = extract_code(test_data)
         # original run
-        success, runtime, error, flake8_error = test_code(test_data)
+        success, runtime, error, flake8_error, mem_kb = test_code(test_data)
         
         # pass code to LLM for optimize
         test_data['code'] = LLM_revise(code, model = model)
-        LLM_success, LLM_runtime, LLM_error, LLM_flake8_error = test_code(test_data)
+        LLM_success, LLM_runtime, LLM_error, LLM_flake8_error, LLM_mem_kb = test_code(test_data)
 
         accurate = (LLM_success==1)
         effi_boost = (runtime - LLM_runtime)/LLM_runtime > 0  # Modify to % with threashold
@@ -27,17 +28,18 @@ def benchmark_process(dataset, model, debug = False):
         bleu_sum += BLEU
         accuracy += accurate
         boost += effi_boost
+        mem_reduce += (mem_kb - LLM_mem_kb)>0
         flake8 += int(flake8_error) - int(LLM_flake8_error)
         if debug:
-            print("Original cade: ", success, runtime, error, flake8_error)
-            print("ChatGPT: ",LLM_success, LLM_runtime, LLM_error, LLM_flake8_error)
+            print("Original cade: ", success, runtime, error, flake8_error, mem_kb)
+            print("ChatGPT: ",LLM_success, LLM_runtime, LLM_error, LLM_flake8_error, LLM_mem_kb)
             print("BLEU: ", BLEU)
         # counter += 1
         # if counter%10 == 0:
         #     print(counter/10, "0%", " done")
     accuracy /= len(dataset) 
     bleu_sum /= len(dataset)
-    print("accuracy: ",accuracy * 100,"Code boosted: ", boost, "flake8 fixed: ", flake8, "BLEU: ", bleu_sum)
+    print("accuracy: ",accuracy * 100,"Code boosted: ", boost,"Memory reduced: ", mem_reduce,  "flake8 fixed: ", flake8, "BLEU: ", bleu_sum)
 
 
 def parse_arguments():
