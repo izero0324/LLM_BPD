@@ -40,6 +40,7 @@ def benchmark_process(dataset, model, debug = False):
     accuracy /= len(dataset) 
     bleu_sum /= len(dataset)
     print("accuracy: ",accuracy * 100,"Code boosted: ", boost,"Memory reduced: ", mem_reduce,  "flake8 fixed: ", flake8, "BLEU: ", bleu_sum)
+    return accuracy * 100, boost, mem_reduce, flake8, bleu_sum
 
 
 def parse_arguments():

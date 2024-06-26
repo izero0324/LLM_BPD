@@ -17,7 +17,7 @@ data = {
     "challenge_test_list": []
 }
 
-def test_code(data, debug = False):
+def test_code(data, debug = False, warmup = 0):
     # Create the temporary python file with the function and the tests
     with tempfile.NamedTemporaryFile('w', suffix='.py', delete=False) as f:
         func_code = data['code']
@@ -25,7 +25,11 @@ def test_code(data, debug = False):
         f.write(f"{func_code}\n{tests}\n")
         temp_filename = f.name
 
-    time.sleep(0.5)
+    #run warmups
+    if warmup > 0:
+        subprocess.run(['python3', temp_filename], capture_output=True, text=True, timeout=10)
+        warmup -= 1
+    
     start_mem = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1024.0/1024.0
     start_time = time.time()
     # Run the temporary python file and capture output
