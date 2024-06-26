@@ -13,4 +13,3 @@ MBPP database from [link](https://github.com/google-research/google-research/blo
 
 ## TBD
 1. OpenAI change model 
-2. memory usage
