@@ -17,7 +17,7 @@ data = {
     "challenge_test_list": []
 }
 
-def test_code(data, debug = False, warmup = 0):
+def test_code(data, debug = False, warmup = 10, iter = 3):
     # Create the temporary python file with the function and the tests
     with tempfile.NamedTemporaryFile('w', suffix='.py', delete=False) as f:
         func_code = data['code']
@@ -26,18 +26,22 @@ def test_code(data, debug = False, warmup = 0):
         temp_filename = f.name
 
     #run warmups
-    if warmup > 0:
+    while warmup>0:
         subprocess.run(['python3', temp_filename], capture_output=True, text=True, timeout=10)
         warmup -= 1
+    
 
     start_mem = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1024.0/1024.0
     start_time = perf_counter()
-    # Run the temporary python file and capture output
-    result = subprocess.run(['python3', temp_filename], capture_output=True, text=True, timeout=10)
+
+    for n in range(iter):
+        # Run the temporary python file and capture output
+        result = subprocess.run(['python3', temp_filename], capture_output=True, text=True, timeout=10)
+
     stop_time = perf_counter()
-    run_time = stop_time - start_time
+    run_time = (stop_time - start_time)/iter
     memMb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1024.0
-    mem_used_kb = (memMb- start_mem) # KByte
+    mem_used_kb = (memMb- start_mem)/iter # KByte
     
     flake8_result = subprocess.run(['flake8', temp_filename, '--count'], capture_output=True, text=True, timeout=10)
     flake8_errors = flake8_result.stdout.split("\n")[-2]
