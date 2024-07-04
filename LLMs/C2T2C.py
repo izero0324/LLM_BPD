@@ -10,7 +10,7 @@ with open('secret.json') as f:
 os.environ["OPENAI_API_KEY"] = api_key["key"]
 
 llm = ChatOpenAI(
-    model="gpt-3.5-turbo",  # insert Change model option!!!
+    model="gpt-3.5-turbo", 
     temperature=0,
     max_tokens=None,
     timeout=None,
@@ -22,7 +22,6 @@ prompt_template_c2t = ChatPromptTemplate.from_messages([
     ("user", "{input}"),
 ])
 output_parser_c2t = StrOutputParser()
-# Define a pipeline combining prompt, model invocation, and output parsing
 pipeline_c2t = prompt_template_c2t | llm | output_parser_c2t
 
 
@@ -31,7 +30,6 @@ prompt_template_t2c = ChatPromptTemplate.from_messages([
     ("user", "{input}"),
 ])
 output_parser_t2c = StrOutputParser()
-# Define a pipeline combining prompt, model invocation, and output parsing
 pipeline_t2c = prompt_template_t2c | llm | output_parser_t2c
 
 def interpret_and_describe_code(code):
@@ -45,21 +43,6 @@ def generate_code_from_description(description):
     input = description
     response = pipeline_t2c.invoke({"input": input})
     return response
-
-# Example usage of the functions
-example_code = """
-import math
-def calculate_area(radius):
-    return math.pi * radius ** 2
-"""
-
-# Step 1: Interpret the code
-code_description = interpret_and_describe_code(example_code)
-print("Generated Description:", code_description)
-
-# Step 2: Generate new code based on the description
-generated_code = generate_code_from_description(code_description)
-print("Generated Code:\n", generated_code)
 
 def format_check(result):
     result = result.replace("```python",'')
