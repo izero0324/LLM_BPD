@@ -19,7 +19,7 @@ def benchmark_process(dataset, model, debug = False):
         success, runtime, error, flake8_error, mem_kb = test_code(test_data)
         
         # pass code to LLM for optimize
-        test_data['code'] = LLM_revise(code, model = model)
+        test_data['code'] = LLM_revise(code, model = model, debug=debug)
         LLM_success, LLM_runtime, LLM_error, LLM_flake8_error, LLM_mem_kb = test_code(test_data)
 
         accurate = (LLM_success==1)

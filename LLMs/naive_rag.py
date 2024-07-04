@@ -1,9 +1,12 @@
 import os
 import json
+import pandas as pd
 from llama_index.embeddings.openai import OpenAIEmbedding
 from llama_index.llms.openai import OpenAI
 from llama_index.core import VectorStoreIndex, Document
 from llama_index.core.settings import Settings
+
+
 
 # Parameters
 LLM_model = "gpt-3.5-turbo"
@@ -20,7 +23,7 @@ os.environ["OPENAI_API_KEY"] = api_key # Export the API key
 
 # Setup LLM connection
 Settings.llm = OpenAI(model=LLM_model, temperature=LLM_model_temp)
-Settings.embed_model = OpenAIEmbedding()
+Settings.embed_model = OpenAIEmbedding( model = 'text-embedding-3-small')
 
 '''
 # Load dataset
@@ -45,18 +48,32 @@ rerank = SentenceTransformerRerank(
 )
 '''
 
+# df = pd.read_parquet("hf://datasets/iamtarun/python_code_instructions_18k_alpaca/data/train-00000-of-00001-8b6e212f3e1ece96.parquet")
+
+# texts = df['output'].to_list()
+# # text_list = RAG_dataset
+# text_list = texts
+# documents = [Document(text=t) for t in text_list]
+    
+# print("Building Index for RAG")
+# # build index
+# index = VectorStoreIndex.from_documents(documents)
+# print("Index Built")
+
+
+
+
+
 def use_RAG(RAG_dataset, code):
     text_list = RAG_dataset
     documents = [Document(text=t['code']) for t in text_list]
-
+    
     # build index
     index = VectorStoreIndex.from_documents(documents)
-
-
+    
     # The QueryEngine class is equipped with the generator
     # and facilitates the retrieval and generation steps
     query_engine = index.as_query_engine()
-
     # Run your naive RAG query
     response = query_engine.query(
         f"You are a expert Python programmer,rewrite the code make it execute faster. Do not change the function name!  Only return the code. Do not output ```python and ```. Be sure the return is inside th function. \n code to be optimized: {code}"

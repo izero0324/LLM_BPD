@@ -58,5 +58,6 @@ def test_code(data, debug = False, warmup = 10, iter = 10):
         os.remove(temp_filename)
     except OSError as e:
         print(f"Error: {e.strerror}")
-
+    if result.returncode != 0:
+        run_time = float('inf')
     return 1 - result.returncode, run_time, result.stderr, flake8_errors, mem_used_kb
