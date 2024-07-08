@@ -11,6 +11,7 @@ def benchmark_process(dataset, model, debug = False):
     flake8 = 0
     bleu_sum = 0
     total_flake8 = 0
+    counter = 0
 
     for test_data in dataset:
 
@@ -25,20 +26,23 @@ def benchmark_process(dataset, model, debug = False):
         accurate = (LLM_success==1)
         effi_boost = (runtime - LLM_runtime)/LLM_runtime > 0  # Modify to % with threashold
         
-        BLEU = code_bleu(code, test_data['code'])
-        bleu_sum += BLEU
-        accuracy += accurate
-        boost += effi_boost
-        mem_reduce += (mem_kb - LLM_mem_kb)>0
-        flake8 += int(flake8_error) - int(LLM_flake8_error)
+        if LLM_success ==1:
+            BLEU = code_bleu(code, test_data['code'])
+            bleu_sum += BLEU
+            accuracy += accurate
+            boost += effi_boost
+            mem_reduce += (mem_kb - LLM_mem_kb)>0
+            flake8 += int(flake8_error) - int(LLM_flake8_error)
+        else:
+            BLEU = 0
         total_flake8 += int(flake8_error)
         if debug:
             print("Original code: ", success, runtime, error, flake8_error, mem_kb)
             print("ChatGPT: ",LLM_success, LLM_runtime, LLM_error, LLM_flake8_error, LLM_mem_kb)
             print("BLEU: ", BLEU)
-        # counter += 1
-        # if counter%10 == 0:
-        #     print(counter/10, "0%", " done")
+        counter += 1
+        if counter%10 == 0:
+            print(counter," / ", len(dataset), " done")
     accuracy /= len(dataset) 
     bleu_sum /= len(dataset)
     print("accuracy: ",accuracy * 100,"Code boosted: ", boost, "/", len(dataset),"Memory reduced: ", mem_reduce,  "flake8 fixed: ", flake8,
