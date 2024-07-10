@@ -1,8 +1,10 @@
 from LLMs.openai_chat import optimize_code
 #from LLMs.RAG_python import optimize_code_FAISS
 from LLMs.C2T2C import C2T2C
-from LLMs.codellama import codellamains
+from LLMs.codellama import codellama_optimise
+from LLMs.mixtral import mixtral_gen
 from tools.extract import get_data
+
 
 RAG_dataset = get_data('train')
 
@@ -20,7 +22,9 @@ def LLM_revise(code, model, debug):
     elif model == 'C2T2C':
         result =  C2T2C(code, debug)
     elif model == 'codellama':
-        result = codellamains(code, model)
+        result = codellama_optimise(code, model)
+    elif model == 'mixtral':
+        result = mixtral_gen(code, model)
     else:
         raise BaseException(f"{model} not a valid model. Choose from 'GPT3.5' and 'naive RAG'" )
     return result
