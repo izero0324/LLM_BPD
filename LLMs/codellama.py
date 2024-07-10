@@ -7,7 +7,7 @@ from langchain.chains import SimpleSequentialChain
 from tools.output_cleaner import python_output
 
 repo_id = "codellama/CodeLlama-13b-hf"
-huggingfacehub_api_token = "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"
+huggingfacehub_api_token = "token"
 llm = HuggingFaceHub(huggingfacehub_api_token = huggingfacehub_api_token,
                      repo_id = repo_id,
                      model_kwargs = {"temperateure":0, "max_new_tokens":500})
