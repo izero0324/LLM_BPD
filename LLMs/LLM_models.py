@@ -31,6 +31,8 @@ def llamas(model_name, temp = 0):
     def sellect_llama():
         if model_name == 'llama3':
             repo_id = "meta-llama/Meta-Llama-3-8B"
+        elif model_name == 'codellama-13b':
+            repo_id = "codellama/CodeLlama-13b-hf"
         else:
             repo_id = "codellama/CodeLlama-7b-hf"
         return repo_id
@@ -39,7 +41,7 @@ def llamas(model_name, temp = 0):
     huggingfacehub_api_token = HuggingFaceHub_key
     llm = HuggingFaceHub(huggingfacehub_api_token = huggingfacehub_api_token,
                         repo_id = repo_id,
-                        model_kwargs = {"temperateure":0, "max_new_tokens":500})
+                        model_kwargs = {"temperateure":0, "max_new_tokens":1024})
 
     return llm 
     
@@ -48,5 +50,5 @@ def mixtral_model(temp=0):
     huggingfacehub_api_token = HuggingFaceHub_key
     llm = HuggingFaceHub(huggingfacehub_api_token = huggingfacehub_api_token,
                         repo_id = repo_id,
-                        model_kwargs = {"temperateure":0, "max_new_tokens":500})
+                        model_kwargs = {"temperateure":0, "max_new_tokens":1024})
     return llm

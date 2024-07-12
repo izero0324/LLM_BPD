@@ -1,6 +1,6 @@
 from LLMs.openai_chat import optimize_code
 #from LLMs.RAG_python import optimize_code_FAISS
-from LLMs.C2T2C import C2T2C
+from RAGs.C2T2C import C2T2C
 from LLMs.codellama import codellama_optimise
 from LLMs.mixtral import mixtral_gen
 from tools.extract import get_data
