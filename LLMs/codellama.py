@@ -26,7 +26,6 @@ def codellama_optimise(input, model):
     # raw_result = raw_result.replace('```python', '```')
     # result = raw_result.replace('```', '').replace('\n\n','')
     result = python_output(raw_result)
-
-    print( result)
+    print(result)
     return result
 
