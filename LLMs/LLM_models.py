@@ -3,6 +3,7 @@ import os
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from langchain import HuggingFaceHub
 
 # Read API key from the secret file
 with open('secret.json') as f:
@@ -31,7 +32,7 @@ def llamas(model_name, temp = 0):
         if model_name == 'llama3':
             repo_id = "meta-llama/Meta-Llama-3-8B"
         else:
-            repo_id = "codellama/CodeLlama-13b-hf"
+            repo_id = "codellama/CodeLlama-7b-hf"
         return repo_id
 
     repo_id = sellect_llama()
