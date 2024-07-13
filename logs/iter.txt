@@ -1,0 +1,283 @@
+==================================================
+Start Python code optimize evaluation benchmark...
+==================================================
+model: iter
+
+R = 3
+C = 3
+def min_cost(cost, m, n): 
+	tc = [[0 for x in range(C)] for x in range(R)] 
+	tc[0][0] = cost[0][0] 
+	for i in range(1, m+1): 
+		tc[i][0] = tc[i-1][0] + cost[i][0] 
+	for j in range(1, n+1): 
+		tc[0][j] = tc[0][j-1] + cost[0][j] 
+	for i in range(1, m+1): 
+		for j in range(1, n+1): 
+			tc[i][j] = min(tc[i-1][j-1], tc[i-1][j], tc[i][j-1]) + cost[i][j] 
+	return tc[m][n]
+### 1.2.2. ### 1.2.3. ### 1.2.4. ### 1.2.5. ### 1.2.6. ### 1.2.7. ### 1.2.8. ### 1.2.9. ### 1.2.10. ### 1.2.11. ### 1.2.12. ### 1.2.13. ### 1.2.14. ### 1.2.15. ### 1.2.16. ### 1.2.17. ### 1.2.18. ### 1.2.19. ### 1.2.20. ### 1.2.21. ### 1.2.22. ### 1.2.23. ### 1.2.24. ### 1.2.25. ### 1.2.26. ### 1.2.27. ### 1.2.28. ### 1.2.29. ### 1.2.30. ### 1.2.31. ### 1.2.32. ### 1.2.33. ### 1.2.34. ### 1.2.35. ### 1.2.36. ### 1.2.37. ### 1.2.38. ### 1.2.39. ### 1.2.40. ### 1.2.41. ### 1.2.42. ### 1.2.43. ### 1.2.44. ### 1.2.45. ### 1.2.46. ### 1.2.47. ### 1.2.48. ### 1.2.49. ### 1.2.50. ### 1.2.51. ### 1.2.52. ### 1.2.53. ### 1.2.54. 
+
+Original code:  1 0.016019144293386488  22 47.53359375
+iter :  1 0.016620498499833047  25 47.53359375
+BLEU:  4.95
+model: iter
+
+def similar_elements(test_tup1, test_tup2):
+  res = tuple(set(test_tup1) & set(test_tup2))
+  return (res)
+# In[1]:
+#importing the libraries
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+# In[2]:
+#importing the dataset
+dataset = pd.read_csv('Social_Network_Ads.csv')
+X = dataset.iloc[:, [2,3]].values
+y = dataset.iloc[:, 4].values
+# In[3]:
+#splitting the dataset into a training set and a test set
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
+# In[4]:
+#feature scaling
+from sklearn.preprocessing import StandardScaler
+sc_X = StandardScaler()
+X_train = sc_X.fit_transform(X_train)
+X_test = sc_X.transform(X_test)
+# In[5]:
+#fitting the decision tree classifier to the training set
+from sklearn.tree import DecisionTreeClassifier
+classifier = DecisionTreeClassifier(criterion = 'entropy', random_state = 0)
+classifier.fit(X_train, y_train)
+# In[6]:
+#predicting the test set results
+y_pred = classifier.predict(X_test)
+# In[7]:
+#making the confusion matrix
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_test, y_pred)
+# In[8]:
+#visualising the training set results
+from matplotlib.colors import ListedColormap
+X_set, y_set = X_train, y_train
+X1, X2 = np.meshgrid(np.arange(start = X_set[:, 0].min() - 1, stop = X_set[:, 0].max() + 1, step = 0.01),
+                     np.arange(start = X_set[:, 1].min() - 1, stop = X_set[:, 1].max() + 1, step = 0.01))
+plt.contourf(X1, X2, classifier.predict(np.array([X1.ravel(), X2.ravel()]).T).reshape(X1.shape),
+             alpha = 0.75, cmap = ListedColormap(('red', 'green')))
+plt.xlim(X1.min(), X1.max())
+plt.ylim(X2.min(), X2.max())
+for i, j in enumerate(np.unique(y_set)):
+    plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
+                c = ListedColormap(('red', 'green'))(i), label = j)
+plt.title('Decision Tree Classification (Training set)')
+plt.xlabel('Age')
+plt.ylabel('Estimated Salary')
+plt.legend()
+plt.show()
+# In[9]:
+#visualising the test set results
+from matplotlib.colors import ListedColormap
+X_set, y_set = X_test, y_test
+X1, X2 = np.meshgrid(np.arange(start = X_set[:, 0].min() - 1, stop = X_set[:, 0].max() + 1, step = 0.01),
+                     np.arange(start = X_set[:, 1].min() - 1, stop = X_set[:, 1].max() + 1, step = 0.01))
+plt.contourf(X1, X2, classifier.predict(np.array([X1.ravel(), X2.ravel()]).T).reshape(X1.shape
+Original code:  1 0.016142328397836535  7 47.53359375
+iter :  0 inf   File "/tmp/tmp7y8vhn9p.py", line 63
+    assert similar_elements((3, 4, 5, 6),(5, 7, 4, 10)) == (4, 5)
+    ^
+SyntaxError: invalid syntax
+ 1 47.53359375
+BLEU:  0
+model: iter
+
+def is_not_prime(n):
+    result = False
+    for i in range(2,int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            result = True
+    return result
+
+Original code:  1 0.016011464595794677  6 47.53359375
+iter :  0 inf Traceback (most recent call last):
+  File "/tmp/tmp_i4n3jsl.py", line 9, in <module>
+    assert is_not_prime(2) == False
+  File "/tmp/tmp_i4n3jsl.py", line 4, in is_not_prime
+    for i in range(2,int(math.sqrt(n)) + 1):
+NameError: name 'math' is not defined
+ 6 47.53359375
+BLEU:  0
+model: iter
+\begin{pre}def heap_queue_largest(nums,n):
+  largest_nums = []
+  for i in range(n):
+    largest_nums.append(hq.nlargest(1, nums)[0])
+    nums.remove(largest_nums[-1])
+  return largest_nums\end{pre}# Solution
+def heap_queue_largest(nums, n):
+    largest_nums = []
+    for i in range(n):
+        largest_nums.append(hq.nlargest(1, nums)[0])
+        nums.remove(largest_nums[-1])
+    return largest_nums
+# Tests
+def test_heap_queue_largest():
+    assert heap_queue_largest([1, 2, 3, 4, 5], 3) == [5, 4, 3]
+    assert heap_queue_largest([1, 2, 3, 4, 5], 4) == [5, 4, 3, 2]
+    assert heap_queue_largest([1, 2, 3, 4, 5], 5) == [5, 4, 3, 2, 1]
+    assert heap_queue_largest([1, 2, 3, 4, 5], 6) == [5, 4, 3, 2, 1]
+    assert heap_queue_largest([1, 2, 3, 4, 5], 1) == [5]
+    assert heap_queue_largest([1, 2, 3, 4, 5], 0) == []
+    assert heap_queue_largest([1, 2, 3, 4, 5], 2) == [5, 4]
+    assert heap_queue_largest([1, 2, 3, 4, 5], 10) == [5, 4, 3, 2, 1]
+    assert heap_queue_largest([1, 2, 3, 4, 5], 100) == [5, 4, 3, 2, 1]
+    assert heap_queue_largest([1, 2, 3, 4, 5], 1000) == [5, 4, 3, 2, 1]
+    assert heap_queue_largest([1, 2, 3, 4, 5], 10000) == [5, 4, 3, 2, 1]
+    assert heap_queue_largest([1, 2, 3, 4, 5], 100000) == [5, 4, 3, 2, 1]
+    assert heap_queue_largest([1, 2, 3, 4, 5], 1000000) == [5, 4, 3, 2, 1]
+    assert heap_queue_largest([1, 2, 3, 4, 5], 10000000) == [5, 4, 3, 2, 1]
+    assert heap_queue_largest([1, 2, 3, 4, 5], 100000000) == [5, 4, 3, 2, 1]
+    assert heap_queue_largest([1, 2, 3, 4, 5], 1000000000) == [5, 4, 3, 2, 1]
+    assert heap_queue_largest([1, 2, 3, 4, 5], 10000000000) == [5, 4, 3, 2, 1]
+    assert heap_queue_largest([1, 2, 3, 4, 5], 100000000000) == [5, 4, 3, 2, 1]
+    assert heap_queue_largest([1, 2, 3, 4, 5], 1000000
+Original code:  1 0.016831562004517762  18 47.53359375
+iter :  0 inf   File "/tmp/tmptic9ku_l.py", line 1
+    \begin{pre}def heap_queue_largest(nums,n):
+                                             ^
+SyntaxError: unexpected character after line continuation character
+ 1 47.53359375
+BLEU:  0
+model: iter
+ 
+def count_ways(n): 
+	A = [0] * (n + 1) 
+	B = [0] * (n + 1) 
+	A[0] = 1
+	A[1] = 0
+	B[0] = 0
+	B[1] = 1
+	for i in range(2, n+1): 
+		A[i] = A[i - 2] + 2 * B[i - 1] 
+		B[i] = A[i - 1] + B[i - 2] 
+	return A[n] ### Question 2: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 3: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 4: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 5: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 6: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 7: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 8: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 9: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 10: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 11: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 12: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 13: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 14: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 15: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 16: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 17: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 18: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 19: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 20: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 21: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 22: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 23: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3.
+Original code:  1 0.016312658495735377  18 47.53359375
+iter :  1 0.016197289794217796  33 47.53359375
+BLEU:  22.25
+model: iter
+
+def is_Power_Of_Two (x): 
+    return x and (not(x & (x - 1))) 
+def differ_At_One_Bit_Pos(a,b): 
+    return is_Power_Of_Two(a ^ b)
+### Question 2Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 3Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 4Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 5Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 6Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 7Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 8Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 9Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 10Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 11Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 12Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 13Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 14Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 15Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 16Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 17Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 18Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 19Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 20Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 21Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 22Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 23Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 24Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
+### Question 25Write a function that takes a list of integers and
+Original code:  1 0.016849328007083386  14 47.53359375
+iter :  1 0.016121056803967804  61 47.53359375
+BLEU:  7.93
+model: iter
+\begin{pre}import re
+def find_char_long(text):
+  return (re.findall(r"\b\w{4,}\b", text))\end{pre}### Question 2
+
+Original code:  1 0.023540635197423398  5 47.53359375
+iter :  0 inf   File "/tmp/tmpxelmu9d2.py", line 1
+    \begin{pre}import re
+                       ^
+SyntaxError: unexpected character after line continuation character
+ 1 47.53359375
+BLEU:  0
+model: iter
+
+ def square_nums(nums):
+ return list(map(lambda x: x ** 2, nums))
+- |  |
+-------------|------------|
+Title | Rewrite the code |
+Key |  |
+Titles | [Rewrite the code](../other/rewrite-the-code.md) |
+First Line | Rewrite the code make it execute faster, read the function name and continue using it. |
+Author |  |
+Year |  |
+Composer|  |
+Hymnal|  - |
+Tune|  |
+Metrical pattern | |
+# Stanzas |  |
+Chorus |  |
+Chorus Type |  |
+Subjects |  |
+Texts |  |
+Print Texts | 
+Scripture Song |  |
+  
+
+Original code:  1 0.01625830929260701  13 47.53359375
+iter :  0 inf   File "/tmp/tmpsa4v0phe.py", line 2
+    def square_nums(nums):
+    ^
+IndentationError: unexpected indent
+ 1 47.53359375
+BLEU:  0
+model: iter
+ 
+def find_Rotations(str): 
+    tmp = str + str 
+    n = len(str) 
+    for i in range(1,n + 1): 
+        substring = tmp[i: i+n] 
+        if (str == substring): 
+            return i 
+    return n ### Question 2
+Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.### Question 3
+Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.### Question 4
+Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.### Question 5
+Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.### Question 6
+Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.### Question 7
+Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.### Question 8
+Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.### Question 9
+Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.### Question 10
+Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.### Question 11
+Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.### Question 12
+Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.### Question 13
+Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.### Question 14
+Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.### Question 15
+Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.### Question 16
+Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.### Question 17
+Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.### Question 18
+Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.### Question 19
+Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.
+Original code:  1 0.01631646869936958  9 47.53359375
+iter :  0 inf   File "/tmp/tmp4_o2479l.py", line 10
+    Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.### Question 3
+          ^
+SyntaxError: invalid syntax
+ 1 47.53359375
+BLEU:  0
+model: iter
+\begin{pre}def small_nnum(list1,n):
+  return heapq.nsmallest(n,list1)\end{pre}### CommentsPosted by Matthew Weier O'Phinney (matthew) on 2009-08-19T11:59:57.000+0000This is a duplicate of ZF-6788.  Posted by Matthew Weier O'Phinney (matthew) on 2009-08-19T12:00:17.000+0000Reassigning to Ralph  Posted by Ralph Schindler (ralph) on 2009-08-19T12:00:47.000+0000This is a duplicate of ZF-6788.  Posted by Matthew Weier O'Phinney (matthew) on 2009-08-19T12:01:07.000+0000Reassigning to Ralph  Posted by Ralph Schindler (ralph) on 2009-08-19T12:01:20.000+0000This is a duplicate of ZF-6788.  Posted by Matthew Weier O'Phinney (matthew) on 2009-08-19T12:01:30.000+0000Reassigning to Ralph  Posted by Ralph Schindler (ralph) on 2009-08-19T12:01:40.000+0000This is a duplicate of ZF-6788.  Posted by Matthew Weier O'Phinney (matthew) on 2009-08-19T12:01:50.000+0000Reassigning to Ralph  Posted by Ralph Schindler (ralph) on 2009-08-19T12:02:00.000+0000This is a duplicate of ZF-6788.  Posted by Matthew Weier O'Phinney (matthew) on 2009-08-19T12:02:10.000+0000Reassigning to Ralph  Posted by Ralph Schindler (ralph) on 2009-08-19T12:02:20.000+0000This is a duplicate of ZF-6788.  Posted by Matthew Weier O'Phinney (matthew) on 2009-08-19T12:02:30.000+0000Reassigning to Ralph  Posted by Ralph Schindler (ralph) on 2009-08-19T12:02:40.000+0000This is a duplicate of ZF-6788.  Posted by Matthew Weier O'Phinney (matthew) on 2009-08-19T12:02:50.000+0000Reassigning to Ralph  Posted by Ralph Schindler (ralph) on 2009-08-19T12:03:00.000+0000This is a duplicate of ZF-6788.  Posted by Matthew Weier O'Phinney (matthew) on 2009-08

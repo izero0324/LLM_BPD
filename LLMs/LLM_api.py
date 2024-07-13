@@ -1,6 +1,7 @@
 from LLMs.openai_chat import optimize_code
 #from LLMs.RAG_python import optimize_code_FAISS
 from RAGs.C2T2C import C2T2C
+from RAGs.iterative_RAG import iterative_RAG_gen
 from LLMs.codellama import codellama_optimise
 from LLMs.mixtral import mixtral_gen
 from tools.extract import get_data
@@ -25,6 +26,8 @@ def LLM_revise(code, model, debug):
         result = codellama_optimise(code, model)
     elif model == 'mixtral':
         result = mixtral_gen(code, model)
+    elif model == 'iter':
+        result = iterative_RAG_gen(code,model)
     else:
         raise BaseException(f"{model} not a valid model. Choose from 'GPT3.5' and 'naive RAG'" )
     return result
