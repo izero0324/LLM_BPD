@@ -1,0 +1,2584 @@
+==================================================
+Start Python code optimize evaluation benchmark...
+==================================================
+Generated Description: 
+
+1. Function name: ngcd(x,y) - This function calculates the Greatest Common Divisor (GCD) of two numbers x and y.
+
+2. The purpose of the code: The purpose of the ngcd function is to find the largest number that can be evenly divided by both x and y. This is useful in various mathematical and programming applications.
+
+3. The input/output format of the code: The function takes two integer arguments x and y. It returns an integer, the GCD of x and y.
+
+4. Function name: num_comm_div(x,y) - This function calculates the number of common divisors of two numbers x and y.
+
+5. The purpose of the code: The purpose of the num_comm_div function is to find the number of integers that can evenly divide both x and y. This is useful in various mathematical and programming applications.
+
+6. The input/output format of the code: The function takes two integer arguments x and y. It returns an integer, the number of common divisors of x and y.
+
+In the num_comm_div function, it first calculates the GCD of x and y using the ngcd function. Then it calculates the number of common divisors by iterating from 1 to the square root of the GCD, checking if the GCD is divisible by the current number. If it is, it increments the result by 2 (since the GCD itself is also a common divisor). If the GCD is equal to the square of the current number, it subtracts 1 from the result because the current number and its square root are the same divisor.
+Generated Code:
+ 
+def ngcd(x,y):
+    while y:
+        x, y = y, x % y
+    return x
+
+def num_comm_div(x,y):
+    gcd = ngcd(x,y)
+    result = 0
+    for i in range(1, int(gcd**0.5)+1):
+        if gcd % i == 0:
+            result += 2
+        if i**2 == gcd:
+            result -= 1
+    return result
+
+Original code:  1 0.01604776099557057  34 47.593359375
+C2T2C :  1 0.01581547058885917  8 47.593359375
+BLEU:  5.62
+Generated Description: 
+
+This code defines a function named `find` which takes two arguments `n` and `m`. The purpose of this function is to find the remainder of the division of `n` by `m`.
+
+The input format for this function is two integers `n` and `m`. The output format is an integer which is the remainder of the division of `n` by `m`.
+
+In the code, the function calculates the remainder of the division of `n` by `m` using the modulus operator `%`. The result is then returned by the function.
+Generated Code:
+ 
+def find(n, m):
+    return n % m
+
+Original code:  1 0.020046640699729324  8 47.593359375
+C2T2C :  1 0.01635772599838674  4 47.593359375
+BLEU:  26.86
+Generated Description: 
+
+1. Function name: The function name is `add_consecutive_nums`.
+2. The purpose of the code: The purpose of this function is to add consecutive numbers in a list of numbers.
+3. The input/output format of the code: The input to this function is a list of numbers, and the output is a new list containing the sum of consecutive numbers in the input list.
+
+For example, if the input is `[1, 2, 3, 4, 5]`, the output will be `[3, 5, 7]`.
+
+The function uses a generator expression to create a new list where each element is the sum of the previous and the next number in the input list. The `zip()` function is used to iterate over the list in pairs, and the `[:-1]` and `[1:]` slices are used to exclude the last number in the list, as it doesn't have a next number to add to.
+Generated Code:
+ 
+def add_consecutive_nums(nums):
+    return [a + b for a, b in zip(nums[:-1], nums[1:])]
+
+Original code:  1 0.015655301290098577  5 47.593359375
+C2T2C :  1 0.0164425921975635  5 47.593359375
+BLEU:  10.86
+Generated Description: 
+
+The function name is `sum_Of_Series(n)`. This function calculates the sum of the cubes of the numbers from 1 to n (inclusive).
+
+The input to this function is an integer `n`. The function takes this integer as an argument and calculates the sum of the cubes of the numbers from 1 to n.
+
+The output of this function is an integer, which is the sum of the cubes of the numbers from 1 to n. For example, if you call `sum_Of_Series(3)`, the function will return `33` (1^3 + 2^3 + 3^3).
+Generated Code:
+ 
+def sum_Of_Series(n):
+    sum = 0
+    for i in range(1, n+1):
+        sum += i**3
+    return sum
+
+Original code:  1 0.015888855210505426  5 47.593359375
+C2T2C :  1 0.015920620190445333  1 47.593359375
+BLEU:  12.64
+Generated Description: 
+
+The function name is `re_order`.
+
+The purpose of the code is to re-order a given list of elements such that all the non-zero elements are moved to the beginning of the list and the rest of the elements are replaced with zeros.
+
+The input format of the code is a list of elements (integers or strings) where some elements may be zero.
+
+The output format of the code is a list where all the non-zero elements are at the beginning and the rest of the elements are replaced with zeros. For example, if the input is `[0, 3, 0, 1, 0, 2, 0, 4]`, the output will be `[3, 1, 2, 4, 0, 0, 0, 0]`.
+Generated Code:
+ 
+def re_order(l):
+    return [x for x in l if x != 0] + [0] * (len(l) - len([x for x in l if x != 0]))
+
+Original code:  1 0.015844859299249947  2 47.593359375
+C2T2C :  1 0.0159347019973211  4 47.593359375
+BLEU:  5.44
+Generated Description: 
+
+The function name is `permutation_coefficient`. This function calculates the number of ways to arrange a set of n distinct objects into k distinct groups.
+
+The input to the function is two integers `n` and `k`, where `n` is the total number of objects and `k` is the number of groups. The output is an integer representing the number of ways to arrange the objects into the specified groups.
+
+The function uses a 2D list `P` to store the intermediate results. The list is initialized with all elements as 0. The function then iterates through all possible combinations of objects and groups, and calculates the number of ways for each combination. The final result is stored in the `P[n][k]` position of the list.
+
+In the function, the outer loop iterates through all possible values of `i` from 1 to `n`. The inner loop iterates through all possible values of `j` from 0 to the minimum of `i` and `k`.
+
+For each combination, the function checks if `j` is 0. If it is, the value of `P[i][j]` is set to 1. If `j` is not 0, the value of `P[i][j]` is calculated as the sum of two values: the value of `P[i - 1][j]` and the product of `j` and the value of `P[i - 1][j - 1]`.
+
+After calculating the number of ways for each combination, the function sets the value of `P[i][j + 1]` to 0 for all `j` less than `k`. This is done to avoid double counting when calculating the number of ways for larger combinations.
+
+Finally, the function returns the value of `P[n][k]`, which represents the number of ways to arrange the objects into the specified groups.
+Generated Code:
+ 
+def permutation_coefficient(n, k):
+    P = [[0 for i in range(k + 1)] for j in range(n + 1)]
+    for i in range(1, n + 1):
+        for j in range(0, min(i, k) + 1):
+            if j == 0:
+                P[i][j] = 1
+            else:
+                P[i][j] = P[i - 1][j] + j * P[i - 1][j - 1]
+        for j in range(0, k):
+            P[i][j + 1] = 0
+    return P[n][k]
+
+Original code:  1 0.016042294597718866  25 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmp71w78ipj.py", line 14, in <module>
+    assert permutation_coefficient(10, 2) == 90
+AssertionError
+ 1 47.593359375
+BLEU:  0
+Generated Description: 
+
+This code defines a function named `remove_words` which takes two arguments: `list1` and `removewords`. The purpose of this function is to remove the words that are present in the `removewords` list from the `list1`.
+
+The input format for this function is a list of strings for `list1` and a list of strings for `removewords`. The output format is also a list of strings, where the words that were present in the `removewords` list have been removed from the `list1`.
+
+The function works by iterating over each word in the `list1` using a for loop. For each word, it checks if the word is present in the `removewords` list. If it is, it removes the word from the `list1` using the `remove()` method. Finally, the function returns the modified `list1`.
+Generated Code:
+ 
+def remove_words(list1, removewords):
+    for word in list1:
+        if word in removewords:
+            list1.remove(word)
+    return list1
+
+Original code:  1 0.01575854920083657  11 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmpbi89pvn5.py", line 9, in <module>
+    assert remove_words(['red', 'green', 'blue', 'white', 'black', 'orange'],['black', 'orange'])==['red', 'green', 'blue', 'white']
+AssertionError
+ 10 47.593359375
+BLEU:  0
+Generated Description: 
+
+The function name is `same_order`. This function takes two lists as input, `l1` and `l2`, and checks if they have the same elements in the same order.
+
+The input format for this function is two lists of any data type. For example, `[1, 2, 3, 4]` or `['a', 'b', 'c', 'd']`.
+
+The output format is a boolean value, `True` if the lists have the same elements in the same order, and `False` otherwise. For example, if the input is `[1, 2, 3, 4]` and `[4, 3, 2, 1]`, the output will be `False`. If the input is `[1, 2, 3, 4]` and `[1, 2, 3, 4]`, the output will be `True`.
+Generated Code:
+ 
+def same_order(l1, l2):
+    return l1 == l2
+
+Original code:  1 0.016219899291172624  34 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmph87vimkk.py", line 5, in <module>
+    assert same_order(["red","green","black","orange"],["red","pink","green","white","black"])==True
+AssertionError
+ 34 47.593359375
+BLEU:  0
+Generated Description: 
+
+The function name is `average_Odd(n)`. This function calculates the average of all odd numbers from 1 to n (inclusive), where n is an even number.
+
+The input format for this function is an integer `n`. The output format is either a float representing the average of the odd numbers or a string "Invalid Input" if the input is not an even number.
+
+The function first checks if the input is even by using the modulus operator (`%`). If the input is even, it returns "Invalid Input" and -1 to indicate an error.
+
+If the input is odd, it initializes two variables: `sm` (sum) and `count` (number of odd numbers). It then enters a while loop that continues as long as `n` is greater than or equal to 1.
+
+Inside the loop, it increments the `count` variable, adds the current value of `n` to the `sm` variable, and then decrements `n` by 2 to move to the next odd number.
+
+Finally, it calculates the average by dividing the sum by the count and returns the result.
+Generated Code:
+ 
+def average_Odd(n):
+    if n % 2 == 0:
+        return "Invalid Input", -1
+    sm = 0
+    count = 0
+    while n >= 1:
+        count += 1
+        sm += n
+        n -= 2
+    return sm / count
+
+Original code:  1 0.017872733098920436  17 47.593359375
+C2T2C :  1 0.016085393796674907  1 47.593359375
+BLEU:  9.88
+Generated Description: 
+
+The function name is `no_of_subsequences`. This function calculates the number of non-empty subsequences that can be formed from a given array such that the sum of the elements in each subsequence does not exceed a given integer `k`.
+
+The input format for this function is a list of integers `arr` and an integer `k`. The list `arr` represents the elements of the array, and `k` is the maximum sum allowed for any subsequence.
+
+The output format of this function is an integer, which is the number of non-empty subsequences that can be formed from the given array `arr` with a sum not exceeding `k`.
+
+The function uses a 2D array `dp` to store the number of subsequences ending at each index `j` with a sum not exceeding `i`. The base case for the recursion is when `i` is 0, in which case the number of subsequences ending at `j` is 1 if `arr[j - 1]` is 0, and 0 otherwise.
+
+The function iterates through all possible values of `i` and `j` from 1 to `n` and `k` respectively, and updates the values in the `dp` array accordingly. If the current element `arr[j - 1]` is less than or equal to `i` and greater than 0, the number of subsequences ending at `j` is the sum of the number of subsequences ending at `j - 1` and the number of subsequences ending at the last index where the sum is less than or equal to `i // arr[j - 1]` (i.e., the index where the current element was last included in the subsequence), plus 1 (to include the current element in the subsequence).
+
+Finally, the function returns the number of subsequences ending at the last index `n` with a sum not exceeding `k`, which is stored in `dp[k][n]`.
+Generated Code:
+ 
+def no_of_subsequences(arr, k):
+    n = len(arr)
+    dp = [[0 for i in range(n + 1)] for j in range(k + 1)]
+    for i in range(1, k + 1):
+        for j in range(1, n + 1):
+            if arr[j - 1] <= i and arr[j - 1] > 0:
+                dp[i][j] = dp[i][j - 1] + dp[i - arr[j - 1]][j - 1] + 1
+            else:
+                dp[i][j] = dp[i][j - 1]
+    return dp[k][n]
+
+Original code:  1 0.016067033307626842  28 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmp9odn5oau.py", line 13, in <module>
+    assert no_of_subsequences([1,2,3,4], 10) == 11
+AssertionError
+ 10 47.593359375
+BLEU:  0
+==============Check Point ==============
+10  /  100  done
+accuracy:  60.0 Code boosted:  3 / 10 Memory reduced:  0 flake8 fixed:  48 / 169 BLEU:  7.13
+Generated Description: 
+
+The function name is find_Min_Sum. This function is designed to find the sum of the minimum prime factors of a given number.
+
+The input format for this function is an integer 'num'.
+
+The output format of this function is an integer, which is the sum of the minimum prime factors of the input number.
+
+The function works by initializing a sum variable and an i variable to 2. It then enters a while loop that continues as long as i*i is less than or equal to the input number. Inside this loop, it enters another while loop that checks if the input number is divisible by the current value of i. If it is, it adds i to the sum, divides the input number by i, and continues the inner loop with the new value of the input number. After the inner loop, it increments i and continues the outer loop. Once the outer loop is finished, it adds the remaining input number (if any) to the sum and returns the sum.
+
+This function is useful for finding the sum of the minimum prime factors of a number, which can be useful in various mathematical and computational problems.
+Generated Code:
+ 
+
+def find_Min_Sum(num):
+    sum = 0
+    i = 2
+    while i*i <= num:
+        while num % i == 0:
+            sum += i
+            num /= i
+        i += 1
+    if num > 1:
+        sum += num
+    return sum
+
+
+Original code:  1 0.016683975199703126  9 47.593359375
+C2T2C :  1 0.015803269296884536  0 47.593359375
+BLEU:  9.98
+Generated Description: 
+
+1. Function name: flatten
+2. The purpose of the code: The purpose of the function is to flatten a nested tuple structure into a single list.
+3. The input/output format of the code: The function takes a tuple as input and returns a list as output.
+
+Now, let's describe the second function:
+
+1. Function name: count_element_freq
+2. The purpose of the code: The purpose of the function is to count the frequency of each element in a given list (or flattened tuple).
+3. The input/output format of the code: The function takes a list (or flattened tuple) as input and returns a dictionary as output, where the keys are the unique elements and the values are the counts of each element.
+
+In the given code, the `flatten` function uses recursion to flatten a nested tuple structure. It checks if the current element is a tuple, if yes, it calls itself recursively to flatten the nested tuple. If not, it yields the current element. The `count_element_freq` function uses a dictionary to store the frequency of each element and iterates over the flattened tuple to count the frequency of each element. If an element is not found in the dictionary, it initializes the count to 0, otherwise it increments the count by 1. Finally, it returns the dictionary containing the frequency of each element.
+Generated Code:
+ 
+def flatten(t):
+    if not isinstance(t, tuple):
+        yield t
+    else:
+        for i in t:
+            yield from flatten(i)
+
+def count_element_freq(l):
+    d = {}
+    for i in flatten(l):
+        if i not in d:
+            d[i] = 0
+        d[i] += 1
+    return d
+
+Original code:  1 0.016417119291145355  30 47.593359375
+C2T2C :  1 0.019707718398422003  9 47.593359375
+BLEU:  8.43
+Generated Description: 
+
+1. Function name: The function name is `add_str`.
+2. The purpose of the code: The purpose of this function is to add a string `K` to each element of a given tuple `test_tup`.
+3. The input/output format of the code: The input to this function is a tuple `test_tup` and a string `K`. The output is a new list where each element is the concatenation of the original element and the string `K`.
+
+For example, if `test_tup = (("Hello", "World"), ("Python", "Programming"))` and `K = "!"`, the output will be `[("Hello!", "World!"), ("Python!", "Programming!")]`.
+Generated Code:
+ 
+def add_str(test_tup, K):
+    new_list = []
+    for i in test_tup:
+        new_list.append(i + K)
+    return new_list
+
+Original code:  1 0.015880311094224452  9 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmpoynqad34.py", line 8, in <module>
+    assert add_str((5, 6, 7, 4, 9) , "FDF") == [5, 'FDF', 6, 'FDF', 7, 'FDF', 4, 'FDF', 9, 'FDF']
+  File "/tmp/tmpoynqad34.py", line 5, in add_str
+    new_list.append(i + K)
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+ 6 47.593359375
+BLEU:  0
+Generated Description: 
+
+This code defines a function named `sum_elements` which takes a tuple as an input. The purpose of this function is to sum up all the elements in the given tuple.
+
+The function first converts the tuple into a list using the built-in `list()` function. Then it uses the built-in `sum()` function to add up all the elements in the list. Finally, it returns the sum of the elements.
+
+The input format for this function is a tuple of numbers. The output format is a single number which is the sum of all the elements in the input tuple.
+
+For example, if you call `sum_elements((1, 2, 3, 4))`, the function will return `10`.
+Generated Code:
+ 
+def sum_elements(t):
+    return sum(list(t))
+
+Original code:  1 0.015653876995202154  8 47.593359375
+C2T2C :  1 0.016001422598492354  5 47.593359375
+BLEU:  28.54
+Generated Description: 
+
+The function name is `modular_sum`.
+
+The purpose of the code is to check if it is possible to get a sum of 'n' using the elements of an array modulo 'm'. The function returns True if it is possible and False otherwise.
+
+The input format for the function is a list `arr` of integers, an integer `n` and an integer `m`. The list `arr` contains the elements of the array, `n` is the target sum and `m` is the modulus.
+
+The output format of the function is a boolean value, True if it is possible to get a sum of 'n' using the elements of the array modulo 'm' and False otherwise.
+Generated Code:
+ 
+def modular_sum(arr, n, m):
+    # Write your code here
+    return True
+
+Original code:  1 0.01619025500258431  33 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmp09psdg0s.py", line 7, in <module>
+    assert modular_sum([1, 7], 2, 5) == False
+AssertionError
+ 4 47.593359375
+BLEU:  0
+Generated Description: 
+
+The function name is `radix_sort`. This function is used to sort a list of numbers using the Radix Sort algorithm.
+
+The input format for this function is a list of integers. The output format is also a list of integers, sorted in ascending order.
+
+The function first initializes some variables: `RADIX` is set to 10 (the base for the number system), `placement` is set to 1 (the current digit position), and `max_digit` is set to the maximum digit in the input numbers.
+
+The function then enters a loop that continues until `placement` is greater than `max_digit`. In each iteration of the loop, it creates empty lists (buckets) for each digit from 0 to 9. It then iterates through the input numbers, placing each number in the appropriate bucket based on the digit at the current `placement` position.
+
+After all numbers have been placed in the buckets, the function iterates through each bucket, placing each number from the bucket back into the original list in ascending order. The loop then increments `placement` by the base (10) for the next iteration.
+
+Finally, the function returns the sorted list of numbers.
+Generated Code:
+ 
+def radix_sort(nums):
+    RADIX = 10
+    max_digit = max([len(str(num)) for num in nums])
+    placement = 1
+    while placement <= max_digit:
+        buckets = [[] for _ in range(RADIX)]
+        for num in nums:
+            digit = (num // (RADIX ** (placement - 1))) % RADIX
+            buckets[digit].append(num)
+        nums = []
+        for bucket in buckets:
+            nums.extend(bucket)
+        placement *= RADIX
+    return nums
+
+Original code:  1 0.015542167401872576  12 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmpz1g7qi5g.py", line 18, in <module>
+    assert radix_sort([9, 11, 8, 7, 3, 2]) == [2, 3, 7, 8, 9, 11]
+AssertionError
+ 1 47.593359375
+BLEU:  0
+Generated Description: 
+
+The function name is "largest_pos" and it's purpose is to find the largest positive number in a given list of numbers.
+
+The input format for this function is a list of numbers. Each number in the list should be an integer and can be either positive or zero.
+
+The output format of this function is an integer, which is the largest positive number found in the input list. If the input list is empty or contains only negative numbers, the function will return None.
+
+The function works by initializing a variable "max" with the first number in the list. Then it iterates through the rest of the list, comparing each number with the current "max" value. If it finds a number greater than the current "max", it updates the "max" value with the new number. After the loop finishes, it returns the "max" value.
+Generated Code:
+ 
+
+def largest_pos(nums):
+    max = nums[0]
+    for num in nums:
+        if num > max:
+            max = num
+    return max
+
+
+Original code:  1 0.015596960100810974  21 47.593359375
+C2T2C :  1 0.016632991703227164  12 47.593359375
+BLEU:  10.58
+Generated Description: 
+
+The code provided is a Python function named `sqrt_root` that calculates the square root of a given number.
+
+The purpose of this function is to find the square root of a non-negative real number.
+
+The input format for this function is a single number, which can be an integer or a float. For example, `sqrt_root(4)` or `sqrt_root(9.25)`.
+
+The output format of this function is a float representing the square root of the input number. For example, `2.0` for `sqrt_root(4)` or `3.04721359549935` for `sqrt_root(9.25)`.
+
+The function uses the built-in `math` module's `pow` function to calculate the square root. The `pow` function raises the base (the first argument) to the power (the second argument). In this case, we are raising the number to the power of 0.5, which is the same as finding the square root.
+Generated Code:
+ 
+import math
+
+def sqrt_root(num):
+    return math.pow(num, 0.5)
+
+Original code:  1 0.015858821803703904  8 47.593359375
+C2T2C :  1 0.016005010099615902  5 47.593359375
+BLEU:  11.34
+Generated Description: 
+
+The code provided is a Python function named `volume_tetrahedron` that calculates the volume of a tetrahedron.
+
+The purpose of this function is to provide a simple and efficient way to calculate the volume of a tetrahedron, which is a three-dimensional shape with four triangular faces.
+
+The input for this function is a single number `num`, which represents the length of the edge of the tetrahedron. The length of the edge is used to calculate the volume of the tetrahedron.
+
+The output of the function is the volume of the tetrahedron, rounded to two decimal places. The volume is calculated using the formula for the volume of a tetrahedron, which is (num ** 3 / (6 * math.sqrt(2))). The `math.sqrt` function is used to calculate the square root of 2, and the result is multiplied by 6 to get the correct volume. The `round` function is used to round the final result to two decimal places.
+
+To use this function, you can call it with the edge length as the argument, like so: `volume_tetrahedron(5)`. This will return the volume of a tetrahedron with an edge length of 5, rounded to two decimal places.
+Generated Code:
+ 
+import math
+
+def volume_tetrahedron(num):
+    return round((num ** 3 / (6 * math.sqrt(2))), 2)
+
+Original code:  1 0.016568699898198248  8 47.593359375
+C2T2C :  1 0.01585098240757361  5 47.593359375
+BLEU:  2.53
+Generated Description: 
+
+The code provided consists of two functions: find_lcm and get_lcm.
+
+1. Function name: find_lcm
+   - Purpose: This function calculates the Least Common Multiple (LCM) of two numbers.
+   - Input/Output format: The function takes two integer arguments and returns an integer as the LCM.
+
+2. Function name: get_lcm
+   - Purpose: This function calculates the LCM of a list of numbers.
+   - Input/Output format: The function takes a list of integers as an argument and returns an integer as the LCM of all the numbers in the list.
+
+In the provided code, the find_lcm function first checks if the first number is greater than the second number. If not, it swaps the numbers. Then it calculates the remainder of the division of the larger number by the smaller number. It continues to calculate the remainder until the remainder is zero. The greatest common divisor (GCD) is then calculated as the last non-zero remainder. Finally, the LCM is calculated as the product of the two original numbers divided by the GCD.
+
+The get_lcm function uses the find_lcm function to calculate the LCM of pairs of numbers in the list. It starts by taking the first two numbers in the list and calculating their LCM. Then it continues to calculate the LCM of the previously calculated LCM and the next number in the list. This process continues until all numbers in the list have been processed, and the final LCM is returned.
+Generated Code:
+ 
+
+def find_lcm(num1, num2):
+    if num1 > num2:
+        num1, num2 = num2, num1
+    while num2 != 0:
+        num1, num2 = num2, num1 % num2
+    return num1
+
+def get_lcm(num_list):
+    lcm = num_list[0]
+    for num in num_list[1:]:
+        lcm = find_lcm(lcm, num)
+    return lcm
+
+
+Original code:  1 0.01674703130265698  46 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmpu_cr6rt0.py", line 17, in <module>
+    assert get_lcm([2, 7, 3, 9, 4]) == 252
+AssertionError
+ 1 47.593359375
+BLEU:  0
+==============Check Point ==============
+20  /  100  done
+accuracy:  60.0 Code boosted:  5 / 20 Memory reduced:  0 flake8 fixed:  96 / 353 BLEU:  7.135000000000001
+Generated Description: 
+
+This code defines a function called `check_isosceles` which takes three arguments `x`, `y`, and `z`. The purpose of this function is to check if the three given numbers represent the sides of an isosceles triangle. An isosceles triangle is a triangle with two sides of equal length.
+
+The function first checks if the three given numbers are not equal to each other. If they are not equal, it means that at least two sides are of different lengths, and the function returns `True`, indicating that the given numbers do not represent the sides of an isosceles triangle.
+
+If the three given numbers are equal, it means that all sides are of the same length, and the function returns `False`, indicating that the given numbers do represent the sides of an isosceles triangle.
+
+The input format for this function is three numbers (`x`, `y`, and `z`), and the output format is a boolean value (`True` or `False`).
+Generated Code:
+ 
+def check_isosceles(x, y, z):
+    if x != y and y != z and z != x:
+        return True
+    else:
+        return False
+
+Original code:  1 0.015055308991577476  25 47.593359375
+C2T2C :  1 0.01589695840375498  13 47.593359375
+BLEU:  6.84
+Generated Description: 
+
+The function name is `lbs`.
+
+The purpose of the code is to find the length of the longest increasing subsequence in a given list of integers.
+
+The input format of the code is a list of integers. For example, `[10, 22, 9, 33, 21, 50, 41, 60, 80]`.
+
+The output format of the code is an integer, which represents the length of the longest increasing subsequence in the given list. For the above example, the output would be `6` because the longest increasing subsequence is `[10, 21, 50, 60, 80]`.
+
+The function `lbs` uses two auxiliary arrays `lis` and `lds` to store the length of the longest increasing subsequence ending at each index in the given list. The `lis` array is filled by iterating through the list from the first index to the last index, and for each index, it checks all the previous indices to find the longest increasing subsequence ending at the current index. The `lds` array is filled by iterating through the list in reverse order, and for each index, it checks all the subsequent indices to find the longest increasing subsequence ending at the current index. The maximum length of the longest increasing subsequence is then calculated by iterating through the `lis` and `lds` arrays and finding the maximum value. Finally, the function returns the maximum length of the longest increasing subsequence.
+Generated Code:
+ 
+def lbs(nums):
+    lis = [1] * len(nums)
+    lds = [1] * len(nums)
+    for i in range(1, len(nums)):
+        for j in range(i):
+            if nums[i] > nums[j]:
+                lis[i] = max(lis[i], lis[j] + 1)
+    for i in range(len(nums) - 2, -1, -1):
+        for j in range(i + 1, len(nums)):
+            if nums[i] > nums[j]:
+                lds[i] = max(lds[i], lds[j] + 1)
+    return max(lis[i] + lds[i] - 1 for i in range(len(nums)))
+
+Original code:  1 0.016913374699652196  46 47.593359375
+C2T2C :  1 0.01621779470006004  12 47.593359375
+BLEU:  8.86
+Generated Description: 
+
+The function name is check_string. This function is designed to check if a given string meets certain criteria.
+
+The input to this function is a string (str1). The output is a list of messages that indicate whether the string meets the criteria or not.
+
+The function first initializes a list of lambda functions. Each lambda function checks for a specific condition:
+  - Whether the string has at least one uppercase character.
+  - Whether the string has at least one lowercase character.
+  - Whether the string has at least one digit.
+  - Whether the string is at least 8 characters long.
+
+The function then applies each of these lambda functions to the input string and stores the results in a list. If any of the conditions are not met, the corresponding message is added to the list.
+
+Finally, if the list is empty (meaning all conditions are met), the message 'Valid string.' is added to the list. The function then returns the list of messages. If any condition is not met, the function will return a list of messages indicating the issues with the string.
+Generated Code:
+ 
+def check_string(str1):
+    # Initialize a list of lambda functions
+    conditions = [lambda s: any(c.isupper() for c in s),
+                  lambda s: any(c.islower() for c in s),
+                  lambda s: any(c.isdigit() for c in s),
+                  lambda s: len(s) >= 8]
+
+    # Apply each lambda function to the input string
+    results = [condition(str1) for condition in conditions]
+
+    # If all conditions are met, return a list with the message 'Valid string.'
+    if all(results):
+        return ['Valid string.']
+
+    # If any condition is not met, return a list of messages indicating the issues with the string
+    return ['String should have at least one uppercase character.',
+            'String should have at least one lowercase character.',
+            'String should have at least one digit.',
+            'String should be at least 8 characters long.'][results.index(False)]
+
+Original code:  1 0.015750912309158593  16 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmpja7ecsnk.py", line 22, in <module>
+    assert check_string('python')==['String must have 1 upper case character.', 'String must have 1 number.', 'String length should be atleast 8.']
+AssertionError
+ 7 47.593359375
+BLEU:  0
+Generated Description: 
+
+The function name is max_sum_increasing_subsequence. The purpose of this code is to find the maximum sum of an increasing subsequence in a given array of integers.
+
+The input format for this code is a list of integers, where each integer is an element in the array. The length of the list represents the number of elements in the array. For example, [1, 5, 2, 3, 8, 4] is a valid input.
+
+The output format of this code is a single integer, which is the maximum sum of an increasing subsequence in the given array. In the example above, the output would be 10 (since the increasing subsequence is [1, 2, 3, 8]).
+
+The function first initializes a variable max to 0 and a list msis of size n (where n is the length of the input array), filled with zeros. It then iterates through the array, and for each element, it checks if there is an earlier element in the array that is smaller and whose sum with the current element is greater than the current sum in msis. If such an element is found, the sum is updated in msis.
+
+Finally, the function iterates through the msis list again, and if it finds an element greater than the current value of max, it updates max.
+
+The function returns the final value of max, which is the maximum sum of an increasing subsequence in the given array.
+Generated Code:
+ 
+
+def max_sum_increasing_subsequence(arr):
+    n = len(arr)
+    msis = [0] * n
+    max = 0
+    for i in range(n):
+        for j in range(i):
+            if arr[j] < arr[i] and msis[j] + arr[i] > msis[i]:
+                msis[i] = msis[j] + arr[i]
+        if msis[i] > max:
+            max = msis[i]
+    return max
+
+
+Original code:  1 0.01588642520364374  26 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmpwr1579yn.py", line 16, in <module>
+    assert max_sum_increasing_subsequence([1, 101, 2, 3, 100, 4, 5], 7) == 106
+TypeError: max_sum_increasing_subsequence() takes 1 positional argument but 2 were given
+ 0 47.593359375
+BLEU:  0
+Generated Description: 
+
+This code defines a function named `parallel_lines` which takes two lines as input, represented as lists of two elements each. The first element of the list represents the slope of the line, and the second element represents the y-intercept of the line.
+
+The purpose of the function is to check if the two lines are parallel. Parallel lines have the same slope, so the function calculates the slope of each line and checks if they are equal. If the slopes are equal, the function returns `True`, indicating that the lines are parallel. If the slopes are not equal, the function returns `False`, indicating that the lines are not parallel.
+
+Here is an example of how to use the function:
+
+```python
+line1 = [2, 3]
+line2 = [3, 4]
+print(parallel_lines(line1, line2))  # Output: False
+
+line3 = [2, 5]
+line4 = [2, 7]
+print(parallel_lines(line3, line4))  # Output: True
+```
+
+In the first example, the lines are not parallel because they have different slopes (3 and 4). In the second example, the lines are parallel because they have the same slope (2).
+Generated Code:
+ 
+def parallel_lines(line1, line2):
+    slope1 = line1[0]
+    slope2 = line2[0]
+    if slope1 == slope2:
+        return True
+    else:
+        return False
+
+Original code:  1 0.015560753899626434  16 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmpore7z020.py", line 12, in <module>
+    assert parallel_lines([3,3],[5,5]) == True
+AssertionError
+ 15 47.593359375
+BLEU:  0
+Generated Description: 
+
+The function name is `capitalize_first_last_letters`. This function takes a string as input and returns the same string with the first and last letters of each word capitalized.
+
+The input format for this function is a string. The string can contain any number of words, separated by spaces. The output format is also a string, where each word has its first and last letter capitalized, and the words are separated by spaces.
+
+The function works by first converting the entire input string to title case using the `title()` method. Then, it initializes an empty string `result` to store the modified string. It then splits the input string into words using the `split()` method. For each word, it concatenates the first part of the word (up to the second last character), the last character of the word (converted to uppercase), and a space to the `result` string. Finally, it returns the `result` string, but removes the trailing space at the end.
+Generated Code:
+ 
+def capitalize_first_last_letters(s):
+    result = ""
+    for word in s.title().split():
+        result += word[:-1] + word[-1].upper() + " "
+    return result[:-1]
+
+Original code:  1 0.015782616508658975  8 47.593359375
+C2T2C :  1 0.01576774730347097  1 47.593359375
+BLEU:  66.73
+Generated Description: 
+
+The function name is `get_pairs_count`. This function is designed to find the count of pairs in an array that sum up to a given value.
+
+The input format for this function is a list (array) `arr` containing integers, an integer `n` representing the length of the array, and an integer `sum` representing the target sum.
+
+The output of this function is an integer, which is the count of pairs in the array that sum up to the given `sum`. If no such pair exists, the function will return 0.
+Generated Code:
+ 
+def get_pairs_count(arr, n, sum):
+    count = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            if arr[i] + arr[j] == sum:
+                count += 1
+    return count
+
+Original code:  1 0.015759936801623554  2 47.593359375
+C2T2C :  1 0.015679238899610936  1 47.593359375
+BLEU:  7.55
+Generated Description: 
+
+This code defines a function named `min_length` which takes a list as an input. The purpose of this function is to find the minimum length of any list in the input list and also return the list with the minimum length.
+
+The function uses a generator expression to iterate over each list in the input list and find the minimum length of any list. The `min()` function is used to find the minimum value from the generator expression.
+
+Similarly, another generator expression is used to find the list with the minimum length. The `min()` function is used again to find the minimum list from the generator expression.
+
+Finally, the function returns a tuple containing the minimum length and the list with the minimum length.
+
+The input format for this function is a list of lists. The output format is a tuple where the first element is the minimum length of any list in the input list and the second element is the list with the minimum length.
+
+For example, if the input list is `[[1, 2, 3], [4, 5], [6, 7, 8, 9], [10, 11]]`, the output will be `(3, [1, 2, 3])`.
+Generated Code:
+ 
+def min_length(lists):
+    min_length = min(len(l) for l in lists)
+    min_list = min(l for l in lists if len(l) == min_length)
+    return min_length, min_list
+
+Original code:  1 0.015618525596801191  16 47.593359375
+C2T2C :  1 0.016264206299092622  9 47.593359375
+BLEU:  8.58
+Generated Description: 
+
+1. Function name: The function name is `jacobsthal_lucas`.
+2. The purpose of the code: This function calculates the Jacobsthal-Lucas sequence for a given positive integer `n`. The Jacobsthal-Lucas sequence is a sequence defined for every non-negative integer `n` as follows:
+   - `J(0) = 2`
+   - `J(1) = 1`
+   - `J(n) = J(n-1) + 2 * J(n-2)` for `n > 1`.
+3. The input/output format of the code:
+   - Input: A positive integer `n` as an integer.
+   - Output: The `n`th term of the Jacobsthal-Lucas sequence as an integer.
+   - Example: `jacobsthal_lucas(5)` returns `11` because `J(5) = J(4) + 2 * J(3) = 7 + 2 * 1 = 11`.
+Generated Code:
+ 
+def jacobsthal_lucas(n):
+    if n == 0:
+        return 2
+    elif n == 1:
+        return 1
+    else:
+        return jacobsthal_lucas(n-1) + 2 * jacobsthal_lucas(n-2)
+
+Original code:  1 0.01608261070214212  13 47.593359375
+C2T2C :  1 0.016101192799396813  1 47.593359375
+BLEU:  4.92
+Generated Description: 
+
+The function name is "negative_count". The purpose of this code is to calculate the percentage of negative numbers in a given list of numbers.
+
+The input format for this code is a list of numbers. The list can be created using Python's built-in list data type or any other data type that can be converted to a list. For example, you can use the built-in array data type and convert it to a list using the list() function.
+
+The output format of this code is a float value representing the percentage of negative numbers in the input list. The percentage is rounded to two decimal places.
+
+In the code, the function first calculates the length of the input list using the len() function and stores it in the variable "n". Then, it initializes a counter for negative numbers, "n1", to zero.
+
+The function then iterates over each number in the input list using a for loop. If the number is less than zero, it increments the counter "n1" by one. If the number is not less than zero, it does nothing (represented by the "None" statement).
+
+Finally, the function returns the value of "n1" divided by "n" and rounded to two decimal places using the round() function. This gives the percentage of negative numbers in the input list.
+Generated Code:
+ 
+
+def negative_count(nums):
+    n = len(nums)
+    n1 = 0
+    for num in nums:
+        if num < 0:
+            n1 += 1
+        else:
+            None
+    return round(n1/n, 2)
+
+
+Original code:  1 0.01613154129590839  8 47.593359375
+C2T2C :  1 0.01618897890439257  3 47.593359375
+BLEU:  9.64
+==============Check Point ==============
+30  /  100  done
+accuracy:  63.33333333333333 Code boosted:  8 / 30 Memory reduced:  0 flake8 fixed:  174 / 529 BLEU:  8.527333333333335
+Generated Description: 
+
+The function name is `min_coins`.
+
+The purpose of the code is to find the minimum number of coins required to make change for a given amount of money (V) using a list of coin denominations (coins) and the maximum coin denomination (m).
+
+The input format for the function is a list of integers (coins) representing the coin denominations, an integer (m) representing the maximum coin denomination, and an integer (V) representing the amount of money to make change for.
+
+The output format of the function is an integer representing the minimum number of coins required to make change for the given amount of money. If it is not possible to make change for the given amount of money, the function will return `sys.maxsize`.
+Generated Code:
+ 
+def min_coins(coins, m, V):
+    # write your code here
+    return
+
+Original code:  1 0.016475648200139404  27 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmp8txt8qvk.py", line 6, in <module>
+    assert min_coins([9, 6, 5, 1] ,4,11)==2
+AssertionError
+ 16 47.593359375
+BLEU:  0
+Generated Description: 
+
+The function name is `check_permutation`. This function is designed to check if two given strings are permutations of each other.
+
+The input format for this function is two strings (`str1` and `str2`). The output format is a boolean value (`True` if the strings are permutations, `False` otherwise).
+
+The function first checks the lengths of the two strings. If they are not equal, it returns `False` because permutations of two strings must have the same length.
+
+Then, it sorts the characters in both strings and joins them back together with spaces as separators. This is done to make it easier to compare the strings character by character.
+
+Finally, it compares the sorted strings character by character. If any two characters do not match, it returns `False`. If all characters match, it returns `True`.
+Generated Code:
+ 
+def check_permutation(str1, str2):
+    if len(str1) != len(str2):
+        return False
+    str1 = ''.join(sorted(str1))
+    str2 = ''.join(sorted(str2))
+    for i in range(len(str1)):
+        if str1[i] != str2[i]:
+            return False
+    return True
+
+Original code:  1 0.015740893897600472  23 47.593359375
+C2T2C :  1 0.016480933700222522  4 47.593359375
+BLEU:  8.28
+Generated Description: 
+
+This code defines a function called `remove_datatype` which takes two arguments: `test_tuple` and `data_type`. The purpose of this function is to remove all elements from the given tuple that are of a specific data type.
+
+The function iterates through each element in the `test_tuple` using a for loop. For each element, it checks if the element is not of the specified data type using the `isinstance()` function. If the element is not of the specified data type, it is added to a new list called `res`.
+
+Finally, the function returns the new list `res` which contains all the elements from the `test_tuple` that are not of the specified data type.
+
+Input Format: The function takes a tuple as the first argument and a data type as the second argument. The data type can be any built-in Python data type like int, float, str, list, tuple, dict, etc.
+
+Output Format: The function returns a new list containing all the elements from the input tuple that are not of the specified data type. If the input tuple is empty or the specified data type is not provided, the function will return an empty list.
+Generated Code:
+ 
+def remove_datatype(test_tuple, data_type):
+    res = []
+    for i in test_tuple:
+        if not isinstance(i, data_type):
+            res.append(i)
+    return res
+
+Original code:  1 0.01588467980036512  6 47.593359375
+C2T2C :  1 0.020042332401499153  1 47.593359375
+BLEU:  11.22
+Generated Description: 
+
+The function name is `search_literal`. This function takes two arguments: `pattern` and `text`. The purpose of this code is to search for a specific pattern within a given text and return the starting and ending indices of the match.
+
+The input format for this function is a string `pattern` and a string `text`. The output format is a tuple containing two integers, the starting index `s` and the ending index `e` of the match in the `text`.
+
+For example, if you call `search_literal('hello', 'hello world')`, the function will return `(0, 5)` because the pattern 'hello' starts at index 0 and ends at index 5 in the text 'hello world'. If the pattern is not found in the text, the function will return `None`.
+Generated Code:
+ 
+def search_literal(pattern, text):
+    """
+    Return starting and ending indices of pattern in text.
+    Return None if pattern is not found.
+    """
+    # TODO: Implement this function
+    # This function should return a tuple containing the starting and ending
+    # indices of the pattern in the text.
+    # If the pattern is not found, return None.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings do not contain any
+    # spaces or other types of whitespace characters.
+    # You may assume that the pattern and text strings
+Original code:  1 0.021936615090817214  16 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmpppmgdi8j.py", line 80, in <module>
+    assert search_literal('python','python programming language')==(0,6)
+AssertionError
+ 10 47.593359375
+BLEU:  0
+Generated Description: 
+
+1. Function name: topbottom_surfacearea
+2. The purpose of the code: This function calculates the top or bottom surface area of a circle given the radius of the circle.
+3. The input/output format of the code: The input is the radius of the circle (a float value), and the output is the top or bottom surface area of the circle (a float value).
+Generated Code:
+ 
+def topbottom_surfacearea(radius):
+    return 2 * 3.141592653589793 * radius
+
+Original code:  1 0.01572739820694551  7 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmptn9c5xg9.py", line 5, in <module>
+    assert topbottom_surfacearea(10)==314.15000000000003
+AssertionError
+ 4 47.593359375
+BLEU:  0
+Generated Description: 
+
+This code defines a function named `nth_items` which takes two arguments: a list and an integer `n`. The purpose of this function is to return a new list containing every `n`th item from the input list, starting from the first item.
+
+For example, if you call `nth_items([1, 2, 3, 4, 5, 6, 7, 8, 9], 3)`, the function will return `[1, 4, 7]`.
+
+The function uses slicing to achieve this. The `::n` syntax in Python slicing means to start at the beginning of the list, and move `n` items at a time until the end of the list is reached. This effectively selects every `n`th item from the list.
+
+The function does not modify the input list, it always returns a new list. If the input list is empty or the value of `n` is less than or equal to 1, the function will return an empty list.
+Generated Code:
+ 
+def nth_items(items, n):
+    if n <= 1:
+        return []
+    return items[::n]
+
+Original code:  1 0.015808193502016364  22 47.593359375
+C2T2C :  1 0.016523544897791  20 47.593359375
+BLEU:  32.37
+Generated Description: 
+
+The function name is `first_repeated_word`. This function is designed to find the first repeated word in a given string.
+
+The input format for this function is a string (str1) containing multiple words separated by spaces.
+
+The output format is a string containing the first repeated word found in the input string, or 'None' if no repeated words are found.
+
+The function works by first initializing an empty set (temp). It then iterates through each word in the input string (split by spaces). If the current word is already in the set (indicating it's a repeated word), it returns that word. If the word is not in the set, it adds the word to the set.
+
+If the function goes through the entire string without finding a repeated word, it returns 'None'.
+Generated Code:
+ 
+def first_repeated_word(str1):
+    temp = set()
+    for word in str1.split():
+        if word in temp:
+            return word
+        else:
+            temp.add(word)
+    return 'None'
+
+Original code:  1 0.01586436670040712  7 47.593359375
+C2T2C :  1 0.015718450292479248  1 47.593359375
+BLEU:  18.01
+Generated Description: 
+
+This code defines a function named `string_list_to_tuple` which takes a string as input and converts it into a tuple. The purpose of this function is to remove any whitespace characters from the input string and return a tuple containing the remaining non-whitespace characters.
+
+The input format for this function is a string (str1) containing any combination of alphanumeric characters, spaces, and other special characters. The output format is a tuple where each element is a non-whitespace character from the input string.
+
+The function uses a generator expression to iterate through each character in the input string (str1). If the character is not a whitespace character (isspace() method returns True for whitespace characters), it is added to the result tuple. The generator expression is wrapped in parentheses and passed to the `tuple()` function to create the final result tuple.
+Generated Code:
+ 
+def string_list_to_tuple(str1):
+    return tuple(c for c in str1 if not c.isspace())
+
+Original code:  1 0.016261668503284456  5 47.593359375
+C2T2C :  1 0.01592003769474104  4 47.593359375
+BLEU:  10.0
+Generated Description: 
+
+This code defines a function named `basesnum_coresspondingnum` which takes two arguments: `bases_num` and `index`.
+
+The purpose of this function is to calculate the power of each number in the `bases_num` list, raised to the power of the corresponding number in the `index` list.
+
+The function uses the built-in `map` function to apply the `pow` function to each pair of numbers from the `bases_num` and `index` lists. The `pow` function calculates the power of the first number in the pair, raised to the power of the second number in the pair.
+
+The result is a new list containing the calculated powers.
+
+The input format for this function is a list of numbers for `bases_num` and another list of numbers for `index`. The output format is also a list of numbers, where each number is the result of the corresponding power calculation.
+
+For example, if `bases_num = [2, 3, 4]` and `index = [2, 3, 4]`, the function will return `[16, 81, 256]` because `2^2 = 4, 3^3 = 27, 4^4 = 256`.
+Generated Code:
+ 
+def basesnum_coresspondingnum(bases_num, index):
+    return list(map(pow, bases_num, index))
+
+Original code:  1 0.015630862792022526  13 47.593359375
+C2T2C :  1 0.015576438698917627  10 47.593359375
+BLEU:  20.19
+Generated Description: 
+
+The function name is `find_Diff`. This function takes two arguments: `arr` and `n`. The purpose of the code is to find the difference between the maximum and minimum number of consecutive identical elements in an array.
+
+The input format for the function is a sorted list of integers `arr` and an integer `n` representing the length of the array. The output format is an integer representing the difference between the maximum and minimum number of consecutive identical elements in the array.
+
+In the function, we first sort the array `arr` using the `sort()` method. Then, we initialize a counter `count` to 0 and two variables `max_count` and `min_count` to 0 and `n` respectively.
+
+The function then iterates through the array from index 0 to `n-2` (excluding the last element as we don't want to consider it in the consecutive identical elements count). If the current element is equal to the next element, we increment the counter `count` and continue to the next iteration. If the current element is not equal to the next element, we update the maximum count `max_count` with the maximum of the current `max_count` and the current count, and the minimum count `min_count` with the minimum of the current `min_count` and the current count. We then reset the counter `count` to 0.
+
+Finally, we return the difference between the maximum count `max_count` and the minimum count `min_count`. This difference represents the difference between the maximum and minimum number of consecutive identical elements in the array.
+Generated Code:
+ 
+def find_Diff(arr, n):
+    arr.sort()
+    count = 0
+    max_count = n
+    min_count = 0
+    for i in range(n-1):
+        if arr[i] == arr[i+1]:
+            count += 1
+        else:
+            max_count = max(max_count, count)
+            min_count = min(min_count, count)
+            count = 0
+    return max_count - min_count
+
+Original code:  1 0.015785346506163478  39 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmppb5a4cvy.py", line 16, in <module>
+    assert find_Diff([1,1,2,2,7,8,4,5,1,4],10) == 2
+AssertionError
+ 24 47.593359375
+BLEU:  0
+==============Check Point ==============
+40  /  100  done
+accuracy:  62.5 Code boosted:  11 / 40 Memory reduced:  0 flake8 fixed:  210 / 694 BLEU:  8.897250000000001
+Generated Description: 
+
+1. Function name: get_sum(n)
+   - Purpose of the code: This function calculates the sum of all proper divisors of a given number 'n'. A proper divisor of a number is a divisor that is strictly greater than 1 and less than the number itself.
+
+2. Function name: check_abundant(n)
+   - Purpose of the code: This function checks if a given number 'n' is an abundant number or not. An abundant number is a positive integer greater than the sum of its proper divisors.
+
+3. Input/Output format of the code:
+   - get_sum(n) takes an integer 'n' as input and returns the sum of all proper divisors of 'n' as an integer.
+   - check_abundant(n) takes an integer 'n' as input and returns True if 'n' is an abundant number, otherwise it returns False.
+Generated Code:
+ 
+
+def get_sum(n):
+    sum = 0
+    for i in range(1, n):
+        if n % i == 0:
+            sum += i
+    return sum
+
+def check_abundant(n):
+    if get_sum(n) > n:
+        return True
+    else:
+        return False
+
+Original code:  1 0.016221449291333557  38 47.593359375
+C2T2C :  1 0.015602087904699146  5 47.593359375
+BLEU:  6.59
+Generated Description: 
+
+The code provided defines a function named `fill_spaces`. The purpose of this function is to replace all instances of spaces, commas, and periods in a given text with colons. This is often used in data cleaning or formatting tasks where you want to convert a string with mixed delimiters into a string with consistent delimiters.
+
+The input for this function is a string `text`. The output is also a string, where all spaces, commas, and periods have been replaced with colons. For example, if you call `fill_spaces("Hello, World. This is a test.")`, the output will be `Hello:World: This:is: a:test.`.
+Generated Code:
+ 
+def fill_spaces(text):
+    return text.replace(" ", ":").replace(",", ":").replace(".", ":")
+
+Original code:  1 0.021308962896000594  4 47.593359375
+C2T2C :  1 0.015430946997366846  2 47.593359375
+BLEU:  24.91
+Generated Description: 
+
+The function name is `count_digits`. This function takes two integer numbers as input and returns the total number of digits in the sum of these two numbers.
+
+The input format for this function is two integers separated by a comma, for example, `count_digits(123, 456)`.
+
+The output format is an integer representing the total number of digits in the sum of the input numbers. For example, if the input is `(123, 456)`, the output will be `6` because `123 + 456 = 579` and `579` has `6` digits.
+Generated Code:
+ 
+def count_digits(a, b):
+    return len(str(a + b))
+
+Original code:  1 0.015601545304525644  10 47.593359375
+C2T2C :  1 0.015260100201703607  7 47.593359375
+BLEU:  22.59
+Generated Description:  This function is named flatten_tuple and its purpose is to take a list of tuples as input and return a string with all the elements in the tuples separated by a space. The input format for this function is a list of tuples, where each tuple contains any number of elements. The output format is a string with all the elements in the order they appear in the input list, separated by a space.
+Generated Code:
+ 
+def flatten_tuple(tuples):
+    return ' '.join(str(x) for t in tuples for x in t)
+
+Original code:  1 0.01538350599585101  7 47.593359375
+C2T2C :  1 0.015618271694984287  4 47.593359375
+BLEU:  8.51
+Generated Description: 
+
+1. Function name: take_L_and_F_set_bits(n)
+   Purpose of the code: This function is used to set the least significant 1-bits (L-bits) and the most significant 1-bits (F-bits) of a binary number.
+
+2. Function name: toggle_F_and_L_bits(n)
+   Purpose of the code: This function is used to toggle the F-bits and L-bits of a binary number.
+
+3. Input/Output format:
+   - take_L_and_F_set_bits(n) takes an integer 'n' as input, where 'n' is a binary number. The output is an integer representing the binary number with the L-bits and F-bits set.
+   - toggle_F_and_L_bits(n) takes an integer 'n' as input, where 'n' is a binary number. The output is an integer representing the binary number with the F-bits and L-bits toggled.
+
+   Note: The L-bits are the least significant 1-bits, and the F-bits are the most significant 1-bits in a binary number.
+
+   For example, if we call take_L_and_F_set_bits(5), the output will be 31 (binary: 11111), because 5 has a L-bit (1) and no F-bits. If we call take_L_and_F_set_bits(13), the output will be 63 (binary: 111111), because 13 has both L-bits and F-bits.
+
+   For example, if we call toggle_F_and_L_bits(5), the output will be 6, because the L-bit (1) is toggled to 0, and the F-bits are not affected as there are no F-bits in the binary representation of 5. If we call toggle_F_and_L_bits(13), the output will be 12, because the L-bit (1) is toggled to 0, and the F-bit (1) is toggled to 0 as well, because it is the rightmost 1-bit.
+Generated Code:
+ 
+
+def take_L_and_F_set_bits(n):
+    return n | (n & -n)
+
+def toggle_F_and_L_bits(n):
+    return n ^ (n & -n)
+
+
+Original code:  1 0.01773845209972933  12 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmpuarnukm4.py", line 10, in <module>
+    assert toggle_F_and_L_bits(10) == 3
+AssertionError
+ 1 47.593359375
+BLEU:  0
+Generated Description: 
+
+The function name is `last_occurence_char(string,char)`. This function takes two arguments, a string and a character. The purpose of the code is to find the last occurrence of a specific character in a given string.
+
+The input format for the function is a string and a character. The string can be any sequence of characters, and the character can be any single character.
+
+The output format of the function is an integer. If the character is not found in the string, the function returns `None`. If the character is found, the function returns the index of the last occurrence of the character in the string, plus one. This is because the indexing in Python starts from 0, and we want to return the position of the character in the string, not the position in the list.
+
+For example, if you call `last_occurence_char("Hello World", "l")`, the function will return `6` because the last occurrence of the character 'l' in the string "Hello World" is at the 6th position, and we add 1 to the index to get the correct position in the string. If you call `last_occurence_char("Hello World", "z")`, the function will return `None` because the character 'z' is not present in the string.
+Generated Code:
+ 
+def last_occurence_char(string, char):
+    return string.rfind(char) + 1
+
+Original code:  1 0.015353171399328857  17 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmpvkugdgrn.py", line 7, in <module>
+    assert last_occurence_char("little",'y')==None
+AssertionError
+ 8 47.593359375
+BLEU:  0
+Generated Description: 
+
+The function name is Total_Hamming_Distance. This function calculates the total Hamming distance between two binary numbers of the same length. The Hamming distance is the number of positions at which the corresponding bits are different.
+
+The input to this function is a single integer 'n' which represents a binary number in decimal form. The binary number can have any length, but the function will only work correctly if the input is a power of 2 (i.e., the number of set bits in the binary representation of 'n' is exactly 1).
+
+The output of this function is an integer that represents the total Hamming distance between the input binary number and the binary number that is all 0s of the same length. For example, if the input is 10 (binary: 1010), the output will be 4 (since the Hamming distance between 1010 and 0000 is 4). If the input is 1 (binary: 0001), the output will be 0 (since the Hamming distance between 0001 and 0000 is 0).
+Generated Code:
+ 
+
+def Total_Hamming_Distance(n):
+    # Write your code here
+    return 0
+
+
+Original code:  1 0.01922654379159212  5 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmp6ptbm4nk.py", line 8, in <module>
+    assert Total_Hamming_Distance(4) == 7
+AssertionError
+ 0 47.593359375
+BLEU:  0
+Generated Description: 
+
+The function name is longest_increasing_subsequence. This function takes an array of integers as input and returns the length of the longest increasing subsequence in the array.
+
+The input format for this function is a list of integers. For example, [10, 22, 9, 33, 21, 50, 41, 60, 80]
+
+The output format is an integer representing the length of the longest increasing subsequence. For the example input, the output would be 6, as the longest increasing subsequence is [10, 22, 33, 50, 60, 80].
+
+The function works by initializing a list of length n (where n is the length of the input array) with all elements set to 1. This list represents the length of the longest increasing subsequence ending at each index in the input array.
+
+The function then iterates through the input array, starting from the second element. For each element, it checks all previous elements in the array to see if they are smaller and if the length of the increasing subsequence ending at that smaller element plus one is greater than the current length of the increasing subsequence ending at the current element. If it is, it updates the length of the increasing subsequence ending at the current element.
+
+Finally, the function iterates through the list of lengths again and finds the maximum value, which is the length of the longest increasing subsequence in the input array.
+
+This function uses dynamic programming to solve the problem efficiently. The time complexity of this function is O(n^2) and the space complexity is O(n).
+Generated Code:
+ 
+
+def longest_increasing_subsequence(arr):
+    n = len(arr)
+    dp = [1] * n
+    for i in range(1, n):
+        for j in range(i):
+            if arr[j] < arr[i] and dp[j] + 1 > dp[i]:
+                dp[i] = dp[j] + 1
+    return max(dp)
+
+
+Original code:  1 0.01596806610468775  27 47.593359375
+C2T2C :  1 0.018828335509169847  1 47.593359375
+BLEU:  2.97
+Generated Description: 
+
+The function name is `odd_Num_Sum(n)`. This function calculates the sum of the fifth powers of the odd numbers up to a given number `n`.
+
+The input to this function is an integer `n`. The output is the sum of the fifth powers of the odd numbers up to `n`.
+
+The function initializes two variables `j` and `sm` to 0. It then starts a for loop that iterates from 1 to `n` (inclusive). In each iteration, it calculates the current odd number `j` as `2*i-1`, and adds the fifth power of this odd number `j` to the sum `sm`. Finally, it returns the sum `sm`.
+Generated Code:
+ 
+def odd_Num_Sum(n):
+    j = 0
+    sm = 0
+    for i in range(1, n+1):
+        j = 2*i-1
+        sm = sm + j**5
+    return sm
+
+Original code:  1 0.019080345600377767  9 47.593359375
+C2T2C :  1 0.015962974599096923  1 47.593359375
+BLEU:  13.38
+Generated Description: 
+
+This code defines a function named `find_Max` which is used to find the maximum element in a sorted and rotated array. The function takes three arguments: `arr`, `low`, and `high`. The `arr` is the array of numbers, `low` is the starting index of the array, and `high` is the ending index of the array.
+
+The function first checks if the `high` is less than `low`, if so, it returns the first element of the array as the maximum element since the array is empty or the array is rotated such that the maximum element is at the first position.
+
+If `high` is equal to `low`, it returns the element at the `low` index as the maximum element since the array is either sorted or rotated such that the maximum element is at the first or last position.
+
+The function then calculates the `mid` index of the array.
+
+It checks if the mid element is greater than the elements on its right and less than the elements on its left. If so, it returns the mid element as the maximum element.
+
+If the mid element is less than the element on its right, it recursively calls the function with the `low` index set to `mid + 1` and `high` set to the original `high`.
+
+If the mid element is greater than the element on its left, it recursively calls the function with the `low` index set to the original `low` and `high` set to `mid - 1`.
+
+The function continues to recursively call itself until it finds the maximum element in the array.
+
+The input format for the function is a sorted and rotated array, and the indices `low` and `high` which define the range of the array. The output format is the maximum element in the array.
+Generated Code:
+ 
+def find_Max(arr, low, high):
+    if high < low:
+        return arr[low]
+    if high == low:
+        return arr[low]
+    mid = (low + high) // 2
+    if arr[mid] > arr[mid + 1] and arr[mid] > arr[mid - 1]:
+        return arr[mid]
+    if arr[mid] < arr[mid + 1]:
+        return find_Max(arr, mid + 1, high)
+    return find_Max(arr, low, mid - 1)
+
+Original code:  1 0.015986955899279565  37 47.593359375
+C2T2C :  1 0.015774078108370303  17 47.593359375
+BLEU:  4.99
+==============Check Point ==============
+50  /  100  done
+accuracy:  64.0 Code boosted:  16 / 50 Memory reduced:  0 flake8 fixed:  305 / 860 BLEU:  8.796600000000002
+Generated Description: 
+
+This code defines a function named `extract_column` which takes a list of lists (`list1`) as an input. The purpose of this function is to extract a specific column from each list in the input list, where the column number is specified by the `n` parameter.
+
+The function works by iterating over each list in `list1` and using list comprehension to extract the element at the specified index (`n`) from each list. The extracted elements are stored in a new list called `result`.
+
+The output of this function is a list (`result`) containing the extracted elements from each list in the input list. Each element in the output list corresponds to the specified column from the input lists.
+
+For example, if `list1` is:
+```
+[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+```
+and `n` is 1, the output will be:
+```
+[2, 5, 8]
+```
+which are the second elements from each list in `list1`.
+Generated Code:
+ 
+def extract_column(list1, n):
+    result = []
+    for i in list1:
+        result.append(i[n])
+    return result
+
+Original code:  1 0.01583582899766043  11 47.593359375
+C2T2C :  1 0.019985544204246253  8 47.593359375
+BLEU:  13.67
+Generated Description: 
+
+The function name is Seq_Linear. This function takes a list of numbers as input and checks if the sequence is linear or not. A linear sequence is a sequence where the difference between any two consecutive numbers is constant.
+
+The input format for this function is a list of numbers. For example, [1, 2, 3, 4, 5] or [10, 20, 30, 40, 50]. The list can have any number of elements.
+
+The output format is a string. If the sequence is linear, the function returns "Linear Sequence". If the sequence is not linear, the function returns "Non Linear Sequence".
+
+The function works by first calculating the difference between each consecutive pair of numbers in the input list. It then checks if all the differences are the same. If they are, the sequence is linear and the function returns "Linear Sequence". If they are not, the sequence is not linear and the function returns "Non Linear Sequence".
+Generated Code:
+ 
+
+def Seq_Linear(L):
+    diff = []
+    for i in range(len(L)-1):
+        diff.append(L[i+1]-L[i])
+    if len(set(diff)) == 1:
+        return "Linear Sequence"
+    else:
+        return "Non Linear Sequence"
+
+
+Original code:  1 0.0152700743987225  14 47.593359375
+C2T2C :  1 0.01593088919762522  9 47.593359375
+BLEU:  4.95
+Generated Description: 
+
+This code defines a function named `tuple_to_float` which takes a tuple as input and converts it into a float number. The purpose of this function is to concatenate the elements of a tuple with a decimal point (.) and then convert the concatenated string into a float number.
+
+The input format for this function is a tuple of numbers (e.g., (1, 2, 3.4)). The output format is a float number (e.g., 123.4).
+
+In the code, the function first initializes a variable `res` with an empty string. Then, it uses a list comprehension to iterate through each element in the input tuple, converts it to a string, and appends it to the `res` string with a decimal point (.) as a separator. Finally, it converts the `res` string to a float number and returns it.
+Generated Code:
+ 
+def tuple_to_float(t):
+    res = ''
+    for i in t:
+        res += str(i) + '.'
+    return float(res)
+
+Original code:  1 0.015532364102546126  4 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmpqtjz_0zn.py", line 8, in <module>
+    assert tuple_to_float((4, 56)) == 4.56
+  File "/tmp/tmpqtjz_0zn.py", line 6, in tuple_to_float
+    return float(res)
+ValueError: could not convert string to float: '4.56.'
+ 1 47.593359375
+BLEU:  0
+Generated Description: 
+
+The function name is Split. The purpose of this code is to separate the odd numbers from a given list of numbers.
+
+The input format for this function is a list of numbers. The output format is a new list containing only the odd numbers from the input list.
+
+For example, if you call the function with the input [1, 2, 3, 4, 5, 6, 7, 8, 9], the output will be [1, 3, 5, 7, 9].
+
+The function works by iterating through each number in the input list. If the number is odd, it is added to a new list (od_li). At the end of the function, the new list containing only the odd numbers is returned.
+Generated Code:
+ 
+
+def Split(li):
+    od_li = []
+    for i in li:
+        if i % 2 == 1:
+            od_li.append(i)
+    return od_li
+
+
+Original code:  1 0.015464504400733858  22 47.593359375
+C2T2C :  1 0.0162195208016783  16 47.593359375
+BLEU:  8.75
+Generated Description: 
+
+The function name is `difference(n)`. This function calculates the difference between the sum of the first n natural numbers and the square of the sum of the first n natural numbers.
+
+The input to this function is an integer `n`. The output is an integer representing the difference between the sum of the first n natural numbers and the square of the sum of the first n natural numbers.
+
+The function first calculates the sum of the first n natural numbers using the formula `(n*(n + 1))//2`. Then it calculates the square of the sum of the first n natural numbers by squaring the calculated sum. Finally, it calculates the difference between the sum and the square of the sum and returns the result.
+Generated Code:
+ 
+def difference(n):
+    sum = (n*(n + 1))//2
+    square_sum = sum**2
+    return square_sum - sum
+
+Original code:  1 0.015691645396873354  9 47.593359375
+C2T2C :  1 0.016113072796724737  1 47.593359375
+BLEU:  14.62
+Generated Description: 
+
+The function name is find_Odd_Pair. This function takes two arguments, A and N. The argument A is a list of integers and N is the length of the list.
+
+The purpose of the code is to find the number of pairs of integers in the list A such that the XOR of the two integers is an even number.
+
+The input format for the function is a list of integers and an integer representing the length of the list. For example, [1, 2, 3, 4, 5] and 5 would be a valid input.
+
+The output format of the function is an integer representing the number of pairs of integers in the list A such that the XOR of the two integers is an even number. For the example input, the output would be 1, because the pair (2, 4) has an even XOR (2 ^ 4 = 10, which is 2 in binary and even).
+Generated Code:
+ 
+def find_Odd_Pair(A, N):
+    count = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            if (A[i] ^ A[j]) % 2 == 0:
+                count += 1
+    return count
+
+Original code:  1 0.015309662907384336  29 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmpu8qyzm_y.py", line 10, in <module>
+    assert find_Odd_Pair([5,4,7,2,1],5) == 6
+AssertionError
+ 16 47.593359375
+BLEU:  0
+Generated Description: 
+
+This code defines a function named `toggle_string` which takes a string as input and returns the same string with its case toggled. For example, if the input is "Hello World", the output will be "hELLO wORLD".
+
+The function uses the built-in `swapcase` method of the string object to achieve this. The `swapcase` method returns a copy of the string with uppercase characters converted to lowercase and vice versa.
+
+The function does not take any other arguments and does not return any other values. It simply takes a string, modifies it, and returns the modified string.
+Generated Code:
+ 
+def toggle_string(string):
+    return string.swapcase()
+
+Original code:  1 0.016234122903551907  6 47.593359375
+C2T2C :  1 0.01606608759611845  4 47.593359375
+BLEU:  28.54
+Generated Description: 
+
+This code defines a function named `digit_distance_nums` which calculates the total distance between two numbers by summing the absolute difference of each digit in the numbers.
+
+The function takes two integer numbers as input, `n1` and `n2`. The numbers can be of any size, but they should be integers.
+
+The function converts the input numbers into strings, then it applies the `abs()` function to find the absolute difference between the corresponding digits of the two numbers. The `map()` function is used to apply the `abs()` function to each digit of the numbers. The resulting list of differences is then summed up to get the total distance between the two numbers.
+
+The output of the function is an integer representing the total distance between the two numbers. If the two numbers are the same, the output will be 0.
+Generated Code:
+ 
+def digit_distance_nums(n1, n2):
+    return sum(map(abs, (int(i) for i in str(n1))),
+               sum(map(abs, (int(i) for i in str(n2)))))
+
+Original code:  1 0.015761941904202104  7 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmp_gpb8rnf.py", line 6, in <module>
+    assert digit_distance_nums(1,2) == 1
+AssertionError
+ 4 47.593359375
+BLEU:  0
+Generated Description: 
+
+The function name is `max_sub_array_sum`. This function calculates the maximum sum of a contiguous subarray within a one-dimensional array of integers.
+
+The input to the function is a list of integers `a` and an integer `size`. The `size` parameter specifies the length of the subarray to be considered for the maximum sum calculation. If `size` is not provided, the function will consider the entire array.
+
+The output of the function is an integer representing the maximum sum of a contiguous subarray within the given array, with the specified size. If the subarray size is not provided, the function will return the maximum sum of any contiguous subarray in the array.
+
+The function works by iterating through the array and keeping track of the current sum (`max_ending_here`) and the maximum sum found so far (`max_so_far`). If the current sum becomes negative, it is reset to zero. At the end of the iteration, the maximum sum found so far is returned.
+Generated Code:
+ 
+def max_sub_array_sum(a, size=None):
+    """
+    Calculates the maximum sum of a contiguous subarray within a one-dimensional array of integers.
+
+    Parameters
+    ----------
+    a : list
+        The array of integers.
+    size : int, optional
+        The length of the subarray to be considered for the maximum sum calculation.
+
+    Returns
+    -------
+    int
+        The maximum sum of a contiguous subarray within the given array, with the specified size.
+
+    """
+    max_so_far = float('-inf')
+    max_ending_here = 0
+
+    for i in range(len(a)):
+        max_ending_here += a[i]
+        if max_ending_here < 0:
+            max_ending_here = 0
+        if max_so_far < max_ending_here:
+            max_so_far = max_ending_here
+
+    return max_so_far
+
+Original code:  1 0.018927615508437155  7 47.593359375
+C2T2C :  1 0.01854793159291148  4 47.593359375
+BLEU:  4.13
+Generated Description: 
+
+This code defines a function named `union_elements` which takes two tuples as input arguments (`test_tup1` and `test_tup2`). The purpose of this function is to find the union of the two input tuples, which means it will return a new tuple containing all the unique elements from both input tuples.
+
+The function uses the built-in Python `set` data structure to find the union of the two input tuples. The `set` data structure automatically removes any duplicate elements, so when we add the two input tuples together using the `+` operator, it will return a set containing all the unique elements from both input tuples.
+
+Finally, the function returns the union as a tuple using the `tuple()` function. The output of this function will be a new tuple containing all the unique elements from both input tuples, with the elements in no particular order.
+
+Example usage:
+```
+test_tup1 = (1, 2, 3, 4)
+test_tup2 = (4, 5, 6, 7)
+print(union_elements(test_tup1, test_tup2))
+# Output: (1, 2, 3, 4, 5, 6, 7)
+```
+Generated Code:
+ 
+
+def union_elements(test_tup1, test_tup2):
+    return tuple(set(test_tup1) + set(test_tup2))
+
+
+
+Original code:  1 0.015958595101255923  11 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmp5pbs3qrn.py", line 8, in <module>
+    assert union_elements((3, 4, 5, 6),(5, 7, 4, 10) ) == (3, 4, 5, 6, 7, 10)
+  File "/tmp/tmp5pbs3qrn.py", line 4, in union_elements
+    return tuple(set(test_tup1) + set(test_tup2))
+TypeError: unsupported operand type(s) for +: 'set' and 'set'
+ 8 47.593359375
+BLEU:  0
+==============Check Point ==============
+60  /  100  done
+accuracy:  63.33333333333333 Code boosted:  18 / 60 Memory reduced:  0 flake8 fixed:  332 / 980 BLEU:  8.574833333333336
+Generated Description: 
+
+The function name is `assign_elements`. This function takes a list of key-value pairs as input and returns a dictionary as output.
+
+The purpose of the code is to create a dictionary where the keys are the values from the input list and the values are the list of keys that correspond to each value.
+
+For example, if the input list is `[('a', 1), ('b', 2), ('c', 1), ('d', 3)]`, the output dictionary would be `{'1': ['a', 'c'], '2': ['b'], '3': ['d']`.
+
+The function uses a dictionary `res` to store the results. It iterates over each key-value pair in the input list. For each pair, it checks if the value already exists in the dictionary using the `setdefault` method. If the value does not exist, it is added with an empty list as its value. Then, it checks if the key already exists in the dictionary, and if it does, it appends the value to the list of keys associated with that value.
+
+Finally, the function returns the dictionary `res`.
+Generated Code:
+ 
+def assign_elements(input_list):
+    res = {}
+    for key, value in input_list:
+        res.setdefault(value, []).append(key)
+    return res
+
+Original code:  1 0.015642224706243723  11 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmpr87fp2y7.py", line 8, in <module>
+    assert assign_elements([(5, 3), (7, 5), (2, 7), (3, 8), (8, 4)] ) == {3: [8], 5: [3], 7: [5], 2: [7], 8: [4], 4: []}
+AssertionError
+ 7 47.593359375
+BLEU:  0
+Generated Description: 
+
+This code defines a function called Find_Max_Length. The purpose of this function is to find the maximum length of any string in a given list of strings.
+
+The input for this function is a list of strings. Each string in the list can contain any characters, but it will only be used to calculate its length. The length of a string is the number of characters it contains.
+
+The output of this function is an integer, which is the maximum length of any string in the input list. If the input list is empty, the function will return 0.
+
+Here's a simple example of how to use this function:
+
+```python
+strings = ['hello', 'world', 'Python', 'is', 'awesome']
+max_length = Find_Max_Length(strings)
+print(max_length)  # Output: 6
+```
+
+In this example, the function is called with a list of strings, and it returns the maximum length of any string in the list, which is 6 (the length of 'Python').
+Generated Code:
+ 
+def Find_Max_Length(strings):
+    max_length = 0
+    for string in strings:
+        if len(string) > max_length:
+            max_length = len(string)
+    return max_length
+
+Original code:  1 0.015932141290977597  26 47.593359375
+C2T2C :  1 0.015567221003584564  23 47.593359375
+BLEU:  9.37
+Generated Description: 
+
+The code provided is a Python function named `extract_values`. This function's purpose is to extract all the strings enclosed within double quotes from a given text.
+
+The input for this function is a string `text` containing the content that needs to be processed. The output is a list of strings, where each string is a value found between double quotes in the input text.
+
+For example, if the input text is `"Hello world" "This is a test" "Python is great"`, the output will be `['Hello world', 'This is a test', 'Python is great']`.
+
+The function uses the `re` (regular expressions) module to find all occurrences of the pattern `"(.*?)"` in the input text. The `(.*?)` pattern matches any character (except newline) between double quotes. The parentheses are used to capture the matched string, and the `?` makes the dot match a single character, not all characters at once (which is useful for matching inside the double quotes). The `findall` function returns a list of all matched strings.
+Generated Code:
+ 
+import re
+
+def extract_values(text):
+    return re.findall('"(.*?)"', text)
+
+Original code:  1 0.021761633502319456  13 47.593359375
+C2T2C :  1 0.02158408269751817  12 47.593359375
+BLEU:  5.24
+Generated Description: 
+
+The function name is `count_Pairs`. This function is designed to count the number of unique pairs in an array where no two pairs have the same elements.
+
+The input for this function is a list (or array) `arr` and an integer `n` which represents the length of the array. The array `arr` contains the elements to be checked for pairs.
+
+The output of this function is an integer that represents the count of unique pairs in the array. A pair is considered unique if it does not repeat in the array. For example, if the array is [1, 2, 2, 3, 4, 4, 5], the function will return 3 because the unique pairs are (1, 2), (2, 3), and (4, 5).
+Generated Code:
+ 
+def count_Pairs(arr, n):
+    # Write your code here
+    # Return the count of unique pairs
+    return 0
+
+Original code:  1 0.015633446595165877  25 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmp2_5vptxb.py", line 7, in <module>
+    assert count_Pairs([1,2,1],3) == 2
+AssertionError
+ 13 47.593359375
+BLEU:  0
+Generated Description: 
+
+Function Name: split
+
+Purpose of the code: The purpose of this function is to split a given word into individual characters and return them as a list.
+
+Input/Output format: The input to this function is a string (word) and the output is a list of characters. For example, if the input is "Hello", the output will be ["H", "e", "l", "l", "o"].
+Generated Code:
+ 
+
+def split(word):
+    return list(word)
+
+
+Original code:  1 0.0154988236958161  17 47.593359375
+C2T2C :  1 0.01541424539173022  14 47.593359375
+BLEU:  0.0
+Generated Description: 
+
+The function name is `sum_digits`. This function calculates the sum of the digits of a given number.
+
+The input format for this function is an integer `n`. The output format is also an integer, which is the sum of the digits of the input number.
+
+For example, if you call `sum_digits(1234)`, the function will return `1 + 2 + 3 + 4 = 10`. If you call `sum_digits(0)`, the function will return `0` because 0 does not have any digits.
+
+The function works by recursively breaking down the number into individual digits. If the number is less than 10, it simply returns the number itself because a single-digit number already is its own sum. If the number is greater than 9, it calculates the remainder when the number is divided by 10 (which gives the last digit), adds that to the sum of the remaining digits (which is calculated by calling `sum_digits` recursively on the quotient of the number divided by 10). This process continues until the number is less than 10, at which point the recursion ends and the sum of the digits is returned.
+Generated Code:
+ 
+def sum_digits(n):
+    if n < 10:
+        return n
+    else:
+        return n % 10 + sum_digits(n // 10)
+
+Original code:  1 0.015364887600298971  6 47.593359375
+C2T2C :  1 0.015184136701282113  4 47.593359375
+BLEU:  9.44
+Generated Description: 
+
+Function Name: issort_list
+
+Purpose of the code: This function checks if a given list is sorted in ascending order.
+
+Input/Output format of the code: The input to this function is a list of numbers. The output is a boolean value, True if the list is sorted in ascending order, False otherwise.
+Generated Code:
+ 
+
+def issort_list(list):
+    for i in range(len(list)-1):
+        if list[i] > list[i+1]:
+            return False
+    return True
+
+
+Original code:  1 0.015302040497772396  19 47.593359375
+C2T2C :  1 0.015465202298946679  18 47.593359375
+BLEU:  0.26
+Generated Description: 
+
+This code defines a function named `empty_list` which takes no arguments. The purpose of this function is to create and return a list of empty dictionaries with a specified length.
+
+The input format for this function is an integer representing the desired length of the list. The output format is a list of empty dictionaries with the specified length.
+
+Inside the function, a list comprehension is used to create the list of empty dictionaries. The list comprehension uses the syntax `[{} for _ in range(length)]`, where `{}` represents an empty dictionary and `range(length)` generates the numbers from 0 up to (but not including) the specified length. The underscore `_` is used as a placeholder for the loop variable, which is not used in this case.
+
+Overall, this function can be useful for creating a list of empty objects, such as dictionaries or classes, with a specified length.
+Generated Code:
+ 
+def empty_list(length):
+    return [{} for _ in range(length)]
+
+Original code:  1 0.015374191605951637  21 47.593359375
+C2T2C :  1 0.015450210706330837  19 47.593359375
+BLEU:  13.72
+Generated Description: 
+
+This code defines a function called `sort_sublists` which takes a list of sublists as input and returns a new list where each sublist is sorted in ascending order.
+
+The function uses the built-in `map` function to apply the `sorted` function to each sublist in the input list. The `sorted` function sorts the sublist in ascending order and returns a new sorted list. The `map` function applies the `sorted` function to each element in the input list and returns a new list containing the sorted sublists.
+
+The output of the function is a new list where each sublist is sorted in ascending order. The input and output lists are both lists of lists, where each sublist contains numbers.
+
+Example:
+
+Input: [[3, 1, 4], [5, 6, 2], [7, 8, 9]]
+Output: [[1, 3, 4], [2, 5, 6], [7, 8, 9]]
+Generated Code:
+ 
+def sort_sublists(sublists):
+    return list(map(sorted, sublists))
+
+Original code:  1 0.018585694802459328  16 47.593359375
+C2T2C :  1 0.01545952910091728  14 47.593359375
+BLEU:  30.29
+Generated Description: 
+
+The function name is `remove_words`. This function takes two arguments: `list1` and `charlist`.
+
+The purpose of the code is to remove words from the given list that contain any of the characters specified in the `charlist`.
+
+The input format for `list1` is a list of strings, where each string is a sentence or a phrase. The input format for `charlist` is a list of characters.
+
+The output format of the function is a list of strings, where each string is a sentence or a phrase that does not contain any of the characters specified in the `charlist`.
+
+The function works by iterating over each string in `list1` and splitting it into words. For each word, it checks if any of the characters in `charlist` are present in the word. If a word does not contain any of the characters, it is added to a new list. After iterating over all the strings in `list1`, the function returns the new list.
+
+For example, if `list1` is `['Hello World', 'Python is fun', '12345']` and `charlist` is `['!', '@', '#']`, the function will return `['Hello World', 'Python is fun']`.
+Generated Code:
+ 
+def remove_words(list1, charlist):
+    new_list = []
+    for item in list1:
+        words = item.split()
+        for word in words:
+            if not any(char in word for char in charlist):
+                new_list.append(item)
+    return new_list
+
+Original code:  1 0.015452111791819333  11 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmpc32hjzr4.py", line 11, in <module>
+    assert remove_words(['Red color', 'Orange#', 'Green', 'Orange @', "White"],['#', 'color', '@'])==['Red', '', 'Green', 'Orange', 'White']
+AssertionError
+ 10 47.593359375
+BLEU:  0
+==============Check Point ==============
+70  /  100  done
+accuracy:  64.28571428571429 Code boosted:  23 / 70 Memory reduced:  0 flake8 fixed:  346 / 1145 BLEU:  8.325857142857146
+Generated Description: 
+
+The function name is max_sum_pair_diff_lessthan_K. The purpose of this code is to find the maximum sum of a pair of elements in an array such that the difference between the two elements is less than a given constant K.
+
+The input format for this function is a sorted array of integers, the length of the array (N), and the constant K. The output format is an integer representing the maximum sum of a pair of elements in the array such that the difference between the two elements is less than K.
+
+The function first sorts the input array in ascending order. Then it initializes a dynamic programming array dp of size N with all elements initialized to 0. The dp[i] will store the maximum sum of a pair of elements in the array such that the difference between the two elements is less than K and the second element is at index i.
+
+The function then iterates through the array from index 1 to N-1. For each index i, it initializes dp[i] as dp[i-1]. If the difference between the current element and the previous element is less than K, it checks if i is greater than 1. If it is, it updates dp[i] to be the maximum of dp[i] and dp[i-2] + the sum of the current and previous element. If i is not greater than 1, it updates dp[i] to be the maximum of dp[i] and the sum of the current and previous element.
+
+Finally, the function returns dp[N-1], which is the maximum sum of a pair of elements in the array such that the difference between the two elements is less than K.
+Generated Code:
+ 
+def max_sum_pair_diff_lessthan_K(arr, N, K):
+    arr.sort()
+    dp = [0] * N
+    dp[0] = arr[0]
+    for i in range(1, N):
+        dp[i] = dp[i-1]
+        if arr[i] - arr[i-1] < K:
+            if i > 1:
+                dp[i] = max(dp[i], dp[i-2] + arr[i] + arr[i-1])
+            else:
+                dp[i] = max(dp[i], arr[i] + arr[i-1])
+    return dp[N-1]
+
+Original code:  1 0.015468816901557148  24 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmphds2n7ko.py", line 16, in <module>
+    assert max_sum_pair_diff_lessthan_K([5, 15, 10, 300], 4, 12) == 25
+AssertionError
+ 1 47.593359375
+BLEU:  0
+Generated Description: 
+
+Function Name: two_unique_nums
+
+Purpose of the Code: This function takes a list of numbers as input and returns a new list containing only the unique numbers that appear exactly once in the input list.
+
+Input/Output Format: The function takes a list of numbers as input. The output is a list of unique numbers that appear exactly once in the input list.
+
+Example:
+
+Input: [1, 2, 3, 2, 1, 4, 5, 3]
+Output: [4, 5]
+
+Input: [1, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5]
+Output: []
+
+Input: [1, 2, 3, 4, 5]
+Output: []
+
+Input: [1, 2, 3, 4, 5, 6]
+Output: [6]
+Generated Code:
+ 
+
+def two_unique_nums(nums):
+    return [num for num in set(nums) if nums.count(num) == 1]
+
+
+Original code:  1 0.015587339596822857  18 47.593359375
+C2T2C :  1 0.02059960279148072  15 47.593359375
+BLEU:  0.0
+Generated Description: 
+
+The function name is `unique_product`. This function takes a list of numbers as input and returns the product of all unique numbers in the list.
+
+The input format for this function is a list of numbers. For example, `[1, 2, 2, 3, 4, 4, 5]` would be a valid input.
+
+The output format is a single number, which is the product of all unique numbers in the input list. For the example input above, the output would be `15` (1 * 2 * 3 * 5).
+
+The function works by first converting the input list to a set to remove any duplicate numbers. Then it initializes a variable `p` to 1. It then iterates over each unique number in the set, multiplying the current value of `p` by the number. Finally, it returns the value of `p`.
+Generated Code:
+ 
+def unique_product(nums):
+    nums = set(nums)
+    p = 1
+    for num in nums:
+        p *= num
+    return p
+
+Original code:  1 0.015475021698512137  2 47.593359375
+C2T2C :  1 0.01628388010431081  2 47.593359375
+BLEU:  16.99
+Generated Description: 
+
+The function name is surfacearea_cylinder. This function calculates the surface area of a cylinder. The input to the function is the radius (r) and the height (h) of the cylinder. The output of the function is the surface area of the cylinder. The surface area of a cylinder is calculated by the formula (2*3.1415*r*r) + (2*3.1415*r*h), where r is the radius and h is the height. The function uses the mathematical constant pi (3.1415) for the calculation.
+Generated Code:
+ 
+
+def surfacearea_cylinder(r, h):
+    return 2*3.1415*r*r + 2*3.1415*r*h
+
+
+Original code:  1 0.015440329792909324  12 47.593359375
+C2T2C :  1 0.016703156603034584  6 47.593359375
+BLEU:  16.62
+Generated Description: 
+
+The function name is count_no. This function is designed to find the Nth number in a given range [L, R] that has a specific factor (A) and the remaining numbers in the range that do not have the factor (A).
+
+The input format for this function is a list A, an integer N, and two integers L and R. The list A contains the factor(s) to be checked for each number in the range [L, R]. The integer N represents the position of the number in the range that we are looking for, starting from 1 (the first number in the range). The integers L and R define the range for which we are searching.
+
+The output of this function is the Nth number in the range [L, R] that has a factor from the list A, or the Nth number in the range that does not have any factor from the list A if no such number exists in the given range. If the Nth number with the specified factor is found before the end of the range, the function will stop and return that number. If the Nth number with the specified factor is not found in the given range, the function will return None.
+Generated Code:
+ 
+def count_no(A, N, L, R):
+    for i in range(L, R+1):
+        if N == 1:
+            return i
+        if all(i % a for a in A):
+            N -= 1
+    return None
+
+Original code:  1 0.015850487898569555  21 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmpw0ooe3jc.py", line 10, in <module>
+    assert count_no(2,3,1,10) == 5
+  File "/tmp/tmpw0ooe3jc.py", line 6, in count_no
+    if all(i % a for a in A):
+TypeError: 'int' object is not iterable
+ 10 47.593359375
+BLEU:  0
+Generated Description: 
+
+The function name is `is_Sub_Array`. This function checks if there exists a sub-array in the given array A that is equal to the given array B.
+
+The input format for this function is a list `A` representing the main array, a list `B` representing the sub-array to be found, `n` which is the length of the main array, and `m` which is the length of the sub-array.
+
+The output of this function is a boolean value, `True` if there exists a sub-array in A that is equal to B, and `False` otherwise.
+Generated Code:
+ 
+def is_Sub_Array(A, B, n, m):
+    # Write your code here
+    for i in range(n-m+1):
+        if A[i:i+m] == B:
+            return True
+    return False
+
+Original code:  1 0.015705264697317034  50 47.593359375
+C2T2C :  1 0.015183705405797809  27 47.593359375
+BLEU:  5.28
+Generated Description: 
+
+The function name is `last_Digit_Factorial(n)`. This function calculates the last digit of the factorial of a given number `n`.
+
+The input format for this function is an integer `n`. The output format is also an integer, which is the last digit of the factorial of the input number.
+
+The function first checks if the input number `n` is 0. If it is, it returns 1, as the factorial of 0 is 1 and its last digit is 1.
+
+If the input number `n` is less than or equal to 2, it returns `n` itself, as the factorial of 1 is 1 and the factorial of 2 is 2, and both have a last digit of 1.
+
+If the input number `n` is 3, it returns 6, as the factorial of 3 is 6 and its last digit is 6.
+
+If the input number `n` is 4, it returns 4, as the factorial of 4 is 24 and its last digit is 4.
+
+For any other input number `n`, the function returns 0, as the last digit of the factorial of any other number cannot be determined by this simple function. This is because the factorial of a number grows very large very quickly, and the last digit of a large number can be quite complex to calculate.
+Generated Code:
+ 
+def last_Digit_Factorial(n):
+    if n == 0:
+        return 1
+    elif n <= 2:
+        return n
+    elif n == 3:
+        return 6
+    elif n == 4:
+        return 4
+    else:
+        return 0
+
+Original code:  1 0.01514848299557343  10 47.593359375
+C2T2C :  1 0.01552678489824757  1 47.593359375
+BLEU:  8.42
+Generated Description: 
+
+This code defines a function named `interleave_lists` which takes three input lists (`list1`, `list2`, and `list3`) as arguments. The purpose of this function is to interleave the elements of the three input lists, meaning that the first element of `list1` is paired with the first element of `list2` and the first element of `list3`, the second element of `list1` is paired with the second element of `list2` and the second element of `list3`, and so on.
+
+The output of this function is a new list (`result`) that contains the interleaved elements from the input lists. The elements in the output list are in the same order as they appear in the input lists.
+
+For example, if `list1 = [1, 2, 3]`, `list2 = [4, 5, 6]`, and `list3 = [7, 8, 9]`, the output of the function would be `[1, 4, 7, 2, 5, 8, 3, 6, 9]`.
+
+The function uses a list comprehension to create the `result` list. The list comprehension uses the `zip` function to pair the elements from the input lists, and then uses a for loop to iterate over each pair and append the elements to the `result` list.
+Generated Code:
+ 
+def interleave_lists(list1, list2, list3):
+    result = [x for x, y, z in zip(list1, list2, list3)]
+    return result
+
+Original code:  1 0.015946295100729913  45 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmp611iugsr.py", line 6, in <module>
+    assert interleave_lists([1,2,3,4,5,6,7],[10,20,30,40,50,60,70],[100,200,300,400,500,600,700])==[1, 10, 100, 2, 20, 200, 3, 30, 300, 4, 40, 400, 5, 50, 500, 6, 60, 600, 7, 70, 700]
+AssertionError
+ 43 47.593359375
+BLEU:  0
+Generated Description: 
+
+This code defines a function named `find_dissimilar` which takes two tuples as input. The purpose of this function is to find the elements that are present in either of the two tuples but not in both. This is achieved by converting both the tuples into sets and then finding the symmetric difference between the two sets. The result is then converted back into a tuple and returned.
+
+The input format for this function is a pair of tuples, where each tuple is a collection of elements (which can be of any data type). The output format is also a tuple, where each element represents an element that is present in either of the input tuples but not in both.
+
+For example, if we call `find_dissimilar((1, 2, 3, 4), (2, 3, 4, 5))`, the function will return `(1, 5)` because 1 is only in the first tuple and 5 is only in the second tuple. If we call `find_dissimilar((1, 2, 3), (1, 2, 3))`, the function will return an empty tuple because there are no elements that are present in either tuple but not in both.
+Generated Code:
+ 
+def find_dissimilar(t1, t2):
+    return tuple(set(t1).symmetric_difference(set(t2)))
+
+Original code:  1 0.015339604497421533  4 47.593359375
+C2T2C :  1 0.01520014830166474  1 47.593359375
+BLEU:  16.62
+Generated Description: 
+
+1. Function name: even_ele(test_tuple, even_fnc)
+   - This function takes two arguments: test_tuple and even_fnc. The test_tuple is a tuple of any data types, and even_fnc is a function that takes an argument and returns a boolean value.
+
+2. Purpose of the code:
+   - The purpose of the even_ele function is to recursively filter out the even elements from a given tuple. If an element is a tuple itself, it will be processed recursively.
+
+3. Input/Output format of the code:
+   - The input to the function is a tuple (test_tuple) and a function (even_fnc). The output is a tuple containing only the even elements. If no even elements are found, the output will be an empty tuple.
+
+4. Function name: extract_even(test_tuple)
+   - This function takes one argument: test_tuple. The test_tuple is a tuple of any data types.
+
+5. Purpose of the code:
+   - The purpose of the extract_even function is to extract only the even elements from a given tuple.
+
+6. Input/Output format of the code:
+   - The input to the function is a tuple (test_tuple). The output is a tuple containing only the even elements. If no even elements are found, the output will be an empty tuple.
+
+In the provided code, the even_ele function is used to filter out even elements from a given tuple, and the extract_even function is a wrapper around even_ele that uses a lambda function to check if a number is even.
+Generated Code:
+ 
+def even_ele(test_tuple, even_fnc):
+    """
+    This function takes two arguments: test_tuple and even_fnc. The test_tuple is a tuple of any data types, and even_fnc is a function that takes an argument and returns a boolean value.
+    The purpose of the even_ele function is to recursively filter out the even elements from a given tuple. If an element is a tuple itself, it will be processed recursively.
+    The input to the function is a tuple (test_tuple) and a function (even_fnc). The output is a tuple containing only the even elements. If no even elements are found, the output will be an empty tuple.
+    """
+    if len(test_tuple) == 0:
+        return ()
+    elif even_fnc(test_tuple[0]):
+        return (test_tuple[0],) + even_ele(test_tuple[1:], even_fnc)
+    else:
+        return even_ele(test_tuple[1:], even_fnc)
+
+def extract_even(test_tuple):
+    """
+    This function takes one argument: test_tuple. The test_tuple is a tuple of any data types.
+    The purpose of the extract_even function is to extract only the even elements from a given tuple.
+    The input to the function is a tuple (test_tuple). The output is a tuple containing only the even elements. If no even elements are found, the output will be an empty tuple.
+    """
+    return even_ele(test_tuple, lambda x: x % 2 == 0)
+
+Original code:  1 0.015703420899808408  22 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmpinrfqt5d.py", line 23, in <module>
+    assert extract_even((4, 5, (7, 6, (2, 4)), 6, 8)) == (4, (6, (2, 4)), 6, 8)
+  File "/tmp/tmpinrfqt5d.py", line 21, in extract_even
+    return even_ele(test_tuple, lambda x: x % 2 == 0)
+  File "/tmp/tmpinrfqt5d.py", line 11, in even_ele
+    return (test_tuple[0],) + even_ele(test_tuple[1:], even_fnc)
+  File "/tmp/tmpinrfqt5d.py", line 13, in even_ele
+    return even_ele(test_tuple[1:], even_fnc)
+  File "/tmp/tmpinrfqt5d.py", line 10, in even_ele
+    elif even_fnc(test_tuple[0]):
+  File "/tmp/tmpinrfqt5d.py", line 21, in <lambda>
+    return even_ele(test_tuple, lambda x: x % 2 == 0)
+TypeError: unsupported operand type(s) for %: 'tuple' and 'int'
+ 8 47.593359375
+BLEU:  0
+==============Check Point ==============
+80  /  100  done
+accuracy:  63.74999999999999 Code boosted:  25 / 80 Memory reduced:  0 flake8 fixed:  390 / 1353 BLEU:  8.08425
+Generated Description: 
+
+The function name is `surface_Area`. This function calculates the surface area of a cylinder given its base area (b) and its height (s).
+
+The input format for this function is a tuple containing two numbers, the base area (b) and the height (s) of the cylinder. For example, `(5, 3)` would represent a cylinder with a base area of 5 square units and a height of 3 units.
+
+The output of this function is a single number representing the surface area of the cylinder. The surface area of a cylinder is calculated using the formula: 2 * π * r * h + 2 * π * r², where r is the radius of the base (which can be calculated from the base area using the formula r = sqrt(b / π)). However, since we don't have π in our function, we approximate it using the pow function with the base as 1 and the exponent as 1.5707963267948966 (which is approximately equal to π). So, the formula used in the function is: 2 * b * s + pow(b,2).
+Generated Code:
+ 
+def surface_Area(b, s):
+    return 2 * b * s + pow(b,2)
+
+Original code:  1 0.01973734690109268  8 47.593359375
+C2T2C :  1 0.015513939398806543  5 47.593359375
+BLEU:  4.38
+Generated Description: 
+
+This code defines a function named `my_dict` which takes a dictionary as an input. The purpose of this function is to check if the input dictionary is empty or not. If the dictionary is empty, the function returns `False`. Otherwise, it returns `True`.
+
+The input format for this function is a dictionary. The keys and values can be of any data type. The output format is a boolean value, either `True` or `False`.
+
+Here's an example of how to use this function:
+
+```python
+my_dict = {}
+print(my_dict(my_dict))  # Output: True
+
+my_dict = {'key': 'value'}
+print(my_dict(my_dict))  # Output: False
+```
+
+In the first example, an empty dictionary is passed to the function, and it returns `True` because the dictionary is not empty. In the second example, a dictionary with one key-value pair is passed, and it returns `False` because the dictionary is not empty.
+Generated Code:
+ 
+def my_dict(my_dict):
+    if my_dict:
+        return False
+    else:
+        return True
+
+Original code:  1 0.015314214897807687  11 47.593359375
+C2T2C :  1 0.01533405459485948  7 47.593359375
+BLEU:  31.6
+Generated Description: 
+
+1. Function name: catalan_number
+2. The purpose of the code: This function calculates the nth Catalan number, which is a sequence of numbers that occur in various counting problems.
+3. The input/output format of the code: The function takes an integer 'num' as input and returns the nth Catalan number as output. The input 'num' should be a non-negative integer. The output is a non-negative integer.
+Generated Code:
+ 
+def catalan_number(num):
+    if num == 0:
+        return 1
+    elif num == 1:
+        return 1
+    else:
+        return (2 * catalan_number(num - 1)) + catalan_number(num - 2)
+
+Original code:  1 0.021682047296781092  8 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmp0jcnmzsl.py", line 10, in <module>
+    assert catalan_number(10)==16796
+AssertionError
+ 4 47.593359375
+BLEU:  0
+Generated Description: 
+
+The code provided is a Python function named `find_adverbs` which is designed to find all occurrences of adverbs ending with "ly" in a given text.
+
+The input to this function is a string `text` containing the text to be searched. The function uses the `re` (regular expressions) module to find all matches of the pattern `\w+ly` in the text. The `\w+` part of the pattern matches one or more word characters (letters, digits, or underscores), and `ly` matches the string "ly".
+
+The function iterates through all matches found by `re.finditer` and for each match, it returns a string in the format `'start_index-end_index: adverb'`. The `start_index` and `end_index` represent the index of the first and last character of the matched adverb in the text, and `adverb` is the matched adverb itself.
+
+For example, if the input text is "The quickly brown fox jumps over the lazy dog", the function will return "11-14: quickly" and "32-35: lazy". If there are no matches in the text, the function will not return anything.
+Generated Code:
+ 
+import re
+
+def find_adverbs(text):
+    matches = re.finditer(r'\w+ly', text)
+    for match in matches:
+        start_index = match.start()
+        end_index = match.end() - 1
+        adverb = match.group()
+        yield f'{start_index}-{end_index}: {adverb}'
+
+Original code:  1 0.02162084839073941  5 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmp0qw2f_96.py", line 12, in <module>
+    assert find_adverbs("Clearly, he has no excuse for such behavior.") == '0-7: Clearly'
+AssertionError
+ 4 47.593359375
+BLEU:  0
+Generated Description: 
+
+Function Name: expensive_items
+
+Purpose of the code: This function takes a list of items and a number 'n' as input, and returns the 'n' most expensive items from the list. The items in the list are represented as dictionaries, where each dictionary has a key 'name' and a key 'price'.
+
+Input/Output format: The input to the function is a list of dictionaries, where each dictionary has keys 'name' and 'price'. The output is a list of dictionaries, where each dictionary has keys 'name' and 'price', and the dictionaries are sorted in descending order of their 'price' key. The number 'n' determines the number of dictionaries to return. If 'n' is greater than the number of items in the list, the function will return all items in the list. If 'n' is 0 or less, the function will return an empty list.
+Generated Code:
+ 
+
+def expensive_items(items, n):
+    if n <= 0:
+        return []
+    return sorted(items, key=lambda x: x['price'], reverse=True)[:n]
+
+
+Original code:  1 0.015997198899276553  19 47.593359375
+C2T2C :  1 0.015206929901614786  14 47.593359375
+BLEU:  9.59
+Generated Description:  
+
+This code defines a function named `split_Arr` which takes three arguments: `a`, `n`, and `k`. The purpose of this function is to split an array `a` of length `n` into two equal halves, and then swap the second half with the first half starting from the `k`th index.
+
+The input format for this function is a list or an array `a` of any data type, `n` is the length of the array, and `k` is an integer representing the index from where the second half of the array should be swapped with the first half.
+
+The output format of this function is a new array which is the result of swapping the second half of the original array with the first half starting from the `k`th index. If the length of the array is odd, the middle element will be placed in the swapped half.
+Generated Code:
+ 
+def split_Arr(a, n, k):
+    # Write your code here
+    # Return the result
+    return a
+
+Original code:  1 0.017196559498552234  44 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmp97iunlor.py", line 7, in <module>
+    assert split_Arr([12,10,5,6,52,36],6,2) == [5,6,52,36,12,10]
+AssertionError
+ 37 47.593359375
+BLEU:  0
+Generated Description: 
+
+This code defines a function named `list_tuple` which takes a list as an input and returns a tuple as an output. The purpose of this function is to convert a list into a tuple. This can be useful when you want to preserve the order of elements in a collection and also want to ensure that the collection is immutable.
+
+The input format for this function is a list of any data type. The output format is a tuple, where each element of the input list is present in the same order in the output tuple.
+
+For example, if you call `list_tuple([1, 2, 3])`, the function will return `(1, 2, 3)`. If you call `list_tuple(["a", "b", "c"])`, the function will return `('a', 'b', 'c')`.
+Generated Code:
+ 
+def list_tuple(list):
+    return tuple(list)
+
+Original code:  1 0.015498060500249267  10 47.593359375
+C2T2C :  1 0.015282637404743582  8 47.593359375
+BLEU:  28.54
+Generated Description: 
+
+Function Name: big_diff
+
+Purpose of the code: This function calculates the difference between the maximum and minimum values in a list of numbers.
+
+Input/Output format: The function takes a list of numbers as input and returns the difference between the maximum and minimum values in the list as output.
+
+Example:
+
+Input: [1, 2, 3, 4, 5]
+Output: 4
+
+Input: [10, 20, 30, 40, 50]
+Output: 40
+
+Input: [-10, -20, -30, -40, -50]
+Output: 60
+Generated Code:
+ 
+
+def big_diff(nums):
+    return max(nums) - min(nums)
+
+
+Original code:  1 0.015189377998467535  12 47.593359375
+C2T2C :  1 0.01540365320397541  7 47.593359375
+BLEU:  8.65
+Generated Description: 
+
+The function name is `perfect_squares`. This function is designed to find all perfect squares within a given range from 'a' to 'b'.
+
+The input format for this function is a tuple (a, b) where 'a' is the starting point and 'b' is the ending point of the range. The output format is a list containing all perfect squares found within the given range.
+
+The function works by iterating through numbers from 'a' to 'b' (inclusive). For each number, it initializes a variable 'j' to 1 and starts a loop. Inside the loop, it checks if 'j*j' equals the current number. If it does, it appends the number to the list. If it doesn't, it increments 'j' by 1 and continues the loop. After the loop, it increments the current number by 1 and continues to the next number. Once it has checked all numbers in the range, it returns the list of perfect squares.
+Generated Code:
+ 
+def perfect_squares(a, b):
+    squares = []
+    for i in range(a, b + 1):
+        j = 1
+        while j * j < i:
+            j += 1
+        if j * j == i:
+            squares.append(i)
+    return squares
+
+Original code:  1 0.019935582100879402  14 47.593359375
+C2T2C :  1 0.015860666788648815  7 47.593359375
+BLEU:  6.86
+Generated Description: 
+
+The function name is polar_rect. This function takes two complex numbers as input, represented by their real and imaginary parts (x and y), and performs two operations on them.
+
+First, it converts the input complex number from rectangular form to polar form using the cmath.polar() function. The polar form of a complex number represents the magnitude (r) and angle (theta) of the number in the complex plane.
+
+Second, it creates a new complex number with a magnitude of 2 and an angle of pi (2*pi radians) using the cmath.rect() function.
+
+Finally, it returns a tuple containing the original polar form of the input complex number and the new complex number created with a magnitude of 2 and an angle of 2*pi radians.
+
+The input format for this function is a pair of real numbers (x, y) representing the real and imaginary parts of a complex number. The output format is a tuple containing two complex numbers, each represented as a pair of real numbers (magnitude, angle).
+Generated Code:
+ 
+
+def polar_rect(x, y):
+    """
+    This function takes two complex numbers as input, represented by their real and imaginary parts (x and y), and performs two operations on them.
+
+    First, it converts the input complex number from rectangular form to polar form using the cmath.polar() function. The polar form of a complex number represents the magnitude (r) and angle (theta) of the number in the complex plane.
+
+    Second, it creates a new complex number with a magnitude of 2 and an angle of pi (2*pi radians) using the cmath.rect() function.
+
+    Finally, it returns a tuple containing the original polar form of the input complex number and the new complex number created with a magnitude of 2 and an angle of 2*pi radians.
+
+    The input format for this function is a pair of real numbers (x, y) representing the real and imaginary parts of a complex number. The output format is a tuple containing two complex numbers, each represented as a pair of real numbers (magnitude, angle).
+    """
+    # Write your code here
+    return (cmath.polar(complex(x, y)), cmath.rect(2, 2*math.pi))
+
+
+Original code:  1 0.01589956770185381  19 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmpf24hqfln.py", line 19, in <module>
+    assert polar_rect(3,4)==((5.0, 0.9272952180016122), (-2+2.4492935982947064e-16j))
+  File "/tmp/tmpf24hqfln.py", line 16, in polar_rect
+    return (cmath.polar(complex(x, y)), cmath.rect(2, 2*math.pi))
+NameError: name 'cmath' is not defined
+ 17 47.593359375
+BLEU:  0
+==============Check Point ==============
+90  /  100  done
+accuracy:  63.33333333333333 Code boosted:  29 / 90 Memory reduced:  0 flake8 fixed:  416 / 1503 BLEU:  8.181777777777778
+Generated Description: 
+
+The function name is `swap_List`. This function takes a list as an input and swaps the first and last elements of the list. The purpose of this code is to reverse the order of elements in a list without using any built-in Python functions like `reverse()` or `[::-1]`.
+
+The input format for this function is a list of any data type. The output format is the same list with the first and last elements swapped. For example, if the input is `[1, 2, 3, 4, 5]`, the output will be `[5, 2, 3, 4, 1]`.
+Generated Code:
+ 
+def swap_List(list):
+    list[0], list[-1] = list[-1], list[0]
+    return list
+
+Original code:  1 0.015557427902240305  7 47.593359375
+C2T2C :  1 0.01609073010040447  1 47.593359375
+BLEU:  14.16
+Generated Description: 
+
+1. Function name: binomial_Coeff(n,k)
+   Purpose of the code: This function calculates the binomial coefficient (n choose k) using the formula for the binomial coefficient.
+
+2. Input format: The function takes two integer arguments n and k, where n >= k >= 0.
+
+3. Output format: The function returns an integer value representing the binomial coefficient (n choose k).
+
+4. Function name: sum_Of_product(n)
+   Purpose of the code: This function calculates the sum of the products of n consecutive integers, where n is odd.
+
+5. Input format: The function takes one integer argument n, where n >= 1.
+
+6. Output format: The function returns an integer value representing the sum of the products of n consecutive integers.
+
+Note: The binomial_Coeff function uses a dynamic programming approach to calculate the binomial coefficient efficiently. The sum_Of_product function uses the binomial_Coeff function to calculate the sum of the products of n consecutive integers when n is odd.
+Generated Code:
+ 
+
+def binomial_Coeff(n, k):
+    if k == 0 or k == n:
+        return 1
+    return binomial_Coeff(n - 1, k - 1) + binomial_Coeff(n - 1, k)
+
+def sum_Of_product(n):
+    return binomial_Coeff(2 * n - 1, n)
+
+
+Original code:  1 0.015812276909127832  22 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmp8ghrbyjz.py", line 12, in <module>
+    assert sum_Of_product(3) == 15
+AssertionError
+ 1 47.593359375
+BLEU:  0
+Generated Description: 
+
+The code provided is a Python function named `removezero_ip`. The purpose of this function is to remove any leading zeros from an IP address string.
+
+The input for this function is a string representing an IP address in the format `x.x.x.x`, where `x` can be any number from 0 to 255.
+
+The output of the function is also a string in the same IP address format, but with any leading zeros removed. For example, if the input is `000.000.000.001`, the output will be `.1`.
+
+The function uses the `re` module to perform regular expression operations. Specifically, it uses the `re.sub()` function to replace any sequence of one or more zeros (`\.[0]*`) with a single period (`.'`). This ensures that any leading zeros are removed from the IP address string.
+Generated Code:
+ 
+import re
+
+def removezero_ip(ip):
+    return re.sub(r'\.[0]*', '.', ip)
+
+Original code:  1 0.022086805501021444  11 47.593359375
+C2T2C :  1 0.02191031820839271  8 47.593359375
+BLEU:  8.83
+Generated Description: 
+
+The function name is `diff_even_odd`. This function takes a list as input and returns the difference between the first even and the first odd number in the list. If there are no odd numbers or even numbers in the list, it returns -1.
+
+The input format for this function is a list of numbers. The output format is an integer representing the difference between the first even and the first odd number in the list, or -1 if there are no odd or even numbers in the list.
+
+For example, if the input is `[1, 2, 3, 4, 5]`, the output will be `1` (since the first even number is `2` and the first odd number is `1`). If the input is `[2, 4, 6, 8]`, the output will be `-1` (since there are no odd numbers in the list). If the input is `[1, 3, 5]`, the output will be `-2` (since there are no even numbers in the list).
+Generated Code:
+ 
+def diff_even_odd(nums):
+    for i in range(len(nums)):
+        if nums[i] % 2 == 0:
+            for j in range(i+1, len(nums)):
+                if nums[j] % 2 == 1:
+                    return nums[i] - nums[j]
+    return -1
+
+Original code:  1 0.01570017869817093  30 47.593359375
+C2T2C :  0 inf Traceback (most recent call last):
+  File "/tmp/tmpxd7j9fk2.py", line 11, in <module>
+    assert diff_even_odd([1,2,3,4,5,6,7,8,9,10])==1
+AssertionError
+ 24 47.593359375
+BLEU:  0
+Generated Description: 
+
+The function name is `min_Swaps`. This function takes two strings as input, `str1` and `str2`, and returns the minimum number of swaps required to make the two strings identical or returns "Not Possible" if it's not possible to make the strings identical with an odd number of swaps.
+
+The function iterates through each character in the first string (`str1`) and compares it with the corresponding character in the second string (`str2`). If the characters are not the same, it increments a counter `count`. After iterating through all the characters, it checks if the count is even or odd. If the count is even, it returns the count divided by 2, which represents the minimum number of swaps required. If the count is odd, it returns "Not Possible" because an odd number of swaps would result in the strings being identical at some point, but then they would become identical again, which is not possible.
+
+The input format for this function is two strings, where each string consists of lowercase English alphabets only. The output format is an integer representing the minimum number of swaps required or the string "Not Possible" if it's not possible to make the strings identical with an odd number of swaps.
+
+For example, if `str1 = "abcdef"` and `str2 = "defabc"`, the function would return `3` because swapping the first and third characters, then the second and fourth characters, and finally the fifth and sixth characters would make the two strings identical. If `str1 = "abcdef"` and `str2 = "abcdx"`, the function would return "Not Possible" because it's not possible to make the strings identical with an odd number of swaps.
+Generated Code:
+ 
+def min_Swaps(str1, str2):
+    count = 0
+    for i in range(len(str1)):
+        if str1[i] != str2[i]:
+            count += 1
+    if count % 2 == 0:
+        return count // 2
+    else:
+        return "Not Possible"
+
+Original code:  1 0.015543862199410795  17 47.593359375
+C2T2C :  1 0.016284274193458258  4 47.593359375
+BLEU:  5.93
+Generated Description: 
+
+The code provided defines a function named `tuple_size`. The purpose of this function is to calculate the size of a given tuple in bytes.
+
+The function takes a list of tuples as input. Each tuple in the list can contain any number of elements, and these elements can be of any data type.
+
+The function uses the built-in `sys.getsizeof()` function to get the size of the input tuple list in bytes. The size returned by `sys.getsizeof()` is the size of the object in memory, including the size of the memory used by the object's contents.
+
+The output of the function is an integer representing the size of the input tuple list in bytes. If the input is an empty list, the function will return 0.
+Generated Code:
+ 
+import sys
+
+def tuple_size(tuple_list):
+    return sys.getsizeof(tuple_list)
+
+Original code:  1 0.016030033794231714  13 47.593359375
+C2T2C :  1 0.015928765304852276  10 47.593359375
+BLEU:  8.65
+Generated Description: /home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing HuggingFaceHub from langchain root module is no longer supported. Please use langchain_community.llms.HuggingFaceHub instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `HuggingFaceHub` was deprecated in LangChain 0.0.21 and will be removed in 0.3.0. Use HuggingFaceEndpoint instead.
+  warn_deprecated(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing HuggingFaceHub from langchain root module is no longer supported. Please use langchain_community.llms.HuggingFaceHub instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing PromptTemplate from langchain root module is no longer supported. Please use langchain_core.prompts.PromptTemplate instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing LLMChain from langchain root module is no longer supported. Please use langchain.chains.LLMChain instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing HuggingFaceHub from langchain root module is no longer supported. Please use langchain_community.llms.HuggingFaceHub instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing PromptTemplate from langchain root module is no longer supported. Please use langchain_core.prompts.PromptTemplate instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing LLMChain from langchain root module is no longer supported. Please use langchain.chains.LLMChain instead.
+  warnings.warn(
+
+
+The function `find_kth` is designed to find the kth smallest element in the combined sorted list of two arrays `arr1` and `arr2`. The arrays `arr1` and `arr2` are sorted in ascending order. The function takes four arguments: `arr1`, `arr2`, `m`, and `n`. `m` is the length of `arr1` and `n` is the length of `arr2`. The function also takes an additional argument `k` which represents the position of the kth smallest element in the combined sorted list.
+
+The function first creates a new sorted list `sorted1` with a length equal to the sum of the lengths of `arr1` and `arr2` (`m + n`). It then initializes three variables: `i`, `j`, and `d`. `i` and `j` are used to iterate through `arr1` and `arr2` respectively, while `d` is used to keep track of the current index in `sorted1`.
+
+The function then enters a while loop that continues until both `i` and `j` are less than their respective array lengths. In each iteration of the loop, if the current element of `arr1` is less than the current element of `arr2`, the current element of `arr1` is added to `sorted1` at the index `d`. If the current element of `arr2` is less than the current element of `arr1`, the current element of `arr2` is added to `sorted1` at the index `d`. The index `d` is then incremented by 1.
+
+After the while loop, if `i` is less than `m`, the remaining elements of `arr1` are added to `sorted1` in the same manner. Similarly, if `j` is less than `n`, the remaining elements of `arr2` are added to `sorted1`.
+
+Finally, the function returns the `k`th smallest element in the sorted list `sorted1`. The index of the `k`th smallest element is `k - 1`, as the list starts at index 0.
+
+The input format for the function is a list of integers for `arr1` and `arr2`, and integers for `m`, `n`, and `k`. The output format is an integer representing the `k`th smallest element in the combined sorted list of `arr1` and `arr2`.
+Generated Code:
+ 
+def find_kth(arr1, arr2, m, n, k):
+    sorted1 = []
+    i = 0
+    j = 0
+    d = 0
+    while i < m and j < n:
+        if arr1[i] < arr2[j]:
+            sorted1.append(arr1[i])
+            i += 1
+        else:
+            sorted1.append(arr2[j])
+            j += 1
+        d += 1
+    while i < m:
+        sorted1.append(arr1[i])
+        i += 1
+        d += 1
+    while j < n:
+        sorted1.append(arr2[j])
+        j += 1
+        d += 1
+    return sorted1[k - 1]
+
+Original code:  1 0.016614239290356637  23 47.593359375
+C2T2C :  1 0.01585685759782791  2 47.593359375
+BLEU:  11.01
+Generated Description: 
+
+1. Function name: armstrong_number
+2. The purpose of the code: This function checks if a given number is an Armstrong number or not. An Armstrong number is a number that is equal to the sum of its own digits each raised to the power of the number of digits.
+3. The input/output format of the code: The function takes a single integer as input and returns True if the number is an Armstrong number and False otherwise. For example, if the input is 153, the output will be True because 153 is an Armstrong number (1^3 + 5^3 + 3^3 = 153). If the input is 123, the output will be False because 123 is not an Armstrong number.
+Generated Code:
+ 
+def armstrong_number(n):
+    sum = 0
+    temp = n
+    while temp > 0:
+        digit = temp % 10
+        sum += digit ** 3
+        temp //= 10
+    return sum == n
+
+Original code:  1 0.015199517901055514  26 47.593359375
+C2T2C :  1 0.01546388230053708  7 47.593359375
+BLEU:  25.22
+Generated Description: 
+
+The function name is `sum_average`. This function calculates the sum and average of a given number.
+
+The input format for this function is an integer `number`.
+
+The output format of this function is a tuple containing two values: the sum of the numbers from 1 to the given number, and the average of those numbers.
+
+In the function, a variable `total` is initialized to 0. Then, a for loop iterates over the range from 1 to the given number (`number + 1`), adding each number to the `total`. After the loop, the average is calculated by dividing the `total` by the number. Finally, the function returns the tuple containing the `total` and the `average`.
+Generated Code:
+ 
+def sum_average(number):
+    total = 0
+    for i in range(1, number + 1):
+        total += i
+    average = total / number
+    return total, average
+
+Original code:  1 0.015490331908222289  9 47.593359375
+C2T2C :  1 0.015160707710310816  4 47.593359375
+BLEU:  8.5
+Generated Description: 
+
+This code defines a function named `is_Even` which checks if a given number is even or not. The function takes one argument `n` which is the number to be checked for evenness.
+
+The purpose of the code is to perform a bitwise operation on the number to determine if it is even or odd. If the number is even, the result of the bitwise XOR operation with 1 will be the same as the number itself plus one. This is because all the bits in an even number will pair up and cancel each other out during the XOR operation, leaving only one '1' bit if the number is odd.
+
+The input format for this function is an integer `n`. The output format is a boolean value `True` if the number is even, and `False` if the number is odd.
+
+For example, if you call `is_Even(4)`, the function will return `True` because 4 is even. If you call `is_Even(5)`, the function will return `False` because 5 is odd.
+Generated Code:
+ 
+def is_Even(n):
+    return n ^ 1 == n + 1
+
+Original code:  1 0.015191718295682222  13 47.593359375
+C2T2C :  1 0.01524252740200609  4 47.593359375
+BLEU:  14.81
+==============Check Point ==============
+100  /  100  done
+accuracy:  65.0 Code boosted:  33 / 100 Memory reduced:  0 flake8 fixed:  495 / 1674 BLEU:  8.3347
+accuracy:  65.0 Code boosted:  33 / 100 Memory reduced:  0 flake8 fixed:  495 / 1674 BLEU:  8.3347

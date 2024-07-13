@@ -51,7 +51,7 @@ def mixtral_model(temp=0):
     llm = HuggingFaceHub(huggingfacehub_api_token = huggingfacehub_api_token,
                         repo_id = repo_id,
                         model_kwargs = {"temperateure":0, "max_new_tokens":1024})
-    model = AutoModelForCausalLM.from_pretrained("mistralai/Mixtral-8x7B-Instruct-v0.1")
+    #model = AutoModelForCausalLM.from_pretrained("mistralai/Mixtral-8x7B-Instruct-v0.1")
     return llm
 
 

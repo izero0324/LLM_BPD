@@ -1,0 +1,4625 @@
+==================================================
+Start Python code optimize evaluation benchmark...
+==================================================
+model: codellama
+\begin{pre}def ngcd(x,y):
+    i=1
+    while(i<=x and i<=y):
+        if(x%i==0 and y%i == 0):
+            gcd=i;
+        i+=1
+    return gcd;
+def num_comm_div(x,y):
+  n = ngcd(x,y)
+  result = 0
+  z = int(n**0.5)
+  i = 1
+  while(i <= z):
+    if(n % i == 0):
+      result += 2 
+      if(i == n/i):
+        result-=1
+    i+=1
+  return result\end{pre}
+Original code:  1 0.016439212299883366  34 47.6078125
+codellama :  0 inf   File "/tmp/tmpw517sbe3.py", line 1
+    \begin{pre}def ngcd(x,y):
+                            ^
+SyntaxError: unexpected character after line continuation character
+ 1 47.6078125
+BLEU:  0
+model: codellama
+### Solution
+def find(n,m):
+  r = n%m
+  return (r)### Short solution
+def find(n,m):
+  return (n%m)
+### Discussion### Code
+def find(n,m):
+  r = n%m
+  return (r)### Output### Version 2### Description
+Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+def find(n,m):
+  r = n%m
+  return (r)
+ 
+Original code:  1 0.015844592498615383  8 47.6078125
+codellama :  0 inf   File "/tmp/tmpfm2pl88o.py", line 11
+    Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+            ^
+SyntaxError: invalid syntax
+ 1 47.6078125
+BLEU:  0
+model: codellama
+
+def add_consecutive_nums(nums):
+    return [b+a for a, b in zip(nums[:-1], nums[1:])]
+# In[1]:
+#import numpy as np
+# In[2]:
+#import pandas as pd
+# In[3]:
+#import matplotlib.pyplot as plt
+# In[4]:
+#import seaborn as sns
+# In[5]:
+#import sklearn
+# In[6]:
+#import tensorflow as tf
+# In[7]:
+#import keras
+# In[8]:
+#import keras.backend as K
+# In[9]:
+#import keras.models as models
+# In[10]:
+#import keras.layers as layers
+# In[11]:
+#import keras.optimizers as optimizers
+# In[12]:
+#import keras.utils as utils
+# In[13]:
+#import keras.callbacks as callbacks
+# In[14]:
+#import keras.initializers as initializers
+# In[15]:
+#import keras.regularizers as regularizers
+# In[16]:
+#import keras.constraints as constraints
+# In[17]:
+#import keras.metrics as metrics
+# In[18]:
+#import keras.losses as losses
+# In[19]:
+#import keras.engine as engine
+# In[20]:
+#import keras.preprocessing as preprocessing
+# In[21]:
+#import keras.utils.generic_utils as generic_utils
+# In[22]:
+#import keras.utils.vis_utils as vis_utils
+# In[23]:
+#import keras.utils.test_utils as test_utils
+# In[24]:
+#import keras.utils.io_utils as io_utils
+# In[25]:
+#import keras.utils.np_utils as np_utils
+# In[26]:
+#import keras.utils.data_utils as data_utils
+# In[27]:
+#import keras.utils.conv_utils as conv_utils
+# In[28]:
+#import keras.utils.layer_utils as layer_utils
+# In[29]:
+#import keras.utils.training_utils as training_utils
+# In[30]:
+#import keras.utils.training_utils as training_utils
+# In[31]:
+#import keras.utils.multi_gpu_utils as multi_gpu_utils
+# In[32]:
+#import keras.utils.multi_backend as multi_backend
+# In[33]:
+#import keras.utils.generic_utils as generic_utils
+# In[34]:
+#import keras.utils.io_utils as io_utils
+# In[35]:
+#import keras.utils.data_utils as data_utils
+# In[36]:
+#import keras.utils.conv_utils as conv_utils
+# In[37]:
+#import keras.utils.layer_utils as layer_utils
+# In[38]:
+#import keras.utils.training_utils as training_utils
+# In[39]:
+#import keras.utils.multi_gpu_utils as multi_gpu_utils
+# In[40]:
+#import keras.utils.multi_backend as multi_backend
+# In[41]:
+#import keras.utils.test_utils as test_utils
+# In[42]:
+#import keras.utils.vis_utils as vis_utils
+# In[43]:
+Original code:  1 0.015874069894198328  5 47.6078125
+codellama :  1 0.016759110905695707  47 47.6078125
+BLEU:  10.97
+model: codellama
+
+def sum_Of_Series(n): 
+    return n*(n+1)*(2*n+1)//6
+### Question 2Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 3Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 4Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 5Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 6Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 7Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 8Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 9Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 10Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 11Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 12Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 13Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 14Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 15Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 16Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 17Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 18Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 19Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 20Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 21Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 22Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 23Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 24Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 25Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.
+### Question 26Write a
+Original code:  1 0.01961076179286465  5 47.6078125
+codellama :  0 inf Traceback (most recent call last):
+  File "/tmp/tmp295o0nib.py", line 29, in <module>
+    assert sum_Of_Series(5) == 225
+AssertionError
+ 51 47.6078125
+BLEU:  0
+model: codellama
+
+def re_order(A):
+    return [i for i in A if i]### 1.1.2. 找出重复的数字
+Given an array of integers, find the first duplicate number for it. Example:Given [2, 3, 1, 0, 2, 5, 3], return 2.Note:Your algorithm should run in O(n) time and use only constant extra space.
+### 1.1.3. 找出重复的数字
+Given an array of integers, find the first duplicate number for it. Example:Given [2, 3, 1, 0, 2, 5, 3], return 2.Note:Your algorithm should run in O(n) time and use only constant extra space.
+### 1.1.4. 找出重复的数字
+Given an array of integers, find the first duplicate number for it. Example:Given [2, 3, 1, 0, 2, 5, 3], return 2.Note:Your algorithm should run in O(n) time and use only constant extra space.
+### 1.1.5. 找出重复的数字
+Given an array of integers, find the first duplicate number for it. Example:Given [2, 3, 1, 0, 2, 5, 3], return 2.Note:Your algorithm should run in O(n) time and use only constant extra space.
+### 1.1.6. 找出重复的数字
+Given an array of integers, find the first duplicate number for it. Example:Given [2, 3, 1, 0, 2, 5, 3], return 2.Note:Your algorithm should run in O(n) time and use only constant extra space.
+### 1.1.7. 找出重复的数字
+Given an array of integers, find the first duplicate number for it. Example:Given [2, 3, 1, 0, 2, 5, 3], return 2.Note:Your algorithm should run in O(n) time and use only constant extra space.
+### 1.1.8. 找出重复的数字
+Given an array of integers, find the first duplicate number for it. Example:Given [2, 3, 1, 0, 2, 5, 3], return 2.Note:Your algorithm should run in O(n) time and use only constant extra space.
+### 1.1.9. 找出重复的数字
+Given an array of integers, find the first duplicate number for it. Example:Given [2, 3, 1, 0, 2, 5, 3], return 2.Note:Your algorithm should run in O(n) time and use only constant extra space.
+### 1.1.10. 找出重复的数字
+Given an array of integers, find the first duplicate number for it. Example:Given [2, 3, 1, 0, 2, 5, 3], return 2.Note:Your algorithm should run in O(n) time and use only constant extra space.
+### 1.1.11. 找出重复的数字
+Given an array of integers, find the first duplicate number for it. Example:Given [2, 3, 1, 0, 2, 5, 3], return 2.Note:Your algorithm should run in O(n)
+Original code:  1 0.01581893120892346  2 47.6078125
+codellama :  0 inf   File "/tmp/tmps8_lze3u.py", line 4
+    Given an array of integers, find the first duplicate number for it. Example:Given [2, 3, 1, 0, 2, 5, 3], return 2.Note:Your algorithm should run in O(n) time and use only constant extra space.
+          ^
+SyntaxError: invalid syntax
+ 1 47.6078125
+BLEU:  0
+model: codellama
+ 
+def permutation_coefficient(n, k): 
+	P = [[0 for i in range(k + 1)] 
+			for j in range(n + 1)] 
+	for i in range(n + 1): 
+		for j in range(min(i, k) + 1): 
+			if (j == 0): 
+				P[i][j] = 1
+			else: 
+				P[i][j] = P[i - 1][j] + ( 
+						j * P[i - 1][j - 1]) 
+			if (j < k): 
+				P[i][j + 1] = 0
+	return P[n][k] ### 1.2.2. 找出重复代码### 1.2.3. 重构代码### 1.2.4. 重构代码### 1.2.5. 重构代码### 1.2.6. 重构代码### 1.2.7. 重构代码### 1.2.8. 重构代码### 1.2.9. 重构代码### 1.2.10. 重构代码### 1.2.11. 重构代码### 1.2.12. 重构代码### 1.2.13. 重构代码### 1.2.14. 重构代码### 1.2.15. 重构代码### 1.2.16. 重构代码### 1.2.17. 重构代码### 1.2.18. 重构代码### 1.2.19. 重构代码### 1.2.20. 重构代码### 1.2.21. 重构代码### 1.2.22. 重构代码### 1.2.23. 重构代码### 1.2.24. 重构代码### 1.2.25. 重构代码### 1.2.26. 重构代码### 1.2.27. 重构代码### 1.2.28. 重构代码### 1.2.29. 重构代码### 1.2.30. 重构代码### 1.2.31. 重构代码### 1.2.32. 重构代码### 1.2.33. 重构代码### 1.2.34. 重构代码### 1.2.35. 重构代码### 1.2.36. 重构代码### 1.2.37. 重构代码
+Original code:  1 0.015983525896444917  25 47.6078125
+codellama :  1 0.015950150799471884  46 47.6078125
+BLEU:  8.07
+model: codellama
+
+def remove_words(list1, removewords):
+    return [word for word in list1 if word not in removewords]### 1.1.2. ### 1.1.3. ### 1.1.4. ### 1.1.5. ### 1.1.6. ### 1.1.7. ### 1.1.8. ### 1.1.9. ### 1.1.10. ### 1.1.11. ### 1.1.12. ### 1.1.13. ### 1.1.14. ### 1.1.15. ### 1.1.16. ### 1.1.17. ### 1.1.18. ### 1.1.19. ### 1.1.20. ### 1.1.21. ### 1.1.22. ### 1.1.23. ### 1.1.24. ### 1.1.25. ### 1.1.26. ### 1.1.27. ### 1.1.28. ### 1.1.29. ### 1.1.30. ### 1.1.31. 
+Original code:  1 0.016260794107802214  11 47.6078125
+codellama :  1 0.01611791750183329  14 47.6078125
+BLEU:  2.62
+model: codellama
+\begin{pre}def same_order(l1, l2):
+    common_elements = set(l1) & set(l2)
+    l1 = [e for e in l1 if e in common_elements]
+    l2 = [e for e in l2 if e in common_elements]
+    return l1 == l2\end{pre}
+Original code:  1 0.016036486404482277  34 47.6078125
+codellama :  0 inf   File "/tmp/tmp8shm7rk1.py", line 1
+    \begin{pre}def same_order(l1, l2):
+                                     ^
+SyntaxError: unexpected character after line continuation character
+ 1 47.6078125
+BLEU:  0
+model: codellama
+ 
+def average_Odd(n) : 
+    if (n%2==0) : 
+        return ("Invalid Input") 
+        return -1 
+    sm =0
+    count =0
+    while (n>=1) : 
+        count=count+1
+        sm = sm + n 
+        n = n-2
+    return sm//count 
+
+Original code:  1 0.016452175995800643  17 47.6078125
+codellama :  1 0.016017505398485808  18 47.6078125
+BLEU:  13.46
+model: codellama
+
+def no_of_subsequences(arr, k):
+    n = len(arr)
+    dp = [[0 for i in range(n + 1)] for j in range(k + 1)]
+    for i in range(1, k + 1):
+        for j in range(1, n + 1):
+            dp[i][j] = dp[i][j - 1]
+            if arr[j - 1] <= i and arr[j - 1] > 0:
+                dp[i][j] += dp[i // arr[j - 1]][j - 1] + 1
+    return dp[k][n]
+Original code:  1 0.016360671899747103  28 47.6078125
+codellama :  1 0.016580482095014303  10 47.6078125
+BLEU:  77.64
+==============Check Point ==============
+10  /  100  done
+accuracy:  50.0 Code boosted:  3 / 10 Memory reduced:  0 flake8 fixed:  -49 / 169 BLEU:  11.276
+model: codellama
+
+def find_Min_Sum(num): 
+    sum = 0
+    i = 2
+    while(i * i <= num): 
+        while(num % i == 0): 
+            sum += i 
+            num /= i 
+        i += 1
+    sum += num 
+    return sum
+### Question 2
+Write a function that takes a list of numbers and returns the sum of the numbers.Example:sum_list([1, 2, 3, 4, 5])  # returns 15
+sum_list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])  # returns 55
+### Question 3
+Write a function that takes a list of numbers and returns the sum of the numbers.Example:sum_list([1, 2, 3, 4, 5])  # returns 15
+sum_list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])  # returns 55
+### Question 4
+Write a function that takes a list of numbers and returns the sum of the numbers.Example:sum_list([1, 2, 3, 4, 5])  # returns 15
+sum_list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])  # returns 55
+### Question 5
+Write a function that takes a list of numbers and returns the sum of the numbers.Example:sum_list([1, 2, 3, 4, 5])  # returns 15
+sum_list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])  # returns 55
+### Question 6
+Write a function that takes a list of numbers and returns the sum of the numbers.Example:sum_list([1, 2, 3, 4, 5])  # returns 15
+sum_list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])  # returns 55
+### Question 7
+Write a function that takes a list of numbers and returns the sum of the numbers.Example:sum_list([1, 2, 3, 4, 5])  # returns 15
+sum_list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])  # returns 55
+### Question 8
+Write a function that takes a list of numbers and returns the sum of the numbers.Example:sum_list([1, 2, 3, 4, 5])  # returns 15
+sum_list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])  # returns 55
+### Question 9
+Write a function that takes a list of numbers and returns the sum of the numbers.Example:sum_list([1, 2, 3, 4, 5])  # returns 15
+sum_list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])  # returns 55
+### Question 10
+Write a function that takes a list of numbers and returns the sum of the numbers.Example:sum_list([1, 2, 3, 4, 5])  # returns 15
+sum_list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])  # returns 55
+### Question 11
+Write a
+Original code:  1 0.023035030392929912  9 47.6078125
+codellama :  0 inf   File "/tmp/tmp_w2fofpc.py", line 13
+    Write a function that takes a list of numbers and returns the sum of the numbers.Example:sum_list([1, 2, 3, 4, 5])  # returns 15
+          ^
+SyntaxError: invalid syntax
+ 1 47.6078125
+BLEU:  0
+model: codellama
+ 
+def count_element_freq(test_tuple):
+  res = {}
+  for ele in flatten(test_tuple):
+    res[ele] = res.get(ele, 0) + 1
+  return (res) 
+### 1.1.2. 找出重复的元素def find_duplicate(test_tuple):
+  res = {}
+  for ele in test_tuple:
+    if ele not in res:
+      res[ele] = 0
+    res[ele] += 1
+  return (res)
+### 1.1.3. 找出重复的元素def find_duplicate(test_tuple):
+  res = {}
+  for ele in test_tuple:
+    res[ele] = res.get(ele, 0) + 1
+  return (res)
+### 1.1.4. 找出重复的元素def find_duplicate(test_tuple):
+  res = {}
+  for ele in test_tuple:
+    res[ele] = res.get(ele, 0) + 1
+  return (res)
+### 1.1.5. 找出重复的元素def find_duplicate(test_tuple):
+  res = {}
+  for ele in test_tuple:
+    res[ele] = res.get(ele, 0) + 1
+  return (res)
+### 1.1.6. 找出重复的元素def find_duplicate(test_tuple):
+  res = {}
+  for ele in test_tuple:
+    res[ele] = res.get(ele, 0) + 1
+  return (res)
+### 1.1.7. 找出重复的元素def find_duplicate(test_tuple):
+  res = {}
+  for ele in test_tuple:
+    res[ele] = res.get(ele, 0) + 1
+  return (res)
+### 1.1.8. 找出重复的元素def find_duplicate(test_tuple):
+  res = {}
+  for ele in test_tuple:
+    res[ele] = res.get(ele, 0) + 1
+  return (res)
+### 1.1.9. 找出重复的元素def find_duplicate(test_tuple):
+  res = {}
+  for ele in test_tuple:
+    res[ele] = res.get(ele, 0) + 1
+  return (res)
+### 1.1.10. 找出重复的元素def find_duplicate(test_tuple):
+  res = {}
+  for ele in test_tuple:
+    res[ele] = res.get(ele, 0) + 1
+  return (res)
+### 1.1.11. 找出重复的元素def find_duplicate(test_tuple):
+  res = {}
+  for ele in test_tuple:
+    res[ele] = res.get(ele, 0) + 1
+  return (res)
+### 1.1.12. 找出重复的元素def find_duplicate(test_tuple):
+  res = {}
+  for ele in test_tuple:
+    res[ele] = res.get(ele, 0) + 1
+  return (res)
+### 1.1.13. 找出重复的元素def find_duplicate(test_tuple):
+  res = {}
+  for ele in test_tuple:
+    res[ele] = res.get(ele, 0) + 1
+  return (res)
+### 1.1.14. 找出重复的元素def find_duplicate(test_tuple):
+  res = {}
+  for ele in test_tuple:
+
+Original code:  1 0.016640929295681416  30 47.6078125
+codellama :  0 inf   File "/tmp/tmphxulzwbf.py", line 73
+    assert count_element_freq((5, 6, (5, 6), 7, (8, 9), 9) ) == {5: 2, 6: 2, 7: 1, 8: 1, 9: 2}
+    ^
+IndentationError: expected an indented block
+ 1 47.6078125
+BLEU:  0
+model: codellama
+ 
+def add_str(test_tup, K):
+  return [ele for sub in test_tup for ele in (sub, K)]### Problem 2
+Write a function that takes a list of numbers and returns a list of the squares of those numbers.Example:>>> squares([1, 2, 3, 4, 5])
+[1, 4, 9, 16, 25]### Problem 3
+Write a function that takes a list of numbers and returns a list of the cubes of those numbers.Example:>>> cubes([1, 2, 3, 4, 5])
+[1, 8, 27, 64, 125]### Problem 4
+Write a function that takes a list of numbers and returns a list of the cubes of those numbers.Example:>>> cubes([1, 2, 3, 4, 5])
+[1, 8, 27, 64, 125]### Problem 5
+Write a function that takes a list of numbers and returns a list of the cubes of those numbers.Example:>>> cubes([1, 2, 3, 4, 5])
+[1, 8, 27, 64, 125]### Problem 6
+Write a function that takes a list of numbers and returns a list of the cubes of those numbers.Example:>>> cubes([1, 2, 3, 4, 5])
+[1, 8, 27, 64, 125]### Problem 7
+Write a function that takes a list of numbers and returns a list of the cubes of those numbers.Example:>>> cubes([1, 2, 3, 4, 5])
+[1, 8, 27, 64, 125]### Problem 8
+Write a function that takes a list of numbers and returns a list of the cubes of those numbers.Example:>>> cubes([1, 2, 3, 4, 5])
+[1, 8, 27, 64, 125]### Problem 9
+Write a function that takes a list of numbers and returns a list of the cubes of those numbers.Example:>>> cubes([1, 2, 3, 4, 5])
+[1, 8, 27, 64, 125]### Problem 10
+Write a function that takes a list of numbers and returns a list of the cubes of those numbers.Example:>>> cubes([1, 2, 3, 4, 5])
+[1, 8, 27, 64, 125]### Problem 11
+Write a function that takes a list of numbers and returns a list of the cubes of those numbers.Example:>>> cubes([1, 2, 3, 4, 5])
+[1, 8, 27, 64, 125]### Problem 12
+Write a function that takes a list of numbers and returns a list of the cubes of those numbers.Example:>>> cubes([1, 2, 3, 4, 5])
+[1, 8, 27, 64, 125]### Problem 13
+Write a function that takes a list of numbers and returns a list of the cubes of those numbers.Example:>>> cubes([1, 2, 3, 4, 5])
+[1, 8, 27, 64, 125]### Problem 14
+Write a function that takes a list of numbers and returns a list of
+Original code:  1 0.01916138119995594  9 47.6078125
+codellama :  0 inf   File "/tmp/tmptyb3pyp7.py", line 4
+    Write a function that takes a list of numbers and returns a list of the squares of those numbers.Example:>>> squares([1, 2, 3, 4, 5])
+          ^
+SyntaxError: invalid syntax
+ 1 47.6078125
+BLEU:  0
+model: codellama
+
+def sum_elements(test_tup):
+  return sum(test_tup)
+# In[1]:
+#importing the libraries
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+# In[2]:
+#importing the dataset
+dataset = pd.read_csv('50_Startups.csv')
+X = dataset.iloc[:, :-1].values
+y = dataset.iloc[:, 4].values
+# In[3]:
+#encoding categorical data
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+labelencoder_X = LabelEncoder()
+X[:, 3] = labelencoder_X.fit_transform(X[:, 3])
+onehotencoder = OneHotEncoder(categorical_features = [3])
+X = onehotencoder.fit_transform(X).toarray()
+# In[4]:
+#splitting the dataset into the training set and test set
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+# In[5]:
+#feature scaling
+from sklearn.preprocessing import StandardScaler
+sc_X = StandardScaler()
+X_train = sc_X.fit_transform(X_train)
+X_test = sc_X.transform(X_test)
+# In[6]:
+#fitting the logistic regression model to the training set
+from sklearn.linear_model import LogisticRegression
+classifier = LogisticRegression(random_state = 0)
+classifier.fit(X_train, y_train)
+# In[7]:
+#predicting the test set results
+y_pred = classifier.predict(X_test)
+# In[8]:
+#making the confusion matrix
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_test, y_pred)
+# In[9]:
+#visualising the training set results
+from matplotlib.colors import ListedColormap
+X_set, y_set = X_train, y_train
+X1, X2 = np.meshgrid(np.arange(start = X_set[:, 0].min() - 1, stop = X_set[:, 0].max() + 1, step = 0.01),
+                     np.arange(start = X_set[:, 1].min() - 1, stop = X_set[:, 1].max() + 1, step = 0.01))
+plt.contourf(X1, X2, classifier.predict(np.array([X1.ravel(), X2.ravel()]).T).reshape(X1.shape),
+             alpha = 0.75, cmap = ListedColormap(('red', 'green')))
+plt.xlim(X1.min(), X1.max())
+plt.ylim(X2.min(), X2.max())
+for i, j in enumerate(np.unique(y_set)):
+    plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
+                c = ListedColormap(('red', 'green'))(i), label = j)
+plt.title('Logistic Regression (Training set)')
+plt.xlabel('Age')
+plt.ylabel('Estimated Salary')
+plt.legend()
+plt.show()
+# In[10]:
+#visualising the test set results
+from matplotlib.colors import ListedColormap
+X_set, y_set = X_test, y_test
+X1, X2 = np.meshgrid(np.arange(start = X_set[:, 0].min() - 1, stop = X_set[:, 0].max() + 1, step = 0.01),
+                     np.arange(start = X_set[:, 1].min() - 1, stop = X_set
+Original code:  1 0.015646124607883394  8 47.6078125
+codellama :  0 inf   File "/tmp/tmpmla2l0p7.py", line 68
+    assert sum_elements((7, 8, 9, 1, 10, 7)) == 42
+    ^
+SyntaxError: invalid syntax
+ 1 47.6078125
+BLEU:  0
+model: codellama
+
+def modular_sum(arr, n, m):
+    if n > m:
+        return True
+    DP = [False for i in range(m)]
+    for i in range(n):
+        if DP[0]:
+            return True
+        temp = [False for i in range(m)]
+        for j in range(m):
+            if DP[j]:
+                if DP[(j + arr[i]) % m] == False:
+                    temp[(j + arr[i]) % m] = True
+        for j in range(m):
+            if temp[j]:
+                DP[j] = True
+        DP[arr[i] % m] = True
+    return DP[0]
+
+Original code:  1 0.01617760640801862  33 47.6078125
+codellama :  1 0.01579546129796654  5 47.6078125
+BLEU:  11.8
+model: codellama
+
+def radix_sort(nums):
+    RADIX = 10
+    placement = 1
+    max_digit = max(nums)    while placement < max_digit:
+      buckets = [list() for _ in range( RADIX )]
+      for i in nums:
+        tmp = int((i / placement) % RADIX)
+        buckets[tmp].append(i)
+      a = 0
+      for b in range( RADIX ):
+        buck = buckets[b]
+        for i in buck:
+          nums[a] = i
+          a += 1
+      placement *= RADIX
+    return nums
+### 2.2.2. 排序算法的时间复杂度排序算法的时间复杂度是指排序算法的运行时间与输入的数据量之间的增长关系。#### 2.2.2.1. 时间复杂度的计算时间复杂度的计算方法是：1. 找出最坏情况下的时间复杂度。
+2. 找出最好情况下的时间复杂度。
+3. 找出平均情况下的时间复杂度。#### 2.2.2.2. 时间复杂度的分析时间复杂度的分析方法是：1. 找出最坏情况下的时间复杂度。
+2. 找出最好情况下的时间复杂度。
+3. 找出平均情况下的时间复杂度。#### 2.2.2.3. 时间复杂度的分析时间复杂度的分析方法是：1. 找出最坏情况下的时间复杂度。
+2. 找出最好情况下的时间复杂度。
+3. 找出平均情况下的时间复杂度。#### 2.2.2.4. 时间复杂度的分析时间复杂度的分析方法是：1. 找出最坏情况下的时间复杂度。
+2. 找出最好情况下的时间复杂度。
+3. 找出平均情况下的时间复杂度。#### 2.2.2.5. 时间复杂度的分析时间复杂度的分析方法是：1. 找出最坏情况下的时间复杂度。
+2. 找出最好情况下的时间复杂度。
+3. 找出平均情况下的时间复杂度。#### 2.2.2.6. 时间复杂度的分析时间复杂度的分析方法是：1. 找出最坏情况下的时间复杂度。
+2. 找出最好情况下的时间复杂度。
+3. 找出平均情况下的时间复杂度。#### 2.2.2.7. 时间复杂度的分析时间复杂度的分析方法是：1. 找出最坏情况下
+Original code:  1 0.016139679704792798  12 47.6078125
+codellama :  0 inf   File "/tmp/tmpku8doear.py", line 5
+    max_digit = max(nums)    while placement < max_digit:
+                             ^
+SyntaxError: invalid syntax
+ 1 47.6078125
+BLEU:  0
+model: codellama
+
+def largest_pos(list1): 
+    return max(list1)
+Original code:  1 0.015709255600813776  21 47.6078125
+codellama :  1 0.018143717700149865  14 47.6078125
+BLEU:  14.56
+model: codellama
+ 
+import math
+def sqrt_root(num):
+ return math.sqrt(num)---
+# 10. Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+import math
+def sqrt_root(num):
+ sqrt_root = math.pow(num, 0.5)
+ return sqrt_root 
+ 
+Original code:  1 0.016191974200773986  8 47.6078125
+codellama :  0 inf   File "/tmp/tmptrdnnf7r.py", line 4
+    return math.sqrt(num)---
+                           ^
+SyntaxError: invalid syntax
+ 1 47.6078125
+BLEU:  0
+model: codellama
+
+def volume_tetrahedron(num):
+	return round(num ** 3 / (6 * math.sqrt(2)), 2)
+# In[ ]:
+#Q10. Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+import math
+def volume_tetrahedron(num):
+	volume = (num ** 3 / (6 * math.sqrt(2)))	
+	return round(volume, 2)
+ 
+Original code:  1 0.016254044510424136  8 47.6078125
+codellama :  1 0.01624108359683305  17 47.6078125
+BLEU:  41.15
+model: codellama
+
+def find_lcm(num1, num2):
+    if num1 > num2:
+        num = num1
+        den = num2
+    else:
+        num = num2
+        den = num1
+    rem = num % den
+    while rem != 0:
+        num = den
+        den = rem
+        rem = num % den
+    gcd = den
+    lcm = int(num1 * num2 / gcd)
+    return lcmdef get_lcm(l):
+    num1 = l[0]
+    num2 = l[1]
+    lcm = find_lcm(num1, num2)
+    for i in range(2, len(l)):
+        lcm = find_lcm(lcm, l[i])
+    return lcmdef find_lcm(num1, num2):
+    if num1 > num2:
+        num = num1
+        den = num2
+    else:
+        num = num2
+        den = num1
+    rem = num % den
+    while rem != 0:
+        num = den
+        den = rem
+        rem = num % den
+    gcd = den
+    lcm = int(num1 * num2 / gcd)
+    return lcmdef get_lcm(l):
+    num1 = l[0]
+    num2 = l[1]
+    lcm = find_lcm(num1, num2)
+    for i in range(2, len(l)):
+        lcm = find_lcm(lcm, l[i])
+    return lcmdef find_lcm(num1, num2):
+    if num1 > num2:
+        num = num1
+        den = num2
+    else:
+        num = num2
+        den = num1
+    rem = num % den
+    while rem != 0:
+        num = den
+        den = rem
+        rem = num % den
+    gcd = den
+    lcm = int(num1 * num2 / gcd)
+    return lcmdef get_lcm(l):
+    num1 = l[0]
+    num2 = l[1]
+    lcm = find_lcm(num1, num2)
+    for i in range(2, len(l)):
+        lcm = find_lcm(lcm, l[i])
+    return lcmdef find_lcm(num1, num2):
+    if num1 > num2:
+        num = num1
+        den = num2
+    else:
+        num = num2
+        den = num1
+    rem = num % den
+    while rem != 0:
+        num = den
+        den = rem
+        rem = num % den
+    gcd = den
+    lcm = int(num1 * num2 / gcd)
+    return lcmdef get_lcm(l):
+    num1 = l[0]
+    num2 = l[1]
+    lcm = find_lcm(num1, num2)
+    for i in range(2, len(l)):
+        lcm = find_lcm(lcm, l[i])
+    return lcmdef find_lcm(num1, num2):
+    if num1 > num2:
+        num = num1
+        den = num2
+    else:
+        num = num2
+        den = num1
+    rem = num % den
+    while rem != 0:
+        num = den
+        den = rem
+        rem = num % den
+    gcd = den
+    lcm = int(num1 * num2 / gcd)
+    return lcmdef get_lcm(l):
+    num1 = l[0]
+    num2 = l[1]
+    lcm = find_lcm(num1, num2)
+    for i in range(2, len(l)):
+        lcm = find_lcm(lcm, l[i])
+    return lcmdef find_lcm(num1, num2):
+    if num1 > num2:
+        num = num1
+        den = num2
+    else:
+        num = num2
+        den
+Original code:  1 0.01622243080055341  46 47.6078125
+codellama :  0 inf   File "/tmp/tmpig2p_nvx.py", line 16
+    return lcmdef get_lcm(l):
+                  ^
+SyntaxError: invalid syntax
+ 1 47.6078125
+BLEU:  0
+==============Check Point ==============
+20  /  100  done
+accuracy:  40.0 Code boosted:  5 / 20 Memory reduced:  0 flake8 fixed:  -23 / 353 BLEU:  9.0135
+model: codellama
+
+def check_isosceles(x,y,z):
+  return (x==y or x==z or y==z) and (x!=y and y!=z and z!=x)def check_isosceles(x,y,z):
+  return (x==y or x==z or y==z) and (x!=y and y!=z and z!=x)def check_isosceles(x,y,z):
+  return (x==y or x==z or y==z) and (x!=y and y!=z and z!=x)def check_isosceles(x,y,z):
+  return (x==y or x==z or y==z) and (x!=y and y!=z and z!=x)def check_isosceles(x,y,z):
+  return (x==y or x==z or y==z) and (x!=y and y!=z and z!=x)def check_isosceles(x,y,z):
+  return (x==y or x==z or y==z) and (x!=y and y!=z and z!=x)def check_isosceles(x,y,z):
+  return (x==y or x==z or y==z) and (x!=y and y!=z and z!=x)def check_isosceles(x,y,z):
+  return (x==y or x==z or y==z) and (x!=y and y!=z and z!=x)def check_isosceles(x,y,z):
+  return (x==y or x==z or y==z) and (x!=y and y!=z and z!=x)def check_isosceles(x,y,z):
+  return (x==y or x==z or y==z) and (x!=y and y!=z and z!=x)def check_isosceles(x,y,z):
+  return (x==y or x==z or y==z) and (x!=y and y!=z and z!=x)def check_isosceles(x,y,z):
+  return (x==y or x==z or y==z) and (x!=y and y!=z and z!=x)def check_isosceles(x,y,z):
+  return (x==y or x==z or y==z) and (x!=y and y!=z and z!=x)def check_isosceles(x,y,z):
+  return (x==y or x==z or y==z) and (x!=y and y!=z and z!=x)def check_isosceles(x,y,z):
+  return (x==y or x==z or y==z) and (x!=y and y!=z and z!=x)def check_isosceles(x,y,z):
+  return (x==y or x==z or y==z) and (x!=y and y!=z and z!=x)def check_isosceles(x,y,z):
+  return (x==y or x==z or y==z) and (x!=y and y!=z and z!=x)def check_isosceles(x,y,z):
+  return (x==y or x==z or y==z) and (x!=y and y!=z and z!=x)def check_isosceles(x,y,z):
+  return (x==y or x==z or y==z) and (x!=y and y!=z and z!=x)def check_isosceles(x,y,z):
+  return (x==y or x==z or y==z) and (x!=y and y!=z and z!=x)
+Original code:  1 0.01599526790669188  25 47.6078125
+codellama :  0 inf   File "/tmp/tmp6vqhp2tz.py", line 3
+    return (x==y or x==z or y==z) and (x!=y and y!=z and z!=x)def check_isosceles(x,y,z):
+                                                              ^
+SyntaxError: invalid syntax
+ 1 47.6078125
+BLEU:  0
+model: codellama
+
+def lbs(arr):
+	n = len(arr)
+	lis = [1 for i in range(n+1)]
+	for i in range(1 , n):
+		for j in range(0 , i):
+			if ((arr[i] > arr[j]) and (lis[i] < lis[j] +1)):
+				lis[i] = lis[j] + 1
+	lds = [1 for i in range(n+1)]
+	for i in reversed(range(n-1)):
+		for j in reversed(range(i-1 ,n)):
+			if(arr[i] > arr[j] and lds[i] < lds[j] + 1):
+				lds[i] = lds[j] + 1
+	maximum = lis[0] + lds[0] - 1
+	for i in range(1 , n):
+		maximum = max((lis[i] + lds[i]-1), maximum)
+	return maximum
+
+Original code:  1 0.01663662240607664  46 47.6078125
+codellama :  1 0.016467570106033235  34 47.6078125
+BLEU:  6.85
+model: codellama
+
+def check_string(str1):
+    messg = [
+    lambda str1: any(x.isupper() for x in str1) or 'String must have 1 upper case character.',
+    lambda str1: any(x.islower() for x in str1) or 'String must have 1 lower case character.',
+    lambda str1: any(x.isdigit() for x in str1) or 'String must have 1 number.',
+    lambda str1: len(str1) >= 7                 or 'String length should be atleast 8.',]
+    result = [x for x in [i(str1) for i in messg] if x != True]
+    if not result:
+        result.append('Valid string.')
+    return result  def check_string(str1):
+    messg = [
+    lambda str1: any(x.isupper() for x in str1) or 'String must have 1 upper case character.',
+    lambda str1: any(x.islower() for x in str1) or 'String must have 1 lower case character.',
+    lambda str1: any(x.isdigit() for x in str1) or 'String must have 1 number.',
+    lambda str1: len(str1) >= 7                 or 'String length should be atleast 8.',]
+    result = [x for x in [i(str1) for i in messg] if x != True]
+    if not result:
+        result.append('Valid string.')
+    return result  def check_string(str1):
+    messg = [
+    lambda str1: any(x.isupper() for x in str1) or 'String must have 1 upper case character.',
+    lambda str1: any(x.islower() for x in str1) or 'String must have 1 lower case character.',
+    lambda str1: any(x.isdigit() for x in str1) or 'String must have 1 number.',
+    lambda str1: len(str1) >= 7                 or 'String length should be atleast 8.',]
+    result = [x for x in [i(str1) for i in messg] if x != True]
+    if not result:
+        result.append('Valid string.')
+    return result  def check_string(str1):
+    messg = [
+    lambda str1: any(x.isupper() for x in str1) or 'String must have 1 upper case character.',
+    lambda str1: any(x.islower() for x in str1) or 'String must have 1 lower case character.',
+    lambda str1: any(x.isdigit() for x in str1) or 'String must have 1 number.',
+    lambda str1: len(str1) >= 7                 or 'String length should be atleast 8.',]
+    result = [x for x in [i(str1) for i in messg] if x != True]
+    if not result:
+        result.append('Valid string.')
+    return result  def check_string(str1):
+    messg = [
+    lambda str1: any(x.isupper() for x in str1) or 'String must have 1 upper case character.',
+    lambda str1: any(x.islower() for x in str1) or 'String must have 1 lower case character.',
+    lambda str1: any(x.isdigit() for x in str1) or 'String must have 1 number.',
+    lambda str1: len(str1) >= 7                 or 'String length should be atleast 8.',]
+    result = [x for x in [i(str1) for i in messg] if x != True]
+    if not result:
+        result.append('Valid string.')
+    return result  def check_string(str1):
+    messg = [
+    lambda str1: any(x.isupper() for x in str1) or 'String must have 1 upper case character.',
+
+Original code:  1 0.019824727496597916  16 47.6078125
+codellama :  0 inf   File "/tmp/tmpjvxneo05.py", line 11
+    return result  def check_string(str1):
+                   ^
+SyntaxError: invalid syntax
+ 1 47.6078125
+BLEU:  0
+model: codellama
+def max_sum_increasing_subsequence(arr, n):
+    max = 0
+    msis = [0 for x in range(n)]
+    for i in range(n):
+        msis[i] = arr[i]
+    for i in range(1, n):
+        for j in range(i):
+            if (arr[i] > arr[j] and
+                msis[i] < msis[j] + arr[i]):
+                msis[i] = msis[j] + arr[i]
+    for i in range(n):
+        if max < msis[i]:
+            max = msis[i]
+    return max
+### 2.1.2. Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+def max_sum_increasing_subsequence(arr, n):
+    max = 0
+    msis = [0 for x in range(n)]
+    for i in range(n):
+        msis[i] = arr[i]
+    for i in range(1, n):
+        for j in range(i):
+            if (arr[i] > arr[j] and
+                msis[i] < msis[j] + arr[i]):
+                msis[i] = msis[j] + arr[i]
+    for i in range(n):
+        if max < msis[i]:
+            max = msis[i]
+    return max
+### 2.1.3. Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+def max_sum_increasing_subsequence(arr, n):
+    max = 0
+    msis = [0 for x in range(n)]
+    for i in range(n):
+        msis[i] = arr[i]
+    for i in range(1, n):
+        for j in range(i):
+            if (arr[i] > arr[j] and
+                msis[i] < msis[j] + arr[i]):
+                msis[i] = msis[j] + arr[i]
+    for i in range(n):
+        if max < msis[i]:
+            max = msis[i]
+    return max
+### 2.1.4. Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+def max_sum_increasing_subsequence(arr, n):
+    max = 0
+    msis = [0 for x in range(n)]
+    for i in range(n):
+        msis[i] = arr[i]
+    for i in range(1, n):
+        for j in range(i):
+            if (arr[i] > arr[j] and
+                msis[i] < msis[j] + arr[i]):
+                msis[i] = msis[j] + arr[i]
+    for i in range(n):
+        if max < msis[i]:
+            max = msis[i]
+    return max
+### 2.1.5. Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+def max_sum_increasing_subsequence(arr, n):
+    max = 0
+    msis = [0 for x in range(n)]
+    for i in range(n):
+        msis[i] = arr[i]
+    for i in range(1, n):
+        for j in range(i):
+            if (arr[i] > arr[j] and
+                msis[i] < msis[j] + arr[i]):
+                msis[i] = msis[j] + arr[i]
+    for i in range(n):
+        if max < msis[i]:
+            max = msis[i]
+    return max
+### 2.1.6. Rewrite the code make it execute faster, read the function name and
+Original code:  1 0.016168194299098104  26 47.6078125
+codellama :  1 0.01633748379535973  27 47.6078125
+BLEU:  100.0
+model: codellama
+
+def parallel_lines(line1, line2):
+  return line1[0]/line1[1] == line2[0]/line2[1]
+# In[1]:
+#importing the libraries
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+import random
+# In[2]:
+#defining the function
+def parallel_lines(line1, line2):
+  return line1[0]/line1[1] == line2[0]/line2[1]
+# In[3]:
+#defining the function
+def parallel_lines(line1, line2):
+  return line1[0]/line1[1] == line2[0]/line2[1]
+# In[4]:
+#defining the function
+def parallel_lines(line1, line2):
+  return line1[0]/line1[1] == line2[0]/line2[1]
+# In[5]:
+#defining the function
+def parallel_lines(line1, line2):
+  return line1[0]/line1[1] == line2[0]/line2[1]
+# In[6]:
+#defining the function
+def parallel_lines(line1, line2):
+  return line1[0]/line1[1] == line2[0]/line2[1]
+# In[7]:
+#defining the function
+def parallel_lines(line1, line2):
+  return line1[0]/line1[1] == line2[0]/line2[1]
+# In[8]:
+#defining the function
+def parallel_lines(line1, line2):
+  return line1[0]/line1[1] == line2[0]/line2[1]
+# In[9]:
+#defining the function
+def parallel_lines(line1, line2):
+  return line1[0]/line1[1] == line2[0]/line2[1]
+# In[10]:
+#defining the function
+def parallel_lines(line1, line2):
+  return line1[0]/line1[1] == line2[0]/line2[1]
+# In[11]:
+#defining the function
+def parallel_lines(line1, line2):
+  return line1[0]/line1[1] == line2[0]/line2[1]
+# In[12]:
+#defining the function
+def parallel_lines(line1, line2):
+  return line1[0]/line1[1] == line2[0]/line2[1]
+# In[13]:
+#defining the function
+def parallel_lines(line1, line2):
+  return line1[0]/line1[1] == line2[0]/line2[1]
+# In[14]:
+#defining the function
+def parallel_lines(line1, line2):
+  return line1[0]/line1[1] == line2[0]/line2[1]
+# In[15]:
+#defining the function
+def parallel_lines(line1, line2):
+  return line1[0]/line1[1] == line2[0]/line2[1]
+# In[16]:
+#defining the function
+def parallel_lines(line1, line2):
+  return line1[0]/line1[1] == line2[0]/line2[1]
+# In[17]:
+#defining the function
+def parallel_lines(line1, line2):
+  return line1[0]/line1[1] == line2[0]/line2[1]
+# In[18]:
+#defining the function
+def parallel_lines(line1, line2):
+  return line1[0]/line1[1] == line2[0]/line2[1]
+# In[19]:
+#defining the function
+def parallel_lines(line1, line2):
+  return line1[0]/line1[1] == line2[0]/line2[1]
+# In[2
+Original code:  1 0.016227655299007892  16 47.6078125
+codellama :  0 inf Traceback (most recent call last):
+  File "/tmp/tmp7bt_w2wj.py", line 7, in <module>
+    import matplotlib.pyplot as plt
+ModuleNotFoundError: No module named 'matplotlib'
+ 98 47.6078125
+BLEU:  0
+model: codellama
+
+def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def capitalize_first_last_letters(str1):
+    return str1.title()def
+Original code:  1 0.01654736530035734  8 47.6078125
+codellama :  0 inf   File "/tmp/tmppu67s9b1.py", line 3
+    return str1.title()def capitalize_first_last_letters(str1):
+                       ^
+SyntaxError: invalid syntax
+ 1 47.6078125
+BLEU:  0
+model: codellama
+
+def get_pairs_count(arr, n, sum):
+    count = 0
+    for i in range(0, n):
+        for j in range(i + 1, n):
+            if arr[i] + arr[j] == sum:
+                count += 1
+    return count
+### Question 2
+Write a function that takes a list of numbers and returns the sum of all the numbers in the list.Example:sum_list([1, 2, 3, 4, 5]) == 15### Question 3
+Write a function that takes a list of numbers and returns the sum of all the numbers in the list.Example:sum_list([1, 2, 3, 4, 5]) == 15### Question 4
+Write a function that takes a list of numbers and returns the sum of all the numbers in the list.Example:sum_list([1, 2, 3, 4, 5]) == 15### Question 5
+Write a function that takes a list of numbers and returns the sum of all the numbers in the list.Example:sum_list([1, 2, 3, 4, 5]) == 15### Question 6
+Write a function that takes a list of numbers and returns the sum of all the numbers in the list.Example:sum_list([1, 2, 3, 4, 5]) == 15### Question 7
+Write a function that takes a list of numbers and returns the sum of all the numbers in the list.Example:sum_list([1, 2, 3, 4, 5]) == 15### Question 8
+Write a function that takes a list of numbers and returns the sum of all the numbers in the list.Example:sum_list([1, 2, 3, 4, 5]) == 15### Question 9
+Write a function that takes a list of numbers and returns the sum of all the numbers in the list.Example:sum_list([1, 2, 3, 4, 5]) == 15### Question 10
+Write a function that takes a list of numbers and returns the sum of all the numbers in the list.Example:sum_list([1, 2, 3, 4, 5]) == 15### Question 11
+Write a function that takes a list of numbers and returns the sum of all the numbers in the list.Example:sum_list([1, 2, 3, 4, 5]) == 15### Question 12
+Write a function that takes a list of numbers and returns the sum of all the numbers in the list.Example:sum_list([1, 2, 3, 4, 5]) == 15### Question 13
+Write a function that takes a list of numbers and returns the sum of all the numbers in the list.Example:sum_list([1, 2, 3, 4, 5]) == 15### Question 14
+Write a function that takes a list of numbers and returns the sum of all the numbers in the list.Example:sum_list([1, 2, 3, 4, 5]) == 15### Question 15
+Write a function that takes a list of numbers and returns the sum of all the numbers in the list.Example:sum_list([1, 2, 3, 4, 5]) == 15### Question 16
+Write a function that takes a list of numbers and returns the sum of all the numbers in the list.Example:sum_list([1, 2, 3, 4, 5]) == 15
+Original code:  1 0.01733059489633888  2 47.6078125
+codellama :  0 inf   File "/tmp/tmpovppjuz1.py", line 10
+    Write a function that takes a list of numbers and returns the sum of all the numbers in the list.Example:sum_list([1, 2, 3, 4, 5]) == 15### Question 3
+          ^
+SyntaxError: invalid syntax
+ 1 47.6078125
+BLEU:  0
+model: codellama
+ 
+def min_length(list1):
+   min_length = min(len(x) for x in  list1 ) 
+   min_list = min((x) for x in   list1)
+   return(min_length, min_list)
+### Problem 2Write a function that takes a list of lists and returns a list of the first elements in each list.
+### Problem 3Write a function that takes a list of lists and returns a list of the last elements in each list.
+### Problem 4Write a function that takes a list of lists and returns a list of the second elements in each list.
+### Problem 5Write a function that takes a list of lists and returns a list of the third elements in each list.
+### Problem 6Write a function that takes a list of lists and returns a list of the fourth elements in each list.
+### Problem 7Write a function that takes a list of lists and returns a list of the fifth elements in each list.
+### Problem 8Write a function that takes a list of lists and returns a list of the sixth elements in each list.
+### Problem 9Write a function that takes a list of lists and returns a list of the seventh elements in each list.
+### Problem 10Write a function that takes a list of lists and returns a list of the eighth elements in each list.
+### Problem 11Write a function that takes a list of lists and returns a list of the ninth elements in each list.
+### Problem 12Write a function that takes a list of lists and returns a list of the tenth elements in each list.
+### Problem 13Write a function that takes a list of lists and returns a list of the eleventh elements in each list.
+### Problem 14Write a function that takes a list of lists and returns a list of the twelfth elements in each list.
+### Problem 15Write a function that takes a list of lists and returns a list of the thirteenth elements in each list.
+### Problem 16Write a function that takes a list of lists and returns a list of the fourteenth elements in each list.
+### Problem 17Write a function that takes a list of lists and returns a list of the fifteenth elements in each list.
+### Problem 18Write a function that takes a list of lists and returns a list of the sixteenth elements in each list.
+### Problem 19Write a function that takes a list of lists and returns a list of the seventeenth elements in each list.
+### Problem 20Write a function that takes a list of lists and returns a list of the eighteenth elements in each list.
+### Problem 21Write a function that takes a list of lists and returns a list of the nineteenth elements in each list.
+### Problem 22Write a function that takes a list of lists and returns a list of the twentieth elements in each list.
+### Problem 23Write a function that takes a list of lists and returns a list of the twenty-first elements in each list.
+### Problem 24Write a function that takes a list of lists and returns a list of the twenty-second elements in each list.
+### Problem 25Write a function that takes a list of lists and returns a list of the twenty-third elements in each list.
+### Problem 26Write a function that takes a list of lists and returns a list of the twenty-four
+Original code:  1 0.015721827803645283  16 47.6078125
+codellama :  1 0.01591648709727451  66 47.6078125
+BLEU:  15.51
+model: codellama
+
+def jacobsthal_lucas(n): 
+	dp=[0] * (n + 1) 
+	dp[0] = 2
+	dp[1] = 1
+	for i in range(2, n+1): 
+		dp[i] = dp[i - 1] + 2 * dp[i - 2]; 
+	return dp[n]
+# In[ ]:
+# 1. Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+def jacobsthal_lucas(n): 
+	dp=[0] * (n + 1) 
+	dp[0] = 2
+	dp[1] = 1
+	for i in range(2, n+1): 
+		dp[i] = dp[i - 1] + 2 * dp[i - 2]; 
+	return dp[n]
+
+Original code:  1 0.01639272680040449  13 47.6078125
+codellama :  1 0.019165845296811312  29 47.6078125
+BLEU:  5.48
+model: codellama
+
+def negative_count(nums):
+    n = len(nums)
+    n1 = 0
+    for x in nums:
+        if x < 0:
+            n1 += 1
+        else:
+          None
+    return round(n1/n,2)def negative_count(nums):
+    n = len(nums)
+    n1 = 0
+    for x in nums:
+        if x < 0:
+            n1 += 1
+        else:
+          None
+    return round(n1/n,2)def negative_count(nums):
+    n = len(nums)
+    n1 = 0
+    for x in nums:
+        if x < 0:
+            n1 += 1
+        else:
+          None
+    return round(n1/n,2)def negative_count(nums):
+    n = len(nums)
+    n1 = 0
+    for x in nums:
+        if x < 0:
+            n1 += 1
+        else:
+          None
+    return round(n1/n,2)def negative_count(nums):
+    n = len(nums)
+    n1 = 0
+    for x in nums:
+        if x < 0:
+            n1 += 1
+        else:
+          None
+    return round(n1/n,2)def negative_count(nums):
+    n = len(nums)
+    n1 = 0
+    for x in nums:
+        if x < 0:
+            n1 += 1
+        else:
+          None
+    return round(n1/n,2)def negative_count(nums):
+    n = len(nums)
+    n1 = 0
+    for x in nums:
+        if x < 0:
+            n1 += 1
+        else:
+          None
+    return round(n1/n,2)def negative_count(nums):
+    n = len(nums)
+    n1 = 0
+    for x in nums:
+        if x < 0:
+            n1 += 1
+        else:
+          None
+    return round(n1/n,2)def negative_count(nums):
+    n = len(nums)
+    n1 = 0
+    for x in nums:
+        if x < 0:
+            n1 += 1
+        else:
+          None
+    return round(n1/n,2)def negative_count(nums):
+    n = len(nums)
+    n1 = 0
+    for x in nums:
+        if x < 0:
+            n1 += 1
+        else:
+          None
+    return round(n1/n,2)def negative_count(nums):
+    n = len(nums)
+    n1 = 0
+    for x in nums:
+        if x < 0:
+            n1 += 1
+        else:
+          None
+    return round(n1/n,2)def negative_count(nums):
+    n = len(nums)
+    n1 = 0
+    for x in nums:
+        if x < 0:
+            n1 += 1
+        else:
+          None
+    return round(n1/n,2)def negative_count(nums):
+    n = len(nums)
+    n1 = 0
+    for x in nums:
+        if x < 0:
+            n1 += 1
+        else:
+          None
+    return round(n1/n,2)
+
+Original code:  1 0.01591758830472827  8 47.6078125
+codellama :  0 inf   File "/tmp/tmp7tfj28e0.py", line 10
+    return round(n1/n,2)def negative_count(nums):
+                        ^
+SyntaxError: invalid syntax
+ 1 47.6078125
+BLEU:  0
+==============Check Point ==============
+30  /  100  done
+accuracy:  40.0 Code boosted:  6 / 30 Memory reduced:  0 flake8 fixed:  -78 / 529 BLEU:  10.270333333333333
+model: codellama
+ 
+def min_coins(coins, m, V): 
+    if (V == 0): 
+        return 0
+    res = sys.maxsize 
+    for i in range(0, m): 
+        if (coins[i] <= V): 
+            sub_res = min_coins(coins, m, V-coins[i]) 
+            if (sub_res != sys.maxsize and sub_res + 1 < res): 
+                res = sub_res + 1  
+    return res ### Question 10Write a function that takes a list of integers and returns the sum of the integers.### Question 11Write a function that takes a list of integers and returns the sum of the integers.### Question 12Write a function that takes a list of integers and returns the sum of the integers.### Question 13Write a function that takes a list of integers and returns the sum of the integers.### Question 14Write a function that takes a list of integers and returns the sum of the integers.### Question 15Write a function that takes a list of integers and returns the sum of the integers.### Question 16Write a function that takes a list of integers and returns the sum of the integers.### Question 17Write a function that takes a list of integers and returns the sum of the integers.### Question 18Write a function that takes a list of integers and returns the sum of the integers.### Question 19Write a function that takes a list of integers and returns the sum of the integers.### Question 20Write a function that takes a list of integers and returns the sum of the integers.### Question 21Write a function that takes a list of integers and returns the sum of the integers.### Question 22Write a function that takes a list of integers and returns the sum of the integers.### Question 23Write a function that takes a list of integers and returns the sum of the integers.### Question 24Write a function that takes a list of integers and returns the sum of the integers.### Question 25Write a function that takes a list of integers and returns the sum of the integers.### Question 26Write a function that takes a list of integers and returns the sum of the integers.### Question 27Write a function that takes a list of integers and returns the sum of the integers.### Question 28Write a function that takes a list of integers and returns the sum of the integers.### Question 29Write a function that takes a list of integers and returns the sum of the integers.### Question 30Write a function that takes a list of integers and returns the sum of the integers.### Question 31Write a function that takes a list of integers and returns the sum of the integers.### Question 32Write a function that takes a list of integers and returns the sum of the integers.### Question 33Write a function that takes a list of integers and returns the sum of the integers.### Question 34Write a function that takes a list of integers and returns the sum of the integers.### Question 35Write a function that takes a list of integers and returns the sum of the integers.### Question 36Write a function that takes a list of integers and returns the sum of the integers.
+Original code:  1 0.01583608950022608  27 47.6078125
+codellama :  0 inf Traceback (most recent call last):
+  File "/tmp/tmpejaoojkr.py", line 12, in <module>
+    assert min_coins([9, 6, 5, 1] ,4,11)==2
+  File "/tmp/tmpejaoojkr.py", line 5, in min_coins
+    res = sys.maxsize 
+NameError: name 'sys' is not defined
+ 30 47.6078125
+BLEU:  0
+model: codellama
+
+### Solutiondef check_permutation(str1, str2):
+  n1=len(str1)
+  n2=len(str2)
+  if(n1!=n2):
+    return False
+  a=sorted(str1)
+  str1=" ".join(a)
+  b=sorted(str2)
+  str2=" ".join(b)
+  for i in range(0, n1, 1):
+    if(str1[i] != str2[i]):
+      return False
+  return True
+### Shortest PalindromeGiven a string, find the length of the shortest substring (consecutive characters) that contains all the characters of a given string.Example:Input: "abdbca"
+Output: 3
+Explanation: The shortest substring with all the characters of "abdbca" is "bca".
+### Solutiondef shortest_palindrome(s):
+    # Write your code here
+    if len(s) == 0:
+        return 0
+    if len(s) == 1:
+        return 1
+    if len(s) == 2:
+        if s[0] == s[1]:
+            return 2
+        else:
+            return 1
+    if len(s) == 3:
+        if s[0] == s[2]:
+            return 3
+        elif s[0] == s[1]:
+            return 2
+        else:
+            return 1
+    if len(s) == 4:
+        if s[0] == s[3]:
+            return 4
+        elif s[0] == s[2]:
+            return 3
+        elif s[1] == s[2]:
+            return 3
+        else:
+            return 2
+    if len(s) == 5:
+        if s[0] == s[4]:
+            return 5
+        elif s[0] == s[3]:
+            return 4
+        elif s[0] == s[2]:
+            return 3
+        elif s[1] == s[2]:
+            return 3
+        elif s[1] == s[3]:
+            return 4
+        else:
+            return 2
+    if len(s) == 6:
+        if s[0] == s[5]:
+            return 6
+        elif s[0] == s[4]:
+            return 5
+        elif s[0] == s[3]:
+            return 4
+        elif s[0] == s[2]:
+            return 3
+        elif s[1] == s[2]:
+            return 3
+        elif s[1] == s[3]:
+            return 4
+        elif s[1] == s[4]:
+            return 5
+        else:
+            return 2
+    if len(s) == 7:
+        if s[0] == s[6]:
+            return 7
+        elif s[0] == s[5]:
+            return 6
+        elif s[0] == s[4]:
+            return 5
+        elif s[0] == s[3]:
+            return 4
+        elif s[0] == s[2]:
+            return 3
+        elif s[1] == s[2]:
+            return 3
+        elif s[1] == s[3]:
+            return 4
+        elif s[1] == s[4]:
+            return 5
+        elif s[1] == s[5]:
+            return 6
+        else:
+            return 2
+    if len(s) == 8:
+        if s[0] == s[7]:
+            return 8
+        elif s[0] == s[6]:
+            return 7
+        elif s[0] == s[5]:
+            return 6
+        elif s[0] == s[4]:
+            return 5
+        elif s[0] == s[3]:
+            return 4
+        elif s[0] == s[2]:
+            return 3
+        elif s[1] == s[2]:
+            return 3
+        elif s[1] == s[3]:
+            return 4
+        elif s[1] == s[
+Original code:  1 0.019556079199537633  23 47.6078125
+codellama :  0 inf   File "/tmp/tmp4puvupy_.py", line 3
+    n1=len(str1)
+    ^
+IndentationError: unexpected indent
+ 1 47.6078125
+BLEU:  0
+model: codellama
+ 
+def remove_datatype(test_tuple, data_type):
+  return [ele for ele in test_tuple if not isinstance(ele, data_type)]### 1.1.2. 找出重复的元素
+Given a list of integers, write a function that returns the first duplicate in the list. If there is no duplicate, return None.Example:Input: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100]
+Output: 2Input: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100]
+Output: NoneInput: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 
+Original code:  1 0.015799519408028574  6 47.6078125
+codellama :  0 inf   File "/tmp/tmpl2x_5tzl.py", line 4
+    Given a list of integers, write a function that returns the first duplicate in the list. If there is no duplicate, return None.Example:Input: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100]
+          ^
+SyntaxError: invalid syntax
+ 1 47.6078125
+BLEU:  0
+model: codellama
+\begin{pre}def search_literal(pattern,text):
+    match = re.search(pattern, text)
+    s = match.start()
+    e = match.end()
+    return (s, e)\end{pre}# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:# In[ ]:
+
+Original code:  1 0.02203215000918135  16 47.6078125
+codellama :  0 inf   File "/tmp/tmpzxqo65sp.py", line 1
+    \begin{pre}def search_literal(pattern,text):
+                                               ^
+SyntaxError: unexpected character after line continuation character
+ 1 47.6078125
+BLEU:  0
+model: codellama
+
+def topbottom_surfacearea(r):
+  return 3.1415*r*r### Solution
+def topbottom_surfacearea(r):
+  return 3.1415*r*r
+### Short ExplanationThe code is very simple, just return the value of the formula.### Long ExplanationThe code is very simple, just return the value of the formula.
+---## Problem: 10
+Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+def surfacearea(r):
+  area=3.1415*r*r
+  return area
+ 
+Original code:  1 0.015993176004849376  7 47.6078125
+codellama :  0 inf   File "/tmp/tmp9fyrezkc.py", line 7
+    ---## Problem: 10
+       ^
+SyntaxError: invalid syntax
+ 1 47.6078125
+BLEU:  0
+model: codellama
+
+ def nth_items(list,n):
+  return list[::n]
+# In[1]:
+#importing the libraries
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+# In[2]:
+#importing the dataset
+dataset = pd.read_csv('50_Startups.csv')
+X = dataset.iloc[:,:-1].values
+y = dataset.iloc[:,4].values
+# In[3]:
+#encoding categorical data
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+labelencoder_X = LabelEncoder()
+X[:,3] = labelencoder_X.fit_transform(X[:,3])
+onehotencoder = OneHotEncoder(categorical_features = [3])
+X = onehotencoder.fit_transform(X).toarray()
+# In[4]:
+#splitting the dataset into the training set and test set
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+# In[5]:
+#feature scaling
+from sklearn.preprocessing import StandardScaler
+sc_X = StandardScaler()
+X_train = sc_X.fit_transform(X_train)
+X_test = sc_X.transform(X_test)
+# In[6]:
+#fitting the logistic regression model to the training set
+from sklearn.linear_model import LogisticRegression
+classifier = LogisticRegression(random_state = 0)
+classifier.fit(X_train, y_train)
+# In[7]:
+#predicting the test set results
+y_pred = classifier.predict(X_test)
+# In[8]:
+#making the confusion matrix
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_test, y_pred)
+# In[9]:
+#visualising the training set results
+from matplotlib.colors import ListedColormap
+X_set, y_set = X_train, y_train
+X1, X2 = np.meshgrid(np.arange(start = X_set[:, 0].min() - 1, stop = X_set[:, 0].max() + 1, step = 0.01),
+                     np.arange(start = X_set[:, 1].min() - 1, stop = X_set[:, 1].max() + 1, step = 0.01))
+plt.contourf(X1, X2, classifier.predict(np.array([X1.ravel(), X2.ravel()]).T).reshape(X1.shape),
+             alpha = 0.75, cmap = ListedColormap(('red', 'green')))
+plt.xlim(X1.min(), X1.max())
+plt.ylim(X2.min(), X2.max())
+for i, j in enumerate(np.unique(y_set)):
+    plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
+                c = ListedColormap(('red', 'green'))(i), label = j)
+plt.title('Logistic Regression (Training set)')
+plt.xlabel('Age')
+plt.ylabel('Estimated Salary')
+plt.legend()
+plt.show()
+# In[10]:
+#visualising the test set results
+from matplotlib.colors import ListedColormap
+X_set, y_set = X_test, y_test
+X1, X2 = np.meshgrid(np.arange(start = X_set[:, 0].min() - 1, stop = X_set[:, 0].max() + 1, step = 0.01),
+                     np.arange(start = X_set[:, 1].min() - 1, stop = X_set[:, 1].
+Original code:  1 0.01625691830413416  22 47.6078125
+codellama :  0 inf   File "/tmp/tmp9m4nlxjc.py", line 2
+    def nth_items(list,n):
+    ^
+IndentationError: unexpected indent
+ 1 47.6078125
+BLEU:  0
+model: codellama
+
+### Solutiondef first_repeated_word(str1):
+  temp = set()
+  for word in str1.split():
+    if word in temp:
+      return word;
+    else:
+      temp.add(word)
+  return 'None'
+### Short solutiondef first_repeated_word(str1):
+  temp = set()
+  for word in str1.split():
+    if word in temp:
+      return word;
+    else:
+      temp.add(word)
+  return 'None'
+### Discussiondef first_repeated_word(str1):
+  temp = set()
+  for word in str1.split():
+    if word in temp:
+      return word;
+    else:
+      temp.add(word)
+  return 'None'
+### Codedef first_repeated_word(str1):
+  temp = set()
+  for word in str1.split():
+    if word in temp:
+      return word;
+    else:
+      temp.add(word)
+  return 'None'
+### Unit Test# Test with this code
+str1 = "Once upon a time, there was a brave princess who..."
+print(first_repeated_word(str1))# expected output:
+first_repeated_word(str1)
+# Test with this code
+str1 = "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us, we were all going direct to Heaven, we were all going direct the other way – in short, the period was so far like the present period, that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only..."
+print(first_repeated_word(str1))# expected output:
+first_repeated_word(str1)
+# Test with this code
+str1 = "It was a queer, sultry summer, the summer they electrocuted the Rosenbergs, and I didn’t know what I was doing in New York..."
+print(first_repeated_word(str1))# expected output:
+first_repeated_word(str1)
+# Test with this code
+str1 = "It was a queer, sultry summer, the summer they electrocuted the Rosenbergs, and I didn’t know what I was doing in New York..."
+print(first_repeated_word(str1))# expected output:
+first_repeated_word(str1)
+# Test with this code
+str1 = "It was a queer, sultry summer, the summer they electrocuted the Rosenbergs, and I didn’t know what I was doing in New York..."
+print(first_repeated_word(str1))# expected output:
+first_repeated_word(str1)
+# Test with this code
+str1 = "It was a queer, sultry summer, the summer they electrocuted the Rosenbergs, and I didn’t know what I was doing in New York..."
+print(first_repeated_word(str1))# expected output:
+first_repeated_word(str1)
+# Test with this code
+str1 = "It was a queer, sultry summer, the summer they electrocuted the Rosenbergs, and I didn’t know what I was doing in New York..."
+print(first_repeated_word(str1))# expected output:
+first_repeated_word(str1)
+# Test with this code
+str1 = "It was a queer, sultry summer, the summer they electrocuted the Rosenbergs, and I didn’t know what
+Original code:  1 0.017362584394868465  7 47.6078125
+codellama :  0 inf   File "/tmp/tmpsg1ht71e.py", line 3
+    temp = set()
+    ^
+IndentationError: unexpected indent
+ 1 47.6078125
+BLEU:  0
+model: codellama
+\begin{pre}def string_list_to_tuple(str1):
+    return tuple(x for x in str1 if not x.isspace())\end{pre}
+### Solution
+Original code:  1 0.01625422000652179  5 47.6078125
+codellama :  0 inf   File "/tmp/tmpc_9fk5fu.py", line 1
+    \begin{pre}def string_list_to_tuple(str1):
+                                             ^
+SyntaxError: unexpected character after line continuation character
+ 1 47.6078125
+BLEU:  0
+model: codellama
+
+Original code:  1 0.01770362360402942  13 47.6078125
+codellama :  0 inf Traceback (most recent call last):
+  File "/tmp/tmpj76i1vsa.py", line 2, in <module>
+    assert basesnum_coresspondingnum([10, 20, 30, 40, 50, 60, 70, 80, 90, 100],[1, 2, 3, 4, 5, 6, 7, 8, 9, 10])==[10, 400, 27000, 2560000, 312500000, 46656000000, 8235430000000, 1677721600000000, 387420489000000000, 100000000000000000000]
+NameError: name 'basesnum_coresspondingnum' is not defined
+ 12 47.6078125
+BLEU:  0
+model: codellama
+ 
+ def find_Diff(arr,n): 
+    arr.sort()  
+    count = 0; max_count = 0; min_count = n 
+    for i in range(0,(n-1)): 
+        if arr[i] == arr[i + 1]: 
+            count += 1
+            continue
+        else: 
+            max_count = max(max_count,count) 
+            min_count = min(min_count,count) 
+            count = 0
+    return max_count - min_count ### Question 2
+Write a function that takes a string and returns the number of times that the string appears in the given string.Example:Input: "ababab"
+Output: 3Input: "aba"
+Output: 2Input: "abc"
+Output: 0### Question 3
+Write a function that takes a string and returns the number of times that the string appears in the given string.Example:Input: "ababab"
+Output: 3Input: "aba"
+Output: 2Input: "abc"
+Output: 0### Question 4
+Write a function that takes a string and returns the number of times that the string appears in the given string.Example:Input: "ababab"
+Output: 3Input: "aba"
+Output: 2Input: "abc"
+Output: 0### Question 5
+Write a function that takes a string and returns the number of times that the string appears in the given string.Example:Input: "ababab"
+Output: 3Input: "aba"
+Output: 2Input: "abc"
+Output: 0### Question 6
+Write a function that takes a string and returns the number of times that the string appears in the given string.Example:Input: "ababab"
+Output: 3Input: "aba"
+Output: 2Input: "abc"
+Output: 0### Question 7
+Write a function that takes a string and returns the number of times that the string appears in the given string.Example:Input: "ababab"
+Output: 3Input: "aba"
+Output: 2Input: "abc"
+Output: 0### Question 8
+Write a function that takes a string and returns the number of times that the string appears in the given string.Example:Input: "ababab"
+Output: 3Input: "aba"
+Output: 2Input: "abc"
+Output: 0### Question 9
+Write a function that takes a string and returns the number of times that the string appears in the given string.Example:Input: "ababab"
+Output: 3Input: "aba"
+Output: 2Input: "abc"
+Output: 0### Question 10
+Write a function that takes a string and returns the number of times that the string appears in the given string.Example:Input: "ababab"
+Output: 3Input: "aba"
+Output: 2Input: "abc"
+Output: 0### Question 11
+Write a function that takes a string and returns the number of times that the string appears in the given string.Example:Input: "ababab"
+Output: 3Input: "aba"
+Output: 2Input: "abc"
+Output: 0### Question 12
+Write a function that takes a string and returns the number of times that the string appears in the given string.Example:Input: "ababab"
+Output: 3Input: "aba"
+Output: 2Input: "abc"
+Output: 0### Question 13
+Write a function that takes a string and returns the number of times that
+Original code:  1 0.01594315569382161  39 47.6078125
+codellama :  0 inf   File "/tmp/tmprid77w07.py", line 2
+    def find_Diff(arr,n): 
+    ^
+IndentationError: unexpected indent
+ 1 47.6078125
+BLEU:  0
+==============Check Point ==============
+40  /  100  done
+accuracy:  30.0 Code boosted:  6 / 40 Memory reduced:  0 flake8 fixed:  -78 / 694 BLEU:  7.70275
+model: codellama
+
+import math 
+def get_sum(n): 
+	sum = 0
+	i = 1
+	while i <= (math.sqrt(n)): 
+		if n%i == 0: 
+			if n/i == i : 
+				sum = sum + i 
+			else: 
+				sum = sum + i 
+				sum = sum + (n / i ) 
+		i = i + 1
+	sum = sum - n 
+	return sum
+def check_abundant(n): 
+	if (get_sum(n) > n): 
+		return True
+	else: 
+		return False
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Original code:  1 0.016358984203543515  38 47.6078125
+codellama :  1 0.016207158297766  38 47.6078125
+BLEU:  11.91
+model: codellama
+\begin{pre}def fill_spaces(text):
+  return (re.sub("[ ,.]", ":", text))\end{pre}### Question 10
+
+Original code:  1 0.021934803400654346  4 47.6078125
+codellama :  0 inf   File "/tmp/tmprpaio54g.py", line 1
+    \begin{pre}def fill_spaces(text):
+                                    ^
+SyntaxError: unexpected character after line continuation character
+ 1 47.6078125
+BLEU:  0
+model: codellama
+
+def count_digits(num1,num2):
+    number=num1+num2
+    count = 0
+    while(number > 0):
+        number = number // 10
+        count = count + 1
+    return count
+# In[ ]:
+# Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+def count_digits(num1,num2):
+    number=num1+num2
+    count = 0
+    while(number > 0):
+        number = number // 10
+        count = count + 1
+    return count
+ 
+Original code:  1 0.01591334930853918  10 47.6078125
+codellama :  1 0.016558946308214216  18 47.6078125
+BLEU:  11.18
+model: codellama
+ 
+def flatten_tuple(test_list):
+  return ' '.join(idx for tup in test_list for idx in tup)### Problem 2
+Write a function that takes a list of lists and returns a list of the first elements of each list.Example:>>> first_elements([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+[1, 4, 7]### Problem 3
+Write a function that takes a list of lists and returns a list of the last elements of each list.Example:>>> last_elements([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+[3, 6, 9]### Problem 4
+Write a function that takes a list of lists and returns a list of the last elements of each list.Example:>>> last_elements([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+[3, 6, 9]### Problem 5
+Write a function that takes a list of lists and returns a list of the last elements of each list.Example:>>> last_elements([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+[3, 6, 9]### Problem 6
+Write a function that takes a list of lists and returns a list of the last elements of each list.Example:>>> last_elements([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+[3, 6, 9]### Problem 7
+Write a function that takes a list of lists and returns a list of the last elements of each list.Example:>>> last_elements([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+[3, 6, 9]### Problem 8
+Write a function that takes a list of lists and returns a list of the last elements of each list.Example:>>> last_elements([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+[3, 6, 9]### Problem 9
+Write a function that takes a list of lists and returns a list of the last elements of each list.Example:>>> last_elements([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+[3, 6, 9]### Problem 10
+Write a function that takes a list of lists and returns a list of the last elements of each list.Example:>>> last_elements([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+[3, 6, 9]### Problem 11
+Write a function that takes a list of lists and returns a list of the last elements of each list.Example:>>> last_elements([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+[3, 6, 9]### Problem 12
+Write a function that takes a list of lists and returns a list of the last elements of each list.Example:>>> last_elements([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+[3, 6, 9]### Problem 13
+Write a function that takes a list of lists and returns a list of the last elements of each list.Example:>>> last_elements([[1, 2, 3], [4, 5,
+Original code:  1 0.01607601789291948  7 47.6078125
+codellama :  0 inf   File "/tmp/tmp26ql2zzg.py", line 4
+    Write a function that takes a list of lists and returns a list of the first elements of each list.Example:>>> first_elements([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+          ^
+SyntaxError: invalid syntax
+ 1 47.6078125
+BLEU:  0
+model: codellama
+ 
+def take_L_and_F_set_bits(n) : 
+    n = n | n >> 1
+    n = n | n >> 2
+    n = n | n >> 4
+    n = n | n >> 8
+    n = n | n >> 16 
+    return ((n + 1) >> 1) + 1      
+def toggle_F_and_L_bits(n) :  
+    if (n == 1) : 
+        return 0 
+    return n ^ take_L_and_F_set_bits(n) ### Question 10Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 11Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 12Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 13Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 14Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 15Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 16Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 17Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 18Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 19Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 20Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 21Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 22Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 23Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 24Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 25Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 26Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 27Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 28Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 29Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 30Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 31Write a function that takes a list of integers and returns a list of the integers that are not in the list.### Question 32Write a function
+Original code:  1 0.02018065300071612  12 47.6078125
+codellama :  1 0.016342397907283156  15 47.6078125
+BLEU:  43.31
+model: codellama
+
+ def last_occurence_char(string,char):
+     return string.rfind(char) + 1
+### Problem 2
+Write a function that takes a string and returns the number of times the string occurs in the string.Example:string = "Hello World"
+char = "o"Output: 2
+### Problem 3
+Write a function that takes a string and returns the number of times the string occurs in the string.Example:string = "Hello World"
+char = "o"Output: 2
+### Problem 4
+Write a function that takes a string and returns the number of times the string occurs in the string.Example:string = "Hello World"
+char = "o"Output: 2
+### Problem 5
+Write a function that takes a string and returns the number of times the string occurs in the string.Example:string = "Hello World"
+char = "o"Output: 2
+### Problem 6
+Write a function that takes a string and returns the number of times the string occurs in the string.Example:string = "Hello World"
+char = "o"Output: 2
+### Problem 7
+Write a function that takes a string and returns the number of times the string occurs in the string.Example:string = "Hello World"
+char = "o"Output: 2
+### Problem 8
+Write a function that takes a string and returns the number of times the string occurs in the string.Example:string = "Hello World"
+char = "o"Output: 2
+### Problem 9
+Write a function that takes a string and returns the number of times the string occurs in the string.Example:string = "Hello World"
+char = "o"Output: 2
+### Problem 10
+Write a function that takes a string and returns the number of times the string occurs in the string.Example:string = "Hello World"
+char = "o"Output: 2
+### Problem 11
+Write a function that takes a string and returns the number of times the string occurs in the string.Example:string = "Hello World"
+char = "o"Output: 2
+### Problem 12
+Write a function that takes a string and returns the number of times the string occurs in the string.Example:string = "Hello World"
+char = "o"Output: 2
+### Problem 13
+Write a function that takes a string and returns the number of times the string occurs in the string.Example:string = "Hello World"
+char = "o"Output: 2
+### Problem 14
+Write a function that takes a string and returns the number of times the string occurs in the string.Example:string = "Hello World"
+char = "o"Output: 2
+### Problem 15
+Write a function that takes a string and returns the number of times the string occurs in the string.Example:string = "Hello World"
+char = "o"Output: 2
+### Problem 16
+Write a function that takes a string and returns the number of times the string occurs in the string.Example:string = "Hello World"
+char = "o"Output: 2
+### Problem 17
+Write a function that takes a string and returns the number of times the string occurs in the string.Example:string = "Hello World"
+char = "o"Output: 2
+### Problem 18
+Write a function that takes a string and returns the number of times the string occurs in the string.Example:string = "
+Original code:  1 0.016597678791731595  17 47.6078125
+codellama :  0 inf   File "/tmp/tmpkc5z8ui2.py", line 2
+    def last_occurence_char(string,char):
+    ^
+IndentationError: unexpected indent
+ 1 47.6078125
+BLEU:  0
+model: codellama
+
+def Total_Hamming_Distance(n):
+    sum = 0
+    while n:
+        sum += n & 1
+        n >>= 1
+    return sum---### 10.10.10Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.11Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.12Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.13Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.14Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.15Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.16Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.17Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.18Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.19Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.20Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.21Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.22Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.23Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.24Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.25Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.26Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.27Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.28Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.29Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.30Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.31Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.32Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.33Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.34Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.35Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.36Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.37Write a function that takes a list of numbers and returns the sum of the numbers.
+Original code:  1 0.016104060504585505  5 47.6078125
+codellama :  0 inf   File "/tmp/tmp_fhgxhv3.py", line 7
+    return sum---### 10.10.10Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.11Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.12Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.13Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.14Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.15Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.16Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.17Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.18Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.19Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.20Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.21Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.22Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.23Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.24Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.25Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.26Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.27Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.28Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.29Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.30Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.31Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.32Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.33Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.34Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.35Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.36Write a function that takes a list of numbers and returns the sum of the numbers.---### 10.10.37Write a function that takes a list of numbers and returns the sum of the numbers.
+                 ^
+SyntaxError: invalid syntax
+ 1 47.60859375
+BLEU:  0
+model: codellama
+
+def longest_increasing_subsequence(arr):
+    n = len(arr)
+    longest_increasing_subsequence = [1]*n
+    for i in range (1 , n):
+        for j in range(0 , i):
+            if arr[i] > arr[j] and longest_increasing_subsequence[i]< longest_increasing_subsequence[j] + 1 :
+                longest_increasing_subsequence[i] = longest_increasing_subsequence[j]+1
+    maximum = 0
+    for i in range(n):
+        maximum = max(maximum , longest_increasing_subsequence[i])
+    return maximum
+
+Original code:  1 0.01594998249784112  27 47.60859375
+codellama :  1 0.016035951010417195  10 47.60859375
+BLEU:  5.14
+model: codellama
+ 
+def odd_Num_Sum(n) : 
+    j = 0
+    sm = 0
+    for i in range(1,n+1) : 
+        j = (2*i-1) 
+        sm = sm + (j*j*j*j*j)     
+    return sm 
+
+Original code:  1 0.016459091706201433  9 47.60859375
+codellama :  1 0.016000461601652204  10 47.60859375
+BLEU:  13.41
+model: codellama
+ 
+def find_Max(arr,low,high): 
+    if (high < low): 
+        return arr[0] 
+    if (high == low): 
+        return arr[low] 
+    mid = low + (high - low) // 2 
+    if (mid < high and arr[mid + 1] < arr[mid]): 
+        return arr[mid] 
+    if (mid > low and arr[mid] < arr[mid - 1]): 
+        return arr[mid - 1]  
+    if (arr[low] > arr[mid]): 
+        return find_Max(arr,low,mid - 1) 
+    else: 
+        return find_Max(arr,mid + 1,high) # 1.1
+def find_Max(arr,low,high): 
+    if (high < low): 
+        return arr[0] 
+    if (high == low): 
+        return arr[low] 
+    mid = low + (high - low) // 2 
+    if (mid < high and arr[mid + 1] < arr[mid]): 
+        return arr[mid] 
+    if (mid > low and arr[mid] < arr[mid - 1]): 
+        return arr[mid - 1]  
+    if (arr[low] > arr[mid]): 
+        return find_Max(arr,low,mid - 1) 
+    else: 
+        return find_Max(arr,mid + 1,high) # 1.2
+def find_Max(arr,low,high): 
+    if (high < low): 
+        return arr[0] 
+    if (high == low): 
+        return arr[low] 
+    mid = low + (high - low) // 2 
+    if (mid < high and arr[mid + 1] < arr[mid]): 
+        return arr[mid] 
+    if (mid > low and arr[mid] < arr[mid - 1]): 
+        return arr[mid - 1]  
+    if (arr[low] > arr[mid]): 
+        return find_Max(arr,low,mid - 1) 
+    else: 
+        return find_Max(arr,mid + 1,high) # 1.3
+def find_Max(arr,low,high): 
+    if (high < low): 
+        return arr[0] 
+    if (high == low): 
+        return arr[low] 
+    mid = low + (high - low) // 2 
+    if (mid < high and arr[mid + 1] < arr[mid]): 
+        return arr[mid] 
+    if (mid > low and arr[mid] < arr[mid - 1]): 
+        return arr[mid - 1]  
+    if (arr[low] > arr[mid]): 
+        return find_Max(arr,low,mid - 1) 
+    else: 
+        return find_Max(arr,mid + 1,high) # 1.4
+def find_Max(arr,low,high): 
+    if (high < low): 
+        return arr[0] 
+    if (high == low): 
+        return arr[low] 
+    mid = low + (high - low) // 2 
+    if (mid < high and arr[mid + 1] < arr[mid]): 
+        return arr[mid] 
+    if (mid > low and arr[mid] < arr[mid - 1]): 
+        return arr[mid - 1]  
+    if (arr[low] > arr[mid]): 
+        return find_Max(arr,low,mid - 1) 
+    else: 
+        return find_Max(arr,mid + 1,high) # 1.5
+def find_Max(arr,low,high): 
+    if (high < low): 
+        return arr[0] 
+    if (high == low): 
+        return arr[low] 
+    mid = low + (high - low) // 2 
+    if (mid < high and arr[mid + 1] < arr[mid]): 
+        return arr
+Original code:  1 0.01617516069673002  37 47.608984375
+codellama :  0 inf Traceback (most recent call last):
+  File "/tmp/tmp7sxia5ug.py", line 80, in <module>
+    assert find_Max([2,3,5,6,9],0,4) == 9
+AssertionError
+ 137 47.609765625
+BLEU:  0
+==============Check Point ==============
+50  /  100  done
+accuracy:  34.0 Code boosted:  9 / 50 Memory reduced:  0 flake8 fixed:  -73 / 860 BLEU:  7.861200000000001
+model: codellama
+
+def extract_column(list1, n):
+   return [i[n] for i in list1]
+# In[1]:
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import re
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem.porter import PorterStemmer
+from nltk.stem.wordnet import WordNetLemmatizer
+from nltk.tokenize import word_tokenize
+from nltk.corpus import wordnet
+from nltk.corpus import brown
+from nltk.corpus import names
+from nltk.corpus import movie_reviews
+from nltk.corpus import genesis
+from nltk.corpus import gutenberg
+from nltk.corpus import brown
+from nltk.corpus import reuters
+from nltk.corpus import webtext
+from nltk.corpus import treebank
+from nltk.corpus import trec
+from nltk.corpus import brown
+from nltk.corpus import treebank
+from nltk.corpus import trec
+from nltk.corpus import reuters
+from nltk.corpus import webtext
+from nltk.corpus import gutenberg
+from nltk.corpus import genesis
+from nltk.corpus import movie_reviews
+from nltk.corpus import names
+from nltk.corpus import brown
+from nltk.corpus import reuters
+from nltk.corpus import webtext
+from nltk.corpus import gutenberg
+from nltk.corpus import genesis
+from nltk.corpus import movie_reviews
+from nltk.corpus import names
+from nltk.corpus import brown
+from nltk.corpus import reuters
+from nltk.corpus import webtext
+from nltk.corpus import gutenberg
+from nltk.corpus import genesis
+from nltk.corpus import movie_reviews
+from nltk.corpus import names
+from nltk.corpus import brown
+from nltk.corpus import reuters
+from nltk.corpus import webtext
+from nltk.corpus import gutenberg
+from nltk.corpus import genesis
+from nltk.corpus import movie_reviews
+from nltk.corpus import names
+from nltk.corpus import brown
+from nltk.corpus import reuters
+from nltk.corpus import webtext
+from nltk.corpus import gutenberg
+from nltk.corpus import genesis
+from nltk.corpus import movie_reviews
+from nltk.corpus import names
+from nltk.corpus import brown
+from nltk.corpus import reuters
+from nltk.corpus import webtext
+from nltk.corpus import gutenberg
+from nltk.corpus import genesis
+from nltk.corpus import movie_reviews
+from nltk.corpus import names
+from nltk.corpus import brown
+from nltk.corpus import reuters
+from nltk.corpus import webtext
+from nltk.corpus import gutenberg
+from nltk.corpus import genesis
+from nltk.corpus import movie_reviews
+from nltk.corpus import names
+from nltk.corpus import brown
+from nltk.corpus import reuters
+from nltk.corpus import webtext
+from nltk.corpus import gutenberg
+from nltk.corpus import genesis
+from nltk.corpus import movie_reviews
+from nltk.corpus import names
+from nltk.corpus import brown
+from nltk.corpus import reuters
+from nltk.corpus import webtext
+from nltk.corpus import gutenberg
+from nltk.corpus import genesis
+from nltk.corpus import movie_reviews
+from nltk.corpus import names
+from nltk.corpus import brown
+from nltk.corpus import reuters
+from nltk.corpus import webtext
+from nltk.cor
+Original code:  1 0.01617184010101482  11 47.609765625
+codellama :  0 inf   File "/tmp/tmpgfedz86a.py", line 94
+    from nltk.cor
+                ^
+SyntaxError: invalid syntax
+ 1 47.61015625
+BLEU:  0
+model: codellama
+
+def Seq_Linear(seq_nums):
+  seq_nums = [seq_nums[x] - seq_nums[x-1] for x in range(1, len(seq_nums))]
+  if len(set(seq_nums)) == 1:
+    return "Linear Sequence"
+  else:
+    return "Non Linear Sequence"
+### Question 2Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 3Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 4Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 5Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 6Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 7Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 8Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 9Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 10Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 11Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 12Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 13Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 14Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 15Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 16Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 17Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 18Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 19Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 20Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 21Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 22Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 23Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+### Question 24Write a function that takes a list of numbers and returns the number of times the number 1 appears in the list.
+Original code:  1 0.015808389196172355  14 47.61015625
+codellama :  1 0.016393114102538676  59 47.61015625
+BLEU:  5.93
+model: codellama
+ 
+def tuple_to_float(test_tup):
+  return float('.'.join(str(ele) for ele in test_tup))### Problem: Write a function that takes a list of integers and returns a list of the integers that are divisible by 3.### Solution: def divisible_by_3(lst):
+  return [x for x in lst if x % 3 == 0]### Problem: Write a function that takes a list of integers and returns a list of the integers that are divisible by 3.### Solution: def divisible_by_3(lst):
+  return [x for x in lst if x % 3 == 0]### Problem: Write a function that takes a list of integers and returns a list of the integers that are divisible by 3.### Solution: def divisible_by_3(lst):
+  return [x for x in lst if x % 3 == 0]### Problem: Write a function that takes a list of integers and returns a list of the integers that are divisible by 3.### Solution: def divisible_by_3(lst):
+  return [x for x in lst if x % 3 == 0]### Problem: Write a function that takes a list of integers and returns a list of the integers that are divisible by 3.### Solution: def divisible_by_3(lst):
+  return [x for x in lst if x % 3 == 0]### Problem: Write a function that takes a list of integers and returns a list of the integers that are divisible by 3.### Solution: def divisible_by_3(lst):
+  return [x for x in lst if x % 3 == 0]### Problem: Write a function that takes a list of integers and returns a list of the integers that are divisible by 3.### Solution: def divisible_by_3(lst):
+  return [x for x in lst if x % 3 == 0]### Problem: Write a function that takes a list of integers and returns a list of the integers that are divisible by 3.### Solution: def divisible_by_3(lst):
+  return [x for x in lst if x % 3 == 0]### Problem: Write a function that takes a list of integers and returns a list of the integers that are divisible by 3.### Solution: def divisible_by_3(lst):
+  return [x for x in lst if x % 3 == 0]### Problem: Write a function that takes a list of integers and returns a list of the integers that are divisible by 3.### Solution: def divisible_by_3(lst):
+  return [x for x in lst if x % 3 == 0]### Problem: Write a function that takes a list of integers and returns a list of the integers that are divisible by 3.### Solution: def divisible_by_3(lst):
+  return [x for x in lst if x % 3 == 0]### Problem: Write a function that takes a list of integers and returns a list of the integers that are divisible by 3.### Solution: def divisible_by_3(lst):
+  return [x for x in lst if x % 3 == 0]
+Original code:  1 0.015864657890051603  4 47.61015625
+codellama :  1 0.016136738494969903  63 47.61015625
+BLEU:  3.81
+model: codellama
+\begin{code}
+def Split(list):
+    return [i for i in list if i % 2 != 0]
+\end{code}\end{code}Comment: Please format your code properly.Comment: I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close this question as off-topic because it is not a question.Comment: @user2357112 I'm voting to close
+Original code:  1 0.017300468997564166  22 47.61015625
+codellama :  0 inf   File "/tmp/tmp2pm7z41x.py", line 1
+    \begin{code}
+               ^
+SyntaxError: unexpected character after line continuation character
+ 1 47.610546875
+BLEU:  0
+model: codellama
+ 
+def difference(n) :  
+    S = (n*(n + 1))//2;  
+    res = S*(S-1);  
+    return res;  def difference(n) : 
+    S = (n*(n + 1))//2; 
+    res = S*(S-1); 
+    return res;  
+difference(10)    2640%timeit difference(10)
+    1000000 loops, best of 3: 1.11 µs per loop
+def difference(n) : 
+    S = (n*(n + 1))//2; 
+    res = S*(S-1); 
+    return res;  
+%timeit difference(10)
+    1000000 loops, best of 3: 1.11 µs per loop
+def difference(n) : 
+    S = (n*(n + 1))//2; 
+    res = S*(S-1); 
+    return res;  
+%timeit difference(10)
+    1000000 loops, best of 3: 1.11 µs per loop
+def difference(n) : 
+    S = (n*(n + 1))//2; 
+    res = S*(S-1); 
+    return res;  
+%timeit difference(10)
+    1000000 loops, best of 3: 1.11 µs per loop
+def difference(n) : 
+    S = (n*(n + 1))//2; 
+    res = S*(S-1); 
+    return res;  
+%timeit difference(10)
+    1000000 loops, best of 3: 1.11 µs per loop
+def difference(n) : 
+    S = (n*(n + 1))//2; 
+    res = S*(S-1); 
+    return res;  
+%timeit difference(10)
+    1000000 loops, best of 3: 1.11 µs per loop
+def difference(n) : 
+    S = (n*(n + 1))//2; 
+    res = S*(S-1); 
+    return res;  
+%timeit difference(10)
+    1000000 loops, best of 3: 1.11 µs per loop
+def difference(n) : 
+    S = (n*(n + 1))//2; 
+    res = S*(S-1); 
+    return res;  
+%timeit difference(10)
+    1000000 loops, best of 3: 1.11 µs per loop
+def difference(n) : 
+    S = (n*(n + 1))//2; 
+    res = S*(S-1); 
+    return res;  
+%timeit difference(10)
+    1000000 loops, best of 3: 1.11 µs per loop
+def difference(n) : 
+    S = (n*(n + 1))//2; 
+    res = S*(S-1); 
+    return res;  
+%timeit difference(10)
+    1000000 loops, best of 3: 1.11 µs per loop
+def difference(n) : 
+    S = (n*(n + 1))//2; 
+    res =
+Original code:  1 0.015627743606455625  9 47.610546875
+codellama :  0 inf   File "/tmp/tmp0ous462c.py", line 5
+    return res;  def difference(n) : 
+                 ^
+SyntaxError: invalid syntax
+ 1 47.6109375
+BLEU:  0
+model: codellama
+ 
+def find_Odd_Pair(A,N) : 
+    oddPair = 0
+    for i in range(0,N) :  
+        for j in range(i+1,N) :  
+            if ((A[i] ^ A[j]) % 2 != 0):  
+                oddPair+=1  
+    return oddPair  
+
+Original code:  1 0.016034649102948606  29 47.6109375
+codellama :  1 0.01854436700232327  30 47.6109375
+BLEU:  7.81
+model: codellama
+
+# Write your code below this line 👇
+def toggle_string(string):
+    return string.swapcase()
+# 🚨 Don't change the code below 👇
+print(toggle_string("Hello World"))# 🚨 Don't change the code above 👆
+# 🚨 Don't change the code below 👇
+print(toggle_string("How are you?"))
+# 🚨 Don't change the code above 👆
+# 🚨 Don't change the code below 👇
+print(toggle_string("I'm fine, thank you."))
+# 🚨 Don't change the code above 👆
+# 🚨 Don't change the code below 👇
+print(toggle_string("I'm not fine, thank you."))
+# 🚨 Don't change the code above 👆
+# 🚨 Don't change the code below 👇
+print(toggle_string("I'm not fine, thank you."))
+# 🚨 Don't change the code above 👆
+# 🚨 Don't change the code below 👇
+print(toggle_string("I'm not fine, thank you."))
+# 🚨 Don't change the code above 👆
+# 🚨 Don't change the code below 👇
+print(toggle_string("I'm not fine, thank you."))
+# 🚨 Don't change the code above 👆
+# 🚨 Don't change the code below 👇
+print(toggle_string("I'm not fine, thank you."))
+# 🚨 Don't change the code above 👆
+# 🚨 Don't change the code below 👇
+print(toggle_string("I'm not fine, thank you."))
+# 🚨 Don't change the code above 👆
+# 🚨 Don't change the code below 👇
+print(toggle_string("I'm not fine, thank you."))
+# 🚨 Don't change the code above 👆
+# 🚨 Don't change the code below 👇
+print(toggle_string("I'm not fine, thank you."))
+# 🚨 Don't change the code above 👆
+# 🚨 Don't change the code below 👇
+print(toggle_string("I'm not fine, thank you."))
+# 🚨 Don't change the code above 👆
+# 🚨 Don't change the code below 👇
+print(toggle_string("I'm not fine, thank you."))
+# 🚨 Don't change the code above 👆
+# 🚨 Don't change the code below 👇
+print(toggle_string("I'm not fine, thank you."))
+# 🚨 Don't change the code above 👆
+# 🚨 Don't change the code below 👇
+print(toggle_string("I'm not fine, thank you."))
+# 🚨 Don't change the code above 👆
+# 🚨 Don't change the code below 👇
+print(toggle_string("I'm not fine, thank you."))
+# 🚨 Don't change the code above 👆
+# 🚨 Don't change the code below 👇
+print(toggle_string("I'm not fine, thank you."))
+# 🚨 Don't change the code above 👆
+Original code:  1 0.015894138894509524  6 47.6109375
+codellama :  1 0.01583739250199869  5 47.612109375
+BLEU:  12.45
+model: codellama
+
+# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution# Solution#
+Original code:  1 0.017195634299423546  7 47.612109375
+codellama :  0 inf Traceback (most recent call last):
+  File "/tmp/tmp9cwr5ki3.py", line 3, in <module>
+    assert digit_distance_nums(1,2) == 1
+NameError: name 'digit_distance_nums' is not defined
+ 7 47.6125
+BLEU:  0
+model: codellama
+
+def max_sub_array_sum(a, size):
+  max_so_far = 0
+  max_ending_here = 0
+  for i in range(0, size):
+    max_ending_here = max(max_ending_here + a[i], 0)
+    max_so_far = max(max_so_far, max_ending_here)
+  return max_so_far
+### Problem: Given a string, find the length of the longest substring without repeating characters.### Solution: class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        if not s:
+            return 0
+        start = 0
+        end = 0
+        max_len = 0
+        char_set = set()
+        while end < len(s):
+            if s[end] not in char_set:
+                char_set.add(s[end])
+                end += 1
+                max_len = max(max_len, end - start)
+            else:
+                char_set.remove(s[start])
+                start += 1
+        return max_len
+### Problem: Given a string, find the length of the longest substring without repeating characters.### Solution: class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        if not s:
+            return 0
+        start = 0
+        end = 0
+        max_len = 0
+        char_set = set()
+        while end < len(s):
+            if s[end] not in char_set:
+                char_set.add(s[end])
+                end += 1
+                max_len = max(max_len, end - start)
+            else:
+                char_set.remove(s[start])
+                start += 1
+        return max_len
+### Problem: Given a string, find the length of the longest substring without repeating characters.### Solution: class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        if not s:
+            return 0
+        start = 0
+        end = 0
+        max_len = 0
+        char_set = set()
+        while end < len(s):
+            if s[end] not in char_set:
+                char_set.add(s[end])
+                end += 1
+                max_len = max(max_len, end - start)
+            else:
+                char_set.remove(s[start])
+                start += 1
+        return max_len
+### Problem: Given a string, find the length of the longest substring without repeating characters.### Solution: class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        if not s:
+            return 0
+        start = 0
+        end = 0
+        max_len = 0
+        char_set = set()
+        while end < len(s):
+            if s[end] not in char_set:
+                char_set.add(s[end])
+                end += 1
+                max_len = max(max_len, end - start)
+            else:
+                char_set.remove(s[start])
+                start += 1
+        return max_len
+### Problem: Given a string, find the length of the longest substring without repeating characters.### Solution: class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        if not s:
+            return 0
+        start = 0
+        end = 0
+        max_len = 0
+        char_set = set()
+        while end < len(s):
+            if s[end] not in char_set:
+                char_set.add(s[end])
+                end += 1
+                max_len = max(max_len, end - start)
+            else:
+                char_set.remove(s[start])
+                start +=
+Original code:  1 0.020473973802290858  7 47.6125
+codellama :  0 inf   File "/tmp/tmpqxlse_2v.py", line 10
+    def lengthOfLongestSubstring(self, s: str) -> int:
+    ^
+IndentationError: unexpected indent
+ 1 47.6125
+BLEU:  0
+model: codellama
+ 
+def union_elements(test_tup1, test_tup2):
+  res = tuple(set(test_tup1 + test_tup2))
+  return (res) 
+# 1.
+# Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+def union_elements(test_tup1, test_tup2):
+  res = tuple(set(test_tup1 + test_tup2))
+  return (res) 
+ 
+Original code:  1 0.01763771689729765  11 47.6125
+codellama :  1 0.017058155895210803  20 47.6125
+BLEU:  14.05
+==============Check Point ==============
+60  /  100  done
+accuracy:  36.666666666666664 Code boosted:  11 / 60 Memory reduced:  0 flake8 fixed:  -186 / 980 BLEU:  7.285166666666668
+model: codellama
+ 
+def assign_elements(test_list):
+  res = {}
+  for key, val in test_list:
+    res.setdefault(val, [])
+    res.setdefault(key, []).append(val)
+  return (res) ### 1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2
+Original code:  1 0.01649871190311387  11 47.6125
+codellama :  1 0.01598974970402196  14 47.6125
+BLEU:  12.59
+model: codellama
+ 
+def Find_Max_Length(lst):  
+    return max(len(x) for x in lst ) ---### 1.1.2.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.
+Original code:  1 0.01743567440425977  26 47.6125
+codellama :  0 inf   File "/tmp/tmpmghoiwtg.py", line 3
+    return max(len(x) for x in lst ) ---### 1.1.2.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.
+                                        ^
+SyntaxError: invalid syntax
+ 1 47.6125
+BLEU:  0
+model: codellama
+\begin{pre}import re
+def extract_values(text):
+ return (re.findall(r'"(.*?)"', text))\end{pre}### Question 2
+
+Original code:  1 0.022041686996817588  13 47.6125
+codellama :  0 inf   File "/tmp/tmp8sgyevgb.py", line 1
+    \begin{pre}import re
+                       ^
+SyntaxError: unexpected character after line continuation character
+ 1 47.6125
+BLEU:  0
+model: codellama
+ 
+def count_Pairs(arr,n): 
+    cnt = 0; 
+    for i in range(n): 
+        for j in range(i + 1,n): 
+            if (arr[i] != arr[j]): 
+                cnt += 1; 
+    return cnt; 
+ 
+Original code:  1 0.017108810890931636  25 47.6125
+codellama :  1 0.020805560902226718  27 47.6125
+BLEU:  9.48
+model: codellama
+ 
+def split(word): 
+    return list(word) ### 2. Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+def split(word): 
+    return [char for char in word] 
+ 
+Original code:  1 0.01609648789744824  17 47.6125
+codellama :  1 0.016288073302712293  26 47.6125
+BLEU:  3.18
+model: codellama
+
+def sum_digits(n):
+  if n == 0:
+    return 0
+  else:
+    return n % 10 + sum_digits(n // 10)
+# In[ ]:
+# Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+def sum_digits(n):
+  if n == 0:
+    return 0
+  else:
+    return n % 10 + sum_digits(int(n / 10))
+ 
+Original code:  1 0.017212900705635546  6 47.6125
+codellama :  1 0.015971975703723728  13 47.6125
+BLEU:  9.44
+model: codellama
+
+def issort_list(list1):
+    return all(list1[i] <= list1[i+1] for i in range(len(list1)-1))### Solution
+def issort_list(list1):
+    return all(list1[i] <= list1[i+1] for i in range(len(list1)-1))### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution### Code Explanation### Solution
+Original code:  1 0.019872901693452148  19 47.6125
+codellama :  1 0.016087955597322436  26 47.6125
+BLEU:  10.95
+model: codellama
+
+ def empty_list(length):
+  return [{} for _ in range(length)]### Solution
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range(length)]
+### Short story
+def empty_list(length):
+    return [{} for _ in range
+Original code:  1 0.015887670591473578  21 47.6125
+codellama :  0 inf   File "/tmp/tmpixfapuvg.py", line 2
+    def empty_list(length):
+    ^
+IndentationError: unexpected indent
+ 1 47.6125
+BLEU:  0
+model: codellama
+
+def sort_sublists(list1):
+    return list(map(sorted,list1))
+# In[10]:
+# Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+def sort_sublists(list1):
+    result = list(map(sorted,list1)) 
+    return result
+
+Original code:  1 0.01596661490621045  16 47.6125
+codellama :  1 0.01614674790762365  21 47.6125
+BLEU:  28.54
+model: codellama
+
+def remove_words(list1, charlist):
+    new_list = []
+    for line in list1:
+        new_words = ' '.join([word for word in line.split() if not any([phrase in word for phrase in charlist])])
+        new_list.append(new_words)
+    return new_listdef remove_words(list1, charlist):
+    new_list = []
+    for line in list1:
+        new_words = ' '.join([word for word in line.split() if not any([phrase in word for phrase in charlist])])
+        new_list.append(new_words)
+    return new_listdef remove_words(list1, charlist):
+    new_list = []
+    for line in list1:
+        new_words = ' '.join([word for word in line.split() if not any([phrase in word for phrase in charlist])])
+        new_list.append(new_words)
+    return new_listdef remove_words(list1, charlist):
+    new_list = []
+    for line in list1:
+        new_words = ' '.join([word for word in line.split() if not any([phrase in word for phrase in charlist])])
+        new_list.append(new_words)
+    return new_listdef remove_words(list1, charlist):
+    new_list = []
+    for line in list1:
+        new_words = ' '.join([word for word in line.split() if not any([phrase in word for phrase in charlist])])
+        new_list.append(new_words)
+    return new_listdef remove_words(list1, charlist):
+    new_list = []
+    for line in list1:
+        new_words = ' '.join([word for word in line.split() if not any([phrase in word for phrase in charlist])])
+        new_list.append(new_words)
+    return new_listdef remove_words(list1, charlist):
+    new_list = []
+    for line in list1:
+        new_words = ' '.join([word for word in line.split() if not any([phrase in word for phrase in charlist])])
+        new_list.append(new_words)
+    return new_listdef remove_words(list1, charlist):
+    new_list = []
+    for line in list1:
+        new_words = ' '.join([word for word in line.split() if not any([phrase in word for phrase in charlist])])
+        new_list.append(new_words)
+    return new_listdef remove_words(list1, charlist):
+    new_list = []
+    for line in list1:
+        new_words = ' '.join([word for word in line.split() if not any([phrase in word for phrase in charlist])])
+        new_list.append(new_words)
+    return new_listdef remove_words(list1, charlist):
+    new_list = []
+    for line in list1:
+        new_words = ' '.join([word for word in line.split() if not any([phrase in word for phrase in charlist])])
+        new_list.append(new_words)
+    return new_listdef remove_words(list1, charlist):
+    new_list = []
+    for line in list1:
+        new_words = ' '.join([word for word in line.split() if not any([phrase in word for phrase in charlist])])
+        new_list.append(new_words)
+    return new_listdef remove_words(list1, charlist):
+    new_list = []
+    for line in list1:
+        new_words = ' '.join([word for word in line.split() if not any([phrase in word for phrase in charlist])])
+        new_list.append(new_words)
+    return new_listdef remove_words(list1,
+Original code:  1 0.017641699803061784  11 47.6125
+codellama :  0 inf   File "/tmp/tmpfopfmouv.py", line 7
+    return new_listdef remove_words(list1, charlist):
+                       ^
+SyntaxError: invalid syntax
+ 1 47.6125
+BLEU:  0
+==============Check Point ==============
+70  /  100  done
+accuracy:  40.0 Code boosted:  14 / 70 Memory reduced:  0 flake8 fixed:  -219 / 1145 BLEU:  7.304142857142859
+model: codellama
+def max_sum_pair_diff_lessthan_K(arr, N, K):
+    arr.sort()
+    dp = [0] * N
+    dp[0] = 0
+    for i in range(1, N):
+        dp[i] = dp[i-1]
+        if (arr[i] - arr[i-1] < K):
+            if (i >= 2):
+                dp[i] = max(dp[i], dp[i-2] + arr[i] + arr[i-1])
+            else:
+                dp[i] = max(dp[i], arr[i] + arr[i-1])
+    return dp[N - 1]
+### 2.2.2. arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+N = len(arr)
+K = 2
+print(max_sum_pair_diff_lessthan_K(arr, N, K))
+    55
+### 2.2.3. arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+N = len(arr)
+K = 3
+print(max_sum_pair_diff_lessthan_K(arr, N, K))
+    65
+### 2.2.4. arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+N = len(arr)
+K = 4
+print(max_sum_pair_diff_lessthan_K(arr, N, K))
+    75
+### 2.2.5. arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+N = len(arr)
+K = 5
+print(max_sum_pair_diff_lessthan_K(arr, N, K))
+    85
+### 2.2.6. arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+N = len(arr)
+K = 6
+print(max_sum_pair_diff_lessthan_K(arr, N, K))
+    95
+### 2.2.7. arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+N = len(arr)
+K = 7
+print(max_sum_pair_diff_lessthan_K(arr, N, K))
+    105
+### 2.2.8. arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+N = len(arr)
+K = 8
+print(max_sum_pair_diff_lessthan_K(arr, N, K))
+    115
+### 2.2.9. arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+N = len(arr)
+K = 9
+print(max_sum_pair_diff_lessthan_K(arr, N, K))
+    125
+### 2.2.10. arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+N = len(arr)
+K = 10
+print(max_sum_pair_diff_lessthan_K(arr, N, K))
+Original code:  1 0.01619106810539961  24 47.6125
+codellama :  0 inf   File "/tmp/tmp8yw17e2l.py", line 17
+    55
+    ^
+IndentationError: unexpected indent
+ 1 47.612890625
+BLEU:  0
+model: codellama
+### Solution
+def two_unique_nums(nums):
+  return [i for i in nums if nums.count(i)==1]
+### Short story### Reference- [https://www.codewars.com/kata/55f2b1c5a11c11755e000096/train/python](https://www.codewars.com/kata/55f2b1c5a11c11755e000096/train/python)
+- [https://www.codewars.com/kata/55f2b1c5a11c11755e000096/discuss/python](https://www.codewars.com/kata/55f2b1c5a11c11755e000096/discuss/python)
+- [https://www.codewars.com/kata/55f2b1c5a11c11755e000096/solutions/python](https://www.codewars.com/kata/55f2b1c5a11c11755e000096/solutions/python)
+- [https://www.codewars.com/kata/55f2b1c5a11c11755e000096/solutions/python](https://www.codewars.com/kata/55f2b1c5a11c11755e000096/solutions/python)
+- [https://www.codewars.com/kata/55f2b1c5a11c11755e000096/solutions/python](https://www.codewars.com/kata/55f2b1c5a11c11755e000096/solutions/python)
+- [https://www.codewars.com/kata/55f2b1c5a11c11755e000096/solutions/python](https://www.codewars.com/kata/55f2b1c5a11c11755e000096/solutions/python)
+- [https://www.codewars.com/kata/55f2b1c5a11c11755e000096/solutions/python](https://www.codewars.com/kata/55f2b1c5a11c11755e000096/solutions/python)
+- [https://www.codewars.com/kata/55f2b1c5a11c11755e000096/solutions/python](https://www.codewars.com/kata/55f2b1c5a11c11755e000096/solutions/python)
+- [https://www.codewars.com/kata/55f2b1c5a11c11755e000096/solutions/python](https://www.codewars.com/kata/55f2b1c5a11c11755e000096/solutions/python)
+- [https://www.codewars.com/kata/55f2b1c5a11c11755e000096/solutions/python](https://www.codewars.com/kata/55f2b1c5a11c11755e000096/solutions/python)
+- [https://www.codewars.com/kata/55f2b1c5a11c11755e000096/solutions/python](https://www.codewars.com/kata/55f2b1c5a11c
+Original code:  1 0.017381864308845252  18 47.612890625
+codellama :  0 inf   File "/tmp/tmpvc02oqbv.py", line 5
+    - [https://www.codewars.com/kata/55f2b1c5a11c11755e000096/discuss/python](https://www.codewars.com/kata/55f2b1c5a11c11755e000096/discuss/python)
+            ^
+SyntaxError: invalid syntax
+ 1 47.613671875
+BLEU:  0
+model: codellama
+
+def unique_product(list_data):
+    temp = list(set(list_data))
+    p = 1
+    for i in temp:
+        p *= i
+    return p
+# In[ ]:
+# Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+def unique_product(list_data):
+    temp = list(set(list_data))
+    p = 1
+    for i in temp:
+        p *= i
+    return p
+ 
+Original code:  1 0.01608942130114883  2 47.613671875
+codellama :  1 0.01589138030540198  7 47.613671875
+BLEU:  18.26
+model: codellama
+
+def surfacearea_cylinder(r,h):
+  surfacearea=((2*3.1415*r*r) +(2*3.1415*r*h))
+  return surfacearea
+# In[ ]:
+# Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+def surfacearea_cylinder(r,h):
+  surfacearea=((2*3.1415*r*r) +(2*3.1415*r*h))
+  return surfacearea
+ 
+Original code:  1 0.018537161394488067  12 47.613671875
+codellama :  1 0.016086334199644624  22 47.6140625
+BLEU:  30.82
+model: codellama
+ 
+def count_no (A,N,L,R): 
+    count = 0
+    for i in range (L,R + 1): 
+        if (i % A != 0): 
+            count += 1
+        if (count == N): 
+            break
+    return (i) 
+ 
+Original code:  1 0.016223294800147413  21 47.614453125
+codellama :  1 0.015882751205936074  23 47.61484375
+BLEU:  5.53
+model: codellama
+ 
+def is_Sub_Array(A,B,n,m): 
+    i = 0; j = 0; 
+    while (i < n and j < m):  
+        if (A[i] == B[j]): 
+            i += 1; 
+            j += 1; 
+            if (j == m): 
+                return True;  
+        else: 
+            i = i - j + 1; 
+            j = 0;       
+    return False; # 1.1
+def is_Sub_Array(A,B,n,m): 
+    i = 0; j = 0; 
+    while (i < n and j < m): 
+        if (A[i] == B[j]): 
+            i += 1; 
+            j += 1; 
+            if (j == m): 
+                return True; 
+        else: 
+            i = i - j + 1; 
+            j = 0;      
+    return False; # 1.2
+def is_Sub_Array(A,B,n,m): 
+    i = 0; j = 0; 
+    while (i < n and j < m): 
+        if (A[i] == B[j]): 
+            i += 1; 
+            j += 1; 
+            if (j == m): 
+                return True; 
+        else: 
+            i = i - j + 1; 
+            j = 0;      
+    return False; # 1.3
+def is_Sub_Array(A,B,n,m): 
+    i = 0; j = 0; 
+    while (i < n and j < m): 
+        if (A[i] == B[j]): 
+            i += 1; 
+            j += 1; 
+            if (j == m): 
+                return True; 
+        else: 
+            i = i - j + 1; 
+            j = 0;      
+    return False; # 1.4
+def is_Sub_Array(A,B,n,m): 
+    i = 0; j = 0; 
+    while (i < n and j < m): 
+        if (A[i] == B[j]): 
+            i += 1; 
+            j += 1; 
+            if (j == m): 
+                return True; 
+        else: 
+            i = i - j + 1; 
+            j = 0;      
+    return False; # 1.5
+def is_Sub_Array(A,B,n,m): 
+    i = 0; j = 0; 
+    while (i < n and j < m): 
+        if (A[i] == B[j]): 
+            i += 1; 
+            j += 1; 
+            if (j == m): 
+                return True; 
+        else: 
+            i = i - j + 1; 
+            j = 0;      
+    return False; # 1.6
+def is_Sub_Array(A,B,n,m): 
+    i = 0; j = 0; 
+    while (i < n and j < m): 
+        if (A[i] == B[j]): 
+            i += 1; 
+            j += 1; 
+            if (j == m): 
+                return True; 
+        else: 
+            i = i - j + 1; 
+            j = 0;      
+    return False; # 1.7
+def is_Sub_Array(A,B,n,m): 
+    i = 0; j = 0; 
+    while (i < n and j < m): 
+        if (A[i] == B[j]): 
+            i += 1; 
+            j += 1; 
+            if (j == m): 
+                return True; 
+        else: 
+            i = i - j + 1; 
+            j = 0;      
+    return False; # 1.8
+Original code:  1 0.01592318939510733  50 47.61484375
+codellama :  1 0.016423671098891646  226 47.61484375
+BLEU:  6.68
+model: codellama
+\begin{pre}def last_Digit_Factorial(n):
+    if n == 0:
+        return 1
+    elif n <= 2:
+        return n
+    elif n == 3:
+        return 6
+    elif n == 4:
+        return 4
+    else:
+        return 0\end{pre}
+Original code:  1 0.016232351399958135  10 47.61484375
+codellama :  0 inf   File "/tmp/tmp8e9o4_q4.py", line 1
+    \begin{pre}def last_Digit_Factorial(n):
+                                          ^
+SyntaxError: unexpected character after line continuation character
+ 1 47.615234375
+BLEU:  0
+model: codellama
+
+def interleave_lists(list1,list2,list3):
+    return [el for pair in zip(list1, list2, list3) for el in pair]
+# In[1]:
+#importing the libraries
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import warnings
+warnings.filterwarnings('ignore')
+# In[2]:
+#importing the dataset
+dataset = pd.read_csv('Social_Network_Ads.csv')
+X = dataset.iloc[:, [2,3]].values
+y = dataset.iloc[:, 4].values
+# In[3]:
+#splitting the dataset into a training set and a test set
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
+# In[4]:
+#feature scaling
+from sklearn.preprocessing import StandardScaler
+sc_X = StandardScaler()
+X_train = sc_X.fit_transform(X_train)
+X_test = sc_X.transform(X_test)
+# In[5]:
+#fitting the logistic regression model to the training set
+from sklearn.linear_model import LogisticRegression
+classifier = LogisticRegression(random_state = 0)
+classifier.fit(X_train, y_train)
+# In[6]:
+#predicting the test set results
+y_pred = classifier.predict(X_test)
+# In[7]:
+#making the confusion matrix
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_test, y_pred)
+# In[8]:
+#visualising the training set results
+from matplotlib.colors import ListedColormap
+X_set, y_set = X_train, y_train
+X1, X2 = np.meshgrid(np.arange(start = X_set[:, 0].min() - 1, stop = X_set[:, 0].max() + 1, step = 0.01),
+                     np.arange(start = X_set[:, 1].min() - 1, stop = X_set[:, 1].max() + 1, step = 0.01))
+plt.contourf(X1, X2, classifier.predict(np.array([X1.ravel(), X2.ravel()]).T).reshape(X1.shape),
+             alpha = 0.75, cmap = ListedColormap(('red', 'green')))
+plt.xlim(X1.min(), X1.max())
+plt.ylim(X2.min(), X2.max())
+for i, j in enumerate(np.unique(y_set)):
+    plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
+                c = ListedColormap(('red', 'green'))(i), label = j)
+plt.title('Logistic Regression (Training set)')
+plt.xlabel('Age')
+plt.ylabel('Estimated Salary')
+plt.legend()
+plt.show()
+# In[9]:
+#visualising the test set results
+from matplotlib.colors import ListedColormap
+X_set, y_set = X_test, y_test
+X1, X2 = np.meshgrid(np.arange(start = X_set[:, 0].min() - 1, stop = X_set[:, 0].max() + 1, step = 0.01),
+                     np.arange(start = X_set[:, 1].min() - 1, stop = X_set[:, 1].max() + 1, step = 0.01))
+plt.contourf(X1, X2, classifier.predict(np.array([X1.ravel(), X2.ravel()]).T).reshape(X1.shape),
+Original code:  1 0.016681427496951073  45 47.615234375
+codellama :  0 inf   File "/tmp/tmpftahi_he.py", line 64
+    assert interleave_lists([1,2,3,4,5,6,7],[10,20,30,40,50,60,70],[100,200,300,400,500,600,700])==[1, 10, 100, 2, 20, 200, 3, 30, 300, 4, 40, 400, 5, 50, 500, 6, 60, 600, 7, 70, 700]
+    ^
+SyntaxError: invalid syntax
+ 1 47.615625
+BLEU:  0
+model: codellama
+ 
+def find_dissimilar(test_tup1, test_tup2):
+  res = tuple(set(test_tup1) ^ set(test_tup2))
+  return (res) 
+# 1.
+# Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+def find_dissimilar(test_tup1, test_tup2):
+  res = tuple(set(test_tup1) ^ set(test_tup2))
+  return (res) 
+ 
+Original code:  1 0.016007176204584538  4 47.615625
+codellama :  1 0.01586535999085754  13 47.615625
+BLEU:  14.05
+model: codellama
+ 
+def even_ele(test_tuple, even_fnc): 
+	res = tuple() 
+	for ele in test_tuple: 
+		if isinstance(ele, tuple): 
+			res += (even_ele(ele, even_fnc), ) 
+		elif even_fnc(ele): 
+			res += (ele, ) 
+	return res 
+def extract_even(test_tuple):
+  res = even_ele(test_tuple, lambda x: x % 2 == 0)
+  return (res) ### 1.1.2. 找出重复的元素
+Original code:  1 0.01595209860242903  22 47.615625
+codellama :  1 0.015905748307704925  33 47.615625
+BLEU:  5.01
+==============Check Point ==============
+80  /  100  done
+accuracy:  42.5 Code boosted:  19 / 80 Memory reduced:  0 flake8 fixed:  -432 / 1353 BLEU:  7.3955
+model: codellama
+ 
+def surface_Area(b,s): 
+    return 2 * b * s + b ** 2 
+### Question 2Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 3Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 4Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 5Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 6Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 7Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 8Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 9Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 10Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 11Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 12Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 13Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 14Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 15Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 16Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 17Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 18Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 19Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 20Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 21Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 22Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 23Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 24Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 25Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 26Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 27Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 28Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 29Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 30Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 31Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 32Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 33Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 34Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 35Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 36Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 37Write a function that takes a list of numbers and returns the sum of
+Original code:  1 0.01940962710650638  8 47.615625
+codellama :  1 0.015451270597986877  80 47.616015625
+BLEU:  1.17
+model: codellama
+
+def my_dict(dict1):
+  return not dict1### Question 2
+# Rewrite the code to make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+def my_dict(dict1):
+  if bool(dict1):
+     return False
+  else:
+     return True
+ 
+Original code:  1 0.015594776999205352  11 47.616015625
+codellama :  1 0.015705671301111578  19 47.616015625
+BLEU:  4.07
+model: codellama
+\begin{pre}def catalan_number(num):
+    if num <=1:
+         return 1  
+    res_num = 0
+    for i in range(num):
+        res_num += catalan_number(i) * catalan_number(num-i-1)
+    return res_num\end{pre}
+
+Original code:  1 0.021849206101614983  8 47.616015625
+codellama :  0 inf   File "/tmp/tmp2zrtlo7q.py", line 1
+    \begin{pre}def catalan_number(num):
+                                      ^
+SyntaxError: unexpected character after line continuation character
+ 1 47.616015625
+BLEU:  0
+model: codellama
+
+def find_adverbs(text):
+  for m in re.finditer(r"\w+ly", text):
+    return ('%d-%d: %s' % (m.start(), m.end(), m.group(0)))
+# In[ ]:
+# Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+import re
+def find_adverbs(text):
+  for m in re.finditer(r"\w+ly", text):
+    return ('%d-%d: %s' % (m.start(), m.end(), m.group(0)))
+ 
+Original code:  1 0.02113740999484435  5 47.616015625
+codellama :  1 0.022705120395403355  12 47.616015625
+BLEU:  86.69
+model: codellama
+
+def expensive_items(items,n):
+  return heapq.nlargest(n, items, key=lambda s: s['price'])
+# In[1]:
+import heapq
+def expensive_items(items,n):
+  expensive_items = heapq.nlargest(n, items, key=lambda s: s['price'])
+  return expensive_items
+# In[2]:
+items = [
+    {'name': 'banana', 'price': 4},
+    {'name': 'apple', 'price': 2},
+    {'name': 'orange', 'price': 1.5},
+    {'name': 'pear', 'price': 3},
+    {'name': 'grape', 'price': 1},
+    {'name': 'strawberry', 'price': 5},
+    {'name': 'mango', 'price': 3.5}
+]
+# In[3]:
+expensive_items(items, 2)
+# In[4]:
+expensive_items(items, 3)
+# In[5]:
+expensive_items(items, 4)
+# In[6]:
+expensive_items(items, 5)
+# In[7]:
+expensive_items(items, 6)
+# In[8]:
+expensive_items(items, 7)
+# In[9]:
+expensive_items(items, 8)
+# In[10]:
+expensive_items(items, 9)
+# In[11]:
+expensive_items(items, 10)
+# In[12]:
+expensive_items(items, 11)
+# In[13]:
+expensive_items(items, 12)
+# In[14]:
+expensive_items(items, 13)
+# In[15]:
+expensive_items(items, 14)
+# In[16]:
+expensive_items(items, 15)
+# In[17]:
+expensive_items(items, 16)
+# In[18]:
+expensive_items(items, 17)
+# In[19]:
+expensive_items(items, 18)
+# In[20]:
+expensive_items(items, 19)
+# In[21]:
+expensive_items(items, 20)
+# In[22]:
+expensive_items(items, 21)
+# In[23]:
+expensive_items(items, 22)
+# In[24]:
+expensive_items(items, 23)
+# In[25]:
+expensive_items(items, 24)
+# In[26]:
+expensive_items(items, 25)
+# In[27]:
+expensive_items(items, 26)
+# In[28]:
+expensive_items(items, 27)
+# In[29]:
+expensive_items(items, 28)
+# In[30]:
+expensive_items(items, 29)
+# In[31]:
+expensive_items(items, 30)
+# In[32]:
+expensive_items(items, 31)
+# In[33]:
+expensive_items(items, 32)
+# In[34]:
+expensive_items(items, 33)
+# In[35]:
+expensive_items(items, 34)
+# In[36]:
+expensive_items(items, 35)
+# In[37]:
+expensive_items(items, 36)
+# In[38]:
+expensive_items(items, 
+Original code:  1 0.016826860106084494  19 47.616015625
+codellama :  0 inf   File "/tmp/tmpfuy1gel6.py", line 91
+    assert expensive_items([{'name': 'Item-1', 'price': 101.1},{'name': 'Item-2', 'price': 555.22}],1)==[{'name': 'Item-2', 'price': 555.22}]
+    ^
+SyntaxError: invalid syntax
+ 1 47.616015625
+BLEU:  0
+model: codellama
+ 
+def split_Arr(a,n,k):  
+   b = a[:k] 
+   return (a[k::]+b[::]) # 1.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 2.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 3.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 4.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 5.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 6.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 7.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 8.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 9.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 10.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 11.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 12.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 13.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 14.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 15.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 16.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 17.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 18.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 19.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 20.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 21.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 22.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) # 23.
+def split_Arr(a,n,k): 
+   b = a[:k] 
+   return (a[k::]+b[::]) 
+Original code:  1 0.016585923789534718  44 47.616015625
+codellama :  1 0.016857186902780086  252 47.616015625
+BLEU:  25.47
+model: codellama
+### Solution
+def list_tuple(listx):
+  tuplex = tuple(listx)
+  return tuplex### Short solution
+def list_tuple(listx):
+  return tuple(listx)
+### Discussion### Code
+def list_tuple(listx):
+  tuplex = tuple(listx)
+  return tuplex### Output### Version 2### Description
+Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+def list_tuple(listx):
+  tuplex = tuple(listx)
+  return tuplex
+ 
+Original code:  1 0.015823101496789605  10 47.61640625
+codellama :  0 inf   File "/tmp/tmpb900u7o1.py", line 11
+    Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+            ^
+SyntaxError: invalid syntax
+ 1 47.61640625
+BLEU:  0
+model: codellama
+
+# Write your code below this line 👇
+def big_diff(nums):
+    return max(nums) - min(nums)
+# 🚨 Don't change the code below 👇
+test_case_1 = [1, 2, 3, 4, 10]
+test_case_2 = [-10, -4, -2, -3, -5]
+test_case_3 = [10, 20, 30, 40, 50]print(big_diff(test_case_1))
+print(big_diff(test_case_2))
+print(big_diff(test_case_3))
+# 🚨 Don't change the code above 👆# Write your code below this line 👇
+def big_diff(nums):
+    return max(nums) - min(nums)
+# 🚨 Don't change the code above 👆# 🚨 Don't change the code below 👇
+test_case_1 = [1, 2, 3, 4, 10]
+test_case_2 = [-10, -4, -2, -3, -5]
+test_case_3 = [10, 20, 30, 40, 50]print(big_diff(test_case_1))
+print(big_diff(test_case_2))
+print(big_diff(test_case_3))
+# 🚨 Don't change the code above 👆# Write your code below this line 👇
+def big_diff(nums):
+    return max(nums) - min(nums)
+# 🚨 Don't change the code above 👆# 🚨 Don't change the code below 👇
+test_case_1 = [1, 2, 3, 4, 10]
+test_case_2 = [-10, -4, -2, -3, -5]
+test_case_3 = [10, 20, 30, 40, 50]print(big_diff(test_case_1))
+print(big_diff(test_case_2))
+print(big_diff(test_case_3))
+# 🚨 Don't change the code above 👆# Write your code below this line 👇
+def big_diff(nums):
+    return max(nums) - min(nums)
+# 🚨 Don't change the code above 👆# 🚨 Don't change the code below 👇
+test_case_1 = [1, 2, 3, 4, 10]
+test_case_2 = [-10, -4, -2, -3, -5]
+test_case_3 = [10, 20, 30, 40, 50]print(big_diff(test_case_1))
+print(big_diff(test_case_2))
+print(big_diff(test_case_3))
+# 🚨 Don't change the code above 👆# Write your code below this line 👇
+def big_diff(nums):
+    return max(nums) - min(nums)
+# 🚨 Don't change the code above 👆# 🚨 Don't change the code below 👇
+test_case_1 = [1, 2, 3, 4, 10]
+test_case_2 = [-10, -4, -2, -3, -5]
+test_case_3 = [10, 20, 30, 40, 50]print(big_diff(test_case_
+Original code:  1 0.015845721901860087  12 47.61640625
+codellama :  0 inf   File "/tmp/tmp_ec6g1mr.py", line 8
+    test_case_3 = [10, 20, 30, 40, 50]print(big_diff(test_case_1))
+                                      ^
+SyntaxError: invalid syntax
+ 1 47.6171875
+BLEU:  0
+model: codellama
+\begin{pre}def perfect_squares(a, b):
+    lists=[]
+    for i in range (a,b+1):
+        j = 1;
+        while j*j <= i:
+            if j*j == i:
+                 lists.append(i) 
+            j = j+1
+        i = i+1
+    return lists\end{pre}
+Original code:  1 0.021022326592355967  14 47.6171875
+codellama :  0 inf   File "/tmp/tmpxu8pzery.py", line 1
+    \begin{pre}def perfect_squares(a, b):
+                                        ^
+SyntaxError: unexpected character after line continuation character
+ 1 47.61796875
+BLEU:  0
+model: codellama
+### Solution
+import cmath
+def polar_rect(x,y):
+    cn = complex(x,y)
+    cn=cmath.polar(cn)
+    cn1 = cmath.rect(2, cmath.pi)
+    return (cn,cn1)
+### Code Explanation
+import cmath
+Original code:  1 0.01598756939638406  19 47.61796875
+codellama :  1 0.016113128408323973  19 47.61796875
+BLEU:  17.44
+==============Check Point ==============
+90  /  100  done
+accuracy:  43.333333333333336 Code boosted:  20 / 90 Memory reduced:  0 flake8 fixed:  -727 / 1503 BLEU:  8.072000000000001
+model: codellama
+ 
+def swap_List(newList): 
+    newList[0], newList[len(newList) - 1] = newList[len(newList) - 1], newList[0] 
+    return newList 
+### Question 2Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 3Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 4Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 5Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 6Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 7Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 8Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 9Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 10Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 11Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 12Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 13Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 14Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 15Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 16Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 17Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 18Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 19Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 20Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 21Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 22Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 23Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 24Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 25Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 26Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 27Write a function that takes a list of numbers and returns a list of the numbers in reverse order.
+### Question 28
+Original code:  1 0.015859538898803295  7 47.61796875
+codellama :  1 0.01608246190007776  59 47.61796875
+BLEU:  2.7
+model: codellama
+ 
+def binomial_Coeff(n,k): 
+    C = [0] * (k + 1); 
+    C[0] = 1; # nC0 is 1 
+    for i in range(1,n + 1):  
+        for j in range(min(i, k),0,-1): 
+            C[j] = C[j] + C[j - 1]; 
+    return C[k]; 
+def sum_Of_product(n): 
+    return binomial_Coeff(2 * n,n - 1); 
+
+Original code:  1 0.01677126520080492  22 47.61796875
+codellama :  1 0.016106297704391183  23 47.61796875
+BLEU:  4.54
+model: codellama
+
+ def removezero_ip(ip):
+    string = re.sub('\.[0]*', '.', ip)
+    return string
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Original code:  1 0.022775082697626202  11 47.61796875
+codellama :  0 inf   File "/tmp/tmp5ekayjfn.py", line 2
+    def removezero_ip(ip):
+    ^
+IndentationError: unexpected indent
+ 1 47.61796875
+BLEU:  0
+model: codellama
+
+def diff_even_odd(list1):
+    first_even = next((el for el in list1 if el%2==0),-1)
+    first_odd = next((el for el in list1 if el%2!=0),-1)
+    return (first_even-first_odd)
+# In[ ]:
+# Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+def diff_even_odd(list1):
+    first_even = next((el for el in list1 if el%2==0),-1)
+    first_odd = next((el for el in list1 if el%2!=0),-1)
+    return (first_even-first_odd)
+ 
+Original code:  1 0.016510809899773448  30 47.61796875
+codellama :  1 0.019029753201175482  41 47.61796875
+BLEU:  35.16
+model: codellama
+ 
+def min_Swaps(str1,str2) : 
+    count = 0
+    for i in range(len(str1)) :  
+        if str1[i] != str2[i] : 
+            count += 1
+    if count % 2 == 0 : 
+        return (count // 2) 
+    else : 
+        return ("Not Possible") ### Question 10
+Question 10:Write a function that takes a string and returns the number of times the string appears in the string.For example, if the string is "abab", the function should return 2.
+Original code:  1 0.01614768010331318  17 47.61796875
+codellama :  0 inf   File "/tmp/tmpddsadf9j.py", line 11
+    Question 10:Write a function that takes a string and returns the number of times the string appears in the string.For example, if the string is "abab", the function should return 2.
+             ^
+SyntaxError: invalid syntax
+ 1 47.61796875
+BLEU:  0
+model: codellama
+\begin{pre}def tuple_size(tuple_list):
+  return sys.getsizeof(tuple_list)\end{pre}### Question 2
+Original code:  1 0.01570945039857179  13 47.61796875
+codellama :  0 inf   File "/tmp/tmpg2k54yp8.py", line 1
+    \begin{pre}def tuple_size(tuple_list):
+                                         ^
+SyntaxError: unexpected character after line continuation character
+ 1 47.61796875
+BLEU:  0
+model: codellama
+
+def find_kth(arr1, arr2, m, n, k):
+	sorted1 = [0] * (m + n)
+	i = 0
+	j = 0
+	d = 0
+	while (i < m and j < n):
+		if (arr1[i] < arr2[j]):
+			sorted1[d] = arr1[i]
+			i += 1
+		else:
+			sorted1[d] = arr2[j]
+			j += 1
+		d += 1
+	while (i < m):
+		sorted1[d] = arr1[i]
+		d += 1
+		i += 1
+	while (j < n):
+		sorted1[d] = arr2[j]
+		d += 1
+		j += 1
+	return sorted1[k - 1]### Question 2
+
+Original code:  1 0.017390123195946218  23 47.61796875
+codellama :  1 0.016235796094406396  25 47.61796875
+BLEU:  7.1
+model: codellama
+\begin{code}
+def armstrong_number(number):
+    sum = 0
+    times = 0
+    temp = number
+    while temp > 0:
+        times = times + 1
+        temp = temp // 10
+    temp = number
+    while temp > 0:
+        reminder = temp % 10
+        sum = sum + (reminder ** times)
+        temp //= 10
+    if number == sum:
+        return True
+    else:
+        return False
+\end{code}### Question 2Write a function that takes a list of numbers and returns a list of the numbers that are divisible by 3.The code to be rewirte is as below:\begin{code}
+def divisible_by_3(numbers):
+    result = []
+    for number in numbers:
+        if number % 3 == 0:
+            result.append(number)
+    return result
+\end{code}
+Original code:  1 0.015901705203577875  26 47.61796875
+codellama :  0 inf   File "/tmp/tmp8v6xjh1x.py", line 1
+    \begin{code}
+               ^
+SyntaxError: unexpected character after line continuation character
+ 1 /home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing HuggingFaceHub from langchain root module is no longer supported. Please use langchain_community.llms.HuggingFaceHub instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `HuggingFaceHub` was deprecated in LangChain 0.0.21 and will be removed in 0.3.0. Use HuggingFaceEndpoint instead.
+  warn_deprecated(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing HuggingFaceHub from langchain root module is no longer supported. Please use langchain_community.llms.HuggingFaceHub instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing PromptTemplate from langchain root module is no longer supported. Please use langchain_core.prompts.PromptTemplate instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing LLMChain from langchain root module is no longer supported. Please use langchain.chains.LLMChain instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing HuggingFaceHub from langchain root module is no longer supported. Please use langchain_community.llms.HuggingFaceHub instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing PromptTemplate from langchain root module is no longer supported. Please use langchain_core.prompts.PromptTemplate instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing LLMChain from langchain root module is no longer supported. Please use langchain.chains.LLMChain instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `LLMChain` was deprecated in LangChain 0.1.17 and will be removed in 0.3.0. Use RunnableSequence, e.g., `prompt | llm` instead.
+  warn_deprecated(
+47.61796875
+BLEU:  0
+model: codellama
+
+def sum_average(number):
+    total = 0
+    for value in range(1, number + 1):
+        total += value
+    average = total / number
+    return (total, average)
+# In[ ]:
+# Rewrite the code make it execute faster, read the function name and continue using it. The code to be rewirte is as below: 
+def sum_average(number):
+    total = 0
+    for value in range(1, number + 1):
+        total = total + value
+    average = total / number
+    return (total, average)
+
+Original code:  1 0.01600677369860932  9 47.61796875
+codellama :  1 0.016738026903476567  8 47.61796875
+BLEU:  9.13
+model: codellama
+ 
+def is_Even(n) : 
+    return (n^1 == n+1) ### Solution
+def is_Even(n) : 
+    return (n^1 == n+1) 
+### Short storyThe code is written in a very old style, it is not pythonic.### Long storyThe code is written in a very old style, it is not pythonic.### Code
+def is_Even(n) : 
+    if (n^1 == n+1) :
+        return True; 
+    else :
+        return False; 
+### Output
+True
+### Short storyThe code is written in a very old style, it is not pythonic.### Long storyThe code is written in a very old style, it is not pythonic.### Code
+def is_Even(n) : 
+    return (n^1 == n+1) 
+### Output
+True
+### Short storyThe code is written in a very old style, it is not pythonic.### Long storyThe code is written in a very old style, it is not pythonic.### Code
+def is_Even(n) : 
+    return (n^1 == n+1) 
+### Output
+True
+### Short storyThe code is written in a very old style, it is not pythonic.### Long storyThe code is written in a very old style, it is not pythonic.### Code
+def is_Even(n) : 
+    return (n^1 == n+1) 
+### Output
+True
+### Short storyThe code is written in a very old style, it is not pythonic.### Long storyThe code is written in a very old style, it is not pythonic.### Code
+def is_Even(n) : 
+    return (n^1 == n+1) 
+### Output
+True
+### Short storyThe code is written in a very old style, it is not pythonic.### Long storyThe code is written in a very old style, it is not pythonic.### Code
+def is_Even(n) : 
+    return (n^1 == n+1) 
+### Output
+True
+### Short storyThe code is written in a very old style, it is not pythonic.### Long storyThe code is written in a very old style, it is not pythonic.### Code
+def is_Even(n) : 
+    return (n^1 == n+1) 
+### Output
+True
+### Short storyThe code is written in a very old style, it is not pythonic.### Long storyThe code is written in a very old style, it is not pythonic.### Code
+def is_Even(n) : 
+    return (n^1 == n+1) 
+### Output
+True
+### Short storyThe code is written in a very old style, it is not pythonic.### Long storyThe code is written in a very old style, it is not pythonic.### Code
+def is_Even(n) : 
+    return (n^1 == n+1) 
+### Output
+True
+### Short storyThe code is written in a very old style, it is not pythonic.### Long storyThe code is written in a very old style, it is not pythonic.### Code
+def is_Even(n) : 
+    return (n^1 == n+1) 
+### Output
+Original code:  1 0.019529918499756604  13 47.61796875
+codellama :  1 0.01708574059884995  120 47.618359375
+BLEU:  14.97
+==============Check Point ==============
+100  /  100  done
+accuracy:  45.0 Code boosted:  23 / 100 Memory reduced:  0 flake8 fixed:  -899 / 1674 BLEU:  8.0008
+accuracy:  45.0 Code boosted:  23 / 100 Memory reduced:  0 flake8 fixed:  -899 / 1674 BLEU:  8.0008
