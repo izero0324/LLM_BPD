@@ -51,4 +51,27 @@ def mixtral_model(temp=0):
     llm = HuggingFaceHub(huggingfacehub_api_token = huggingfacehub_api_token,
                         repo_id = repo_id,
                         model_kwargs = {"temperateure":0, "max_new_tokens":1024})
+    model = AutoModelForCausalLM.from_pretrained("mistralai/Mixtral-8x7B-Instruct-v0.1")
     return llm
+
+
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+def local_model(temp = 0):
+    # Path to your locally saved model
+    local_model_path = "models/Meta-Llama-3-8B"
+    # Load the tokenizer and model from a local path
+    tokenizer = AutoTokenizer.from_pretrained(local_model_path)
+    model = AutoModelForCausalLM.from_pretrained(local_model_path)
+
+    # You can set any specific model arguments locally as well
+    model_kwargs = {
+        "temperature": 0,  # Note: corrected spelling from "temperateure" to "temperature"
+        "max_new_tokens": 1024
+    }
+
+    # # Example on how to use:
+    # inputs = tokenizer("Your input text here", return_tensors="pt")
+    # outputs = model(**inputs, **model_kwargs)
+    # generated_text = tokenizer.decode(outputs[0])
+    return model

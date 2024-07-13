@@ -1,0 +1,331 @@
+==================================================
+Start Python code optimize evaluation benchmark...
+==================================================
+model: codellama
+ 
+def remove_Occ(s,ch): 
+    return s.replace(ch,'') 
+### Question 10Write a function that takes a string and returns the number of times the string appears in the string.Example:Input: "Hello World"
+Output: 1Input: "Hello World Hello World"
+Output: 2Input: "Hello World Hello World Hello World"
+Output: 3Input: "Hello World Hello World Hello World Hello World"
+Output: 4Input: "Hello World Hello World Hello World Hello World Hello World"
+Output: 5Input: "Hello World Hello World Hello World Hello World Hello World Hello World"
+Output: 6Input: "Hello World Hello World Hello World Hello World Hello World Hello World Hello World"
+Output: 7Input: "Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World"
+Output: 8Input: "Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World"
+Output: 9Input: "Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World"
+Output: 10Input: "Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World"
+Output: 11Input: "Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World"
+Output: 12Input: "Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World"
+Output: 13Input: "Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World"
+Output: 14Input: "Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World"
+Output: 15Input: "Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World"
+Output: 16Input: "Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World"
+Output: 17Input: "Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World"
+Output: 18Input: "Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World"
+Output: 19Input: "Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World"
+Output: 20Input: "Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World"
+Output: 21Input: "Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World"
+Output: 22Input: "Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World"
+Output: 23Input: "Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World"
+Output: 24Input: "Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World"
+Output: 25Input: "Hello World Hello World
+Original code:  1 0.014705054997466504  17 47.54375
+codellama :  0 inf   File "/tmp/tmpvxhtk9fg.py", line 5
+    Output: 1Input: "Hello World Hello World"
+             ^
+SyntaxError: invalid syntax
+ 1 47.54375
+BLEU:  0
+model: codellama
+
+def sort_matrix(M):
+    return sorted(M, key=sum)
+# In[1]:
+import numpy as np
+# In[2]:
+def sort_matrix(M):
+    result = sorted(M, key=sum)
+    return result
+# In[3]:
+M = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+# In[4]:
+sort_matrix(M)
+# In[5]:
+def sort_matrix(M):
+    return sorted(M, key=sum)
+# In[6]:
+M = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+# In[7]:
+sort_matrix(M)
+# In[8]:
+def sort_matrix(M):
+    return sorted(M, key=sum)
+# In[9]:
+M = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+# In[10]:
+sort_matrix(M)
+# In[11]:
+def sort_matrix(M):
+    return sorted(M, key=sum)
+# In[12]:
+M = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+# In[13]:
+sort_matrix(M)
+# In[14]:
+def sort_matrix(M):
+    return sorted(M, key=sum)
+# In[15]:
+M = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+# In[16]:
+sort_matrix(M)
+# In[17]:
+def sort_matrix(M):
+    return sorted(M, key=sum)
+# In[18]:
+M = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+# In[19]:
+sort_matrix(M)
+# In[20]:
+def sort_matrix(M):
+    return sorted(M, key=sum)
+# In[21]:
+M = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+# In[22]:
+sort_matrix(M)
+# In[23]:
+def sort_matrix(M):
+    return sorted(M, key=sum)
+# In[24]:
+M = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+# In[25]:
+sort_matrix(M)
+# In[26]:
+def sort_matrix(M):
+    return sorted(M, key=sum)
+# In[27]:
+M = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+# In[28]:
+sort_matrix(M)
+# In[29]:
+def sort_matrix(M):
+    return sorted(M, key=sum)
+# In[30]:
+M = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+# In[31]:
+sort_matrix(M)
+# In[32]:
+def sort_matrix(M):
+    return sorted(M, key=sum)
+# In[33]:
+M = np.array([[1, 2, 3], [4, 5,
+Original code:  1 0.01688112299889326  15 47.54375
+codellama :  0 inf   File "/tmp/tmp32qtcvpr.py", line 82
+    assert sort_matrix([[1, 2, 3], [2, 4, 5], [1, 1, 1]])==[[1, 1, 1], [1, 2, 3], [2, 4, 5]]
+    ^
+SyntaxError: invalid syntax
+ 1 47.54375
+BLEU:  0
+model: codellama
+from collections import Counter
+def count_common(words):
+  word_counts = Counter(words)
+  top_four = word_counts.most_common(4)
+  return (top_four)
+### Problem 2Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 3Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 4Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 5Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 6Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 7Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 8Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 9Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 10Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 11Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 12Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 13Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 14Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 15Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 16Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 17Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 18Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 19Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 20Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 21Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 22Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 23Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 24Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 25Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 26Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 27Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 28Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 29Write a function that takes a list of numbers and returns the sum of the numbers.
+### Problem 30Write a function that takes a list of numbers and returns
+Original code:  1 0.017116663791239262  36 47.54375
+codellama :  1 0.017180169699713588  93 47.54375
+BLEU:  100.0
+model: codellama
+ 
+def find_Volume(l,b,h) : 
+    return (l * b * h) / 2 
+### Question 2Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 3Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 4Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 5Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 6Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 7Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 8Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 9Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 10Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 11Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 12Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 13Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 14Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 15Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 16Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 17Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 18Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 19Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 20Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 21Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 22Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 23Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 24Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 25Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 26Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 27Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 28Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 29Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 30Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 31Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 32Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 33Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 34Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 35Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 36Write a function that takes a list of numbers and returns the sum of the numbers.
+### Question 37Write a function that takes a list of numbers and returns the
+Original code:  1 0.015140254504512996  13 47.54375
+codellama :  1 0.016419495502486826  85 47.54375
+BLEU:  3.14
+model: codellama
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing HuggingFaceHub from langchain root module is no longer supported. Please use langchain_community.llms.HuggingFaceHub instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `HuggingFaceHub` was deprecated in LangChain 0.0.21 and will be removed in 0.3.0. Use HuggingFaceEndpoint instead.
+  warn_deprecated(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing HuggingFaceHub from langchain root module is no longer supported. Please use langchain_community.llms.HuggingFaceHub instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing PromptTemplate from langchain root module is no longer supported. Please use langchain_core.prompts.PromptTemplate instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing LLMChain from langchain root module is no longer supported. Please use langchain.chains.LLMChain instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing HuggingFaceHub from langchain root module is no longer supported. Please use langchain_community.llms.HuggingFaceHub instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing PromptTemplate from langchain root module is no longer supported. Please use langchain_core.prompts.PromptTemplate instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing LLMChain from langchain root module is no longer supported. Please use langchain.chains.LLMChain instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `LLMChain` was deprecated in LangChain 0.1.17 and will be removed in 0.3.0. Use RunnableSequence, e.g., `prompt | llm` instead.
+  warn_deprecated(
+\begin{pre}def split_lowerstring(text):
+    return re.findall('[a-z][^a-z]*', text)\end{pre}### CommentsPosted by Matthew Weier O'Phinney (matthew) on 2008-09-17T11:27:57.000+0000This is a duplicate of ZF-3378.  Posted by Wil Sinclair (wil) on 2008-09-25T10:39:59.000+0000Please categorize/fix as needed.  Posted by Wil Sinclair (wil) on 2008-10-10T12:03:58.000+0000Please evaluate and fix/categorize as needed.  Posted by Wil Sinclair (wil) on 2008-10-10T12:04:00.000+0000Please evaluate and fix/categorize as needed.  Posted by Wil Sinclair (wil) on 2008-10-10T12:04:00.000+0000Please evaluate and fix/categorize as needed.  Posted by Wil Sinclair (wil) on 2008-10-10T12:04:00.000+0000Please evaluate and fix/categorize as needed.  Posted by Wil Sinclair (wil) on 2008-10-10T12:04:00.000+0000Please evaluate and fix/categorize as needed.  Posted by Wil Sinclair (wil) on 2008-10-10T12:04:00.000+0000Please evaluate and fix/categorize as needed.  Posted by Wil Sinclair (wil) on 2008-10-10T12:04:00.000+0000Please evaluate and fix/categorize as needed.  Posted by Wil Sinclair (wil) on 2008-10-10T12:04:00.000+0000Please evaluate and fix/categorize as needed.  Posted by Wil Sinclair (wil) on 2008-10-10T12:04:00.000+0000Please evaluate and fix/categorize as needed.  Posted by Wil Sinclair (wil) on 2008-10-10T12:04:00.000+0000Please evaluate and fix/categorize as needed.  Posted by Wil Sinclair (wil) on 2008-10-10T12:04:00.000+0000Please evaluate and fix/categorize as needed.  Posted by Wil Sinclair (wil) on 2008-10-10T12:04:00.000+0000Please evaluate and fix/categorize as needed.  Posted by Wil Sinclair (wil) on 2008-10-10T12:04:00.000+0000Please evaluate and fix/categorize as needed.  Posted by Wil Sinclair (wil) on 2008-
+Original code:  1 0.02165393439354375  8 47.54375
+codellama :  0 inf   File "/tmp/tmpn9p79v6l.py", line 1
+    \begin{pre}def split_lowerstring(text):
+                                          ^
+SyntaxError: unexpected character after line continuation character
+ 1 47.54375
+BLEU:  0
+model: codellama
+\begin{pre}import re
+def text_lowercase_underscore(text):
+        patterns = '^[a-z]+_[a-z]+$'
+        if re.search(patterns,  text):
+                return 'Found a match!'
+        else:
+                return('Not matched!')\end{pre}
+
+Original code:  1 0.02156104149762541  9 47.54375
+codellama :  0 inf   File "/tmp/tmpnqi35bpv.py", line 1
+    \begin{pre}import re
+                       ^
+SyntaxError: unexpected character after line continuation character
+ 1 47.54375
+BLEU:  0
+model: codellama
+### Solution
+def square_perimeter(a):
+  perimeter=4*a
+  return perimeter
+### Shortcutdef square_perimeter(a):
+  return 4*a
+### Discussion
+### Code
+### Output
+### Plot##### square_perimeter
+### Improvement Points
+### References
+### Time Complexity
+### Related Topics
+### Similar Problems
+### Reviews
+### Note* the code to be rewirte is as below: 
+def square_perimeter(a):
+  perimeter=4*a
+  return perimeter
+* 
+Original code:  1 0.01563879119930789  7 47.54375
+codellama :  0 inf   File "/tmp/tmpwywpc8m3.py", line 21
+    * 
+     ^
+SyntaxError: invalid syntax
+ 1 47.54375
+BLEU:  0
+model: codellama
+Traceback (most recent call last):
+  File "/home/chia.hung.ext/.local/lib/python3.8/site-packages/huggingface_hub/utils/_errors.py", line 304, in hf_raise_for_status
+    response.raise_for_status()
+  File "/usr/lib/python3/dist-packages/requests/models.py", line 940, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://api-inference.huggingface.co/models/codellama/CodeLlama-7b-hf
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "benchmark.py", line 73, in <module>
+    main()
+  File "benchmark.py", line 66, in main
+    benchmark_process(dataset= get_data(args.data), model=args.model, debug=args.debug)
+  File "benchmark.py", line 24, in benchmark_process
+    test_data['code'] = LLM_revise(code, model = model, debug=debug)
+  File "/home/chia.hung.ext/LLM_BPD/LLMs/LLM_api.py", line 25, in LLM_revise
+    result = codellama_optimise(code, model)
+  File "/home/chia.hung.ext/LLM_BPD/LLMs/codellama.py", line 23, in codellama_optimise
+    output = concept_chain.invoke(input)
+  File "/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/chains/base.py", line 166, in invoke
+    raise e
+  File "/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/chains/base.py", line 156, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/chains/llm.py", line 126, in _call
+    response = self.generate([inputs], run_manager=run_manager)
+  File "/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/chains/llm.py", line 138, in generate
+    return self.llm.generate_prompt(
+  File "/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain_core/language_models/llms.py", line 633, in generate_prompt
+    return self.generate(prompt_strings, stop=stop, callbacks=callbacks, **kwargs)
+  File "/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain_core/language_models/llms.py", line 803, in generate
+    output = self._generate_helper(
+  File "/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain_core/language_models/llms.py", line 670, in _generate_helper
+    raise e
+  File "/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain_core/language_models/llms.py", line 657, in _generate_helper
+    self._generate(
+  File "/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain_core/language_models/llms.py", line 1317, in _generate
+    self._call(prompt, stop=stop, run_manager=run_manager, **kwargs)
+  File "/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain_community/llms/huggingface_hub.py", line 135, in _call
+    response = self.client.post(
+  File "/home/chia.hung.ext/.local/lib/python3.8/site-packages/huggingface_hub/inference/_client.py", line 273, in post
+    hf_raise_for_status(response)
+  File "/home/chia.hung.ext/.local/lib/python3.8/site-packages/huggingface_hub/utils/_errors.py", line 371, in hf_raise_for_status
+    raise HfHubHTTPError(str(e), response=response) from e
+huggingface_hub.utils._errors.HfHubHTTPError: 429 Client Error: Too Many Requests for url: https://api-inference.huggingface.co/models/codellama/CodeLlama-7b-hf (Request ID: qGXuZDme-fH_bGDrbW19N)
+
+Rate limit reached. You reached free usage limit (reset hourly). Please subscribe to a plan at https://huggingface.co/pricing to use the API at this rate

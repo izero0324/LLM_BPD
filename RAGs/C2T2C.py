@@ -17,8 +17,8 @@ os.environ["OPENAI_API_KEY"] = api_key["key"]
 #     timeout=None,
 #     max_retries=2
 # )
-llm = BaseModels.mixtral_model()
-
+#llm = BaseModels.mixtral_model()
+llm = BaseModels.local_model()
 prompt_template_c2t = ChatPromptTemplate.from_messages([
     ("system", "You are a expert Python programmer, describe the code to make sure a software engineer can reproduce the code by the description. \n Make sure to mention: \n 1. Function name\n 2. The purpose of the code\n3. The input/output format of the code"),
     ("user", "{input}"),
