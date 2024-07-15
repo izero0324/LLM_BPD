@@ -31,7 +31,7 @@ def test_code(data, debug = False, warmup = 10, iter = 10):
             subprocess.run(['python3', temp_filename], capture_output=True, text=True, timeout=3)
             warmup -= 1
         except TimeoutError as e:
-            return 1, float('inf'), e.stderr, 0, 0
+            return 0, float('inf'), e.stderr, 0, 0
             
     
     start_time = perf_counter()
@@ -41,12 +41,24 @@ def test_code(data, debug = False, warmup = 10, iter = 10):
         try:
             result = subprocess.run(['python3', temp_filename], capture_output=True, text=True, timeout=3)
         except TimeoutError as e:
-            return 1, float('inf'), e.strerror, 0, 0
+            return 0, float('inf'), e.strerror, 0, float('inf')
 
     stop_time = perf_counter()
     run_time = (stop_time - start_time)/iter
-    memMb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1024.0
-    mem_used_kb = (memMb)/iter # KByte
+
+    try:
+        memtest = subprocess.run(['memray', 'run', '-o output.bin', temp_filename],  timeout=3)
+        mem_result = subprocess.run(['memray', 'stats', ' output.bin'],capture_output=True)
+        mem_use = mem_result.stdout.decode("utf-8").split('Total memory allocated:\n\t')[1].split('\n\n')[0]
+        if 'KB' in mem_use:
+            mem_used_kb = float(mem_use.split('KB')[0])
+        elif 'MB' in mem_use:
+            mem_used_kb = float(mem_use.split('MB')[0])*1024
+    except TimeoutError as e:
+        return 0, float('inf'), e.strerror, 0, float('inf')
+    except IndexError:
+        mem_used_kb = float('inf')
+        pass
     
     flake8_result = subprocess.run(['flake8', temp_filename, '--count'], capture_output=True, text=True, timeout=10)
     flake8_errors = flake8_result.stdout.split("\n")[-2]
@@ -63,6 +75,7 @@ def test_code(data, debug = False, warmup = 10, iter = 10):
     try:
         import os
         os.remove(temp_filename)
+        os.remove(' output.bin')
     except OSError as e:
         print(f"Error: {e.strerror}")
     if result.returncode != 0:

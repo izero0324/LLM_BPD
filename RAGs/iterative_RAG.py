@@ -60,7 +60,7 @@ def iterative_RAG_gen(initial_code,model_name):
     while not correct:
         print(f"Error: {message}")
         suggestion = regenerate_code(message, first_result)
-        correct, message = interpret_code(initial_code)
+        correct, message = interpret_code(suggestion)
         
     print("Fixed code: ", suggestion)
     return suggestion

@@ -18,8 +18,8 @@ def min_cost(cost, m, n):
 	return tc[m][n]
 ### 1.2.2. ### 1.2.3. ### 1.2.4. ### 1.2.5. ### 1.2.6. ### 1.2.7. ### 1.2.8. ### 1.2.9. ### 1.2.10. ### 1.2.11. ### 1.2.12. ### 1.2.13. ### 1.2.14. ### 1.2.15. ### 1.2.16. ### 1.2.17. ### 1.2.18. ### 1.2.19. ### 1.2.20. ### 1.2.21. ### 1.2.22. ### 1.2.23. ### 1.2.24. ### 1.2.25. ### 1.2.26. ### 1.2.27. ### 1.2.28. ### 1.2.29. ### 1.2.30. ### 1.2.31. ### 1.2.32. ### 1.2.33. ### 1.2.34. ### 1.2.35. ### 1.2.36. ### 1.2.37. ### 1.2.38. ### 1.2.39. ### 1.2.40. ### 1.2.41. ### 1.2.42. ### 1.2.43. ### 1.2.44. ### 1.2.45. ### 1.2.46. ### 1.2.47. ### 1.2.48. ### 1.2.49. ### 1.2.50. ### 1.2.51. ### 1.2.52. ### 1.2.53. ### 1.2.54. 
 
-Original code:  1 0.016019144293386488  22 47.53359375
-iter :  1 0.016620498499833047  25 47.53359375
+Original code:  1 0.016973456204868852  22 47.598828125
+iter :  1 0.016404360195156186  25 47.598828125
 BLEU:  4.95
 model: iter
 
@@ -84,12 +84,12 @@ X_set, y_set = X_test, y_test
 X1, X2 = np.meshgrid(np.arange(start = X_set[:, 0].min() - 1, stop = X_set[:, 0].max() + 1, step = 0.01),
                      np.arange(start = X_set[:, 1].min() - 1, stop = X_set[:, 1].max() + 1, step = 0.01))
 plt.contourf(X1, X2, classifier.predict(np.array([X1.ravel(), X2.ravel()]).T).reshape(X1.shape
-Original code:  1 0.016142328397836535  7 47.53359375
-iter :  0 inf   File "/tmp/tmp7y8vhn9p.py", line 63
+Original code:  1 0.020168410998303445  7 47.598828125
+iter :  0 inf   File "/tmp/tmpr2017mui.py", line 63
     assert similar_elements((3, 4, 5, 6),(5, 7, 4, 10)) == (4, 5)
     ^
 SyntaxError: invalid syntax
- 1 47.53359375
+ 1 47.598828125
 BLEU:  0
 model: iter
 
@@ -100,14 +100,14 @@ def is_not_prime(n):
             result = True
     return result
 
-Original code:  1 0.016011464595794677  6 47.53359375
+Original code:  1 0.015950656100176274  6 47.598828125
 iter :  0 inf Traceback (most recent call last):
-  File "/tmp/tmp_i4n3jsl.py", line 9, in <module>
+  File "/tmp/tmpu420ajy1.py", line 9, in <module>
     assert is_not_prime(2) == False
-  File "/tmp/tmp_i4n3jsl.py", line 4, in is_not_prime
+  File "/tmp/tmpu420ajy1.py", line 4, in is_not_prime
     for i in range(2,int(math.sqrt(n)) + 1):
 NameError: name 'math' is not defined
- 6 47.53359375
+ 6 47.598828125
 BLEU:  0
 model: iter
 \begin{pre}def heap_queue_largest(nums,n):
@@ -143,12 +143,12 @@ def test_heap_queue_largest():
     assert heap_queue_largest([1, 2, 3, 4, 5], 10000000000) == [5, 4, 3, 2, 1]
     assert heap_queue_largest([1, 2, 3, 4, 5], 100000000000) == [5, 4, 3, 2, 1]
     assert heap_queue_largest([1, 2, 3, 4, 5], 1000000
-Original code:  1 0.016831562004517762  18 47.53359375
-iter :  0 inf   File "/tmp/tmptic9ku_l.py", line 1
+Original code:  1 0.017238217499107124  18 47.598828125
+iter :  0 inf   File "/tmp/tmpo3o94yf1.py", line 1
     \begin{pre}def heap_queue_largest(nums,n):
                                              ^
 SyntaxError: unexpected character after line continuation character
- 1 47.53359375
+ 1 47.598828125
 BLEU:  0
 model: iter
  
@@ -163,8 +163,8 @@ def count_ways(n):
 		A[i] = A[i - 2] + 2 * B[i - 1] 
 		B[i] = A[i - 1] + B[i - 2] 
 	return A[n] ### Question 2: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 3: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 4: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 5: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 6: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 7: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 8: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 9: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 10: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 11: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 12: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 13: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 14: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 15: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 16: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 17: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 18: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 19: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 20: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 21: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 22: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3. ### Question 23: Write a function that takes a list of numbers and returns a list of the numbers in the list that are divisible by 3.
-Original code:  1 0.016312658495735377  18 47.53359375
-iter :  1 0.016197289794217796  33 47.53359375
+Original code:  1 0.016396805096883328  18 47.598828125
+iter :  1 0.01597974239848554  33 47.598828125
 BLEU:  22.25
 model: iter
 
@@ -196,20 +196,20 @@ def differ_At_One_Bit_Pos(a,b):
 ### Question 23Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
 ### Question 24Write a function that takes a list of integers and returns a list of the integers that only appear once in the list.
 ### Question 25Write a function that takes a list of integers and
-Original code:  1 0.016849328007083386  14 47.53359375
-iter :  1 0.016121056803967804  61 47.53359375
+Original code:  1 0.020702788198832422  14 47.598828125
+iter :  1 0.016001894802320747  61 47.598828125
 BLEU:  7.93
 model: iter
 \begin{pre}import re
 def find_char_long(text):
   return (re.findall(r"\b\w{4,}\b", text))\end{pre}### Question 2
 
-Original code:  1 0.023540635197423398  5 47.53359375
-iter :  0 inf   File "/tmp/tmpxelmu9d2.py", line 1
+Original code:  1 0.022720530803781003  5 47.598828125
+iter :  0 inf   File "/tmp/tmpka0j7l4u.py", line 1
     \begin{pre}import re
                        ^
 SyntaxError: unexpected character after line continuation character
- 1 47.53359375
+ 1 47.598828125
 BLEU:  0
 model: iter
 
@@ -236,14 +236,32 @@ Print Texts |
 Scripture Song |  |
   
 
-Original code:  1 0.01625830929260701  13 47.53359375
-iter :  0 inf   File "/tmp/tmpsa4v0phe.py", line 2
+Original code:  1 0.016113226499874143  13 47.598828125
+iter :  0 inf   File "/tmp/tmpo1uorrgd.py", line 2
     def square_nums(nums):
     ^
 IndentationError: unexpected indent
- 1 47.53359375
+ 1 47.598828125
 BLEU:  0
 model: iter
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing HuggingFaceHub from langchain root module is no longer supported. Please use langchain_community.llms.HuggingFaceHub instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `HuggingFaceHub` was deprecated in LangChain 0.0.21 and will be removed in 0.3.0. Use HuggingFaceEndpoint instead.
+  warn_deprecated(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing HuggingFaceHub from langchain root module is no longer supported. Please use langchain_community.llms.HuggingFaceHub instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing PromptTemplate from langchain root module is no longer supported. Please use langchain_core.prompts.PromptTemplate instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing LLMChain from langchain root module is no longer supported. Please use langchain.chains.LLMChain instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing HuggingFaceHub from langchain root module is no longer supported. Please use langchain_community.llms.HuggingFaceHub instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing PromptTemplate from langchain root module is no longer supported. Please use langchain_core.prompts.PromptTemplate instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain/__init__.py:29: UserWarning: Importing LLMChain from langchain root module is no longer supported. Please use langchain.chains.LLMChain instead.
+  warnings.warn(
+/home/chia.hung.ext/.local/lib/python3.8/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `LLMChain` was deprecated in LangChain 0.1.17 and will be removed in 0.3.0. Use RunnableSequence, e.g., `prompt | llm` instead.
+  warn_deprecated(
  
 def find_Rotations(str): 
     tmp = str + str 
@@ -271,13 +289,24 @@ Write a function that takes a string and returns the number of times the string 
 Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.### Question 18
 Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.### Question 19
 Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.
-Original code:  1 0.01631646869936958  9 47.53359375
-iter :  0 inf   File "/tmp/tmp4_o2479l.py", line 10
+Original code:  1 0.015834516403265296  9 47.598828125
+iter :  0 inf   File "/tmp/tmp_tw_sx15.py", line 10
     Write a function that takes a string and returns the number of times the string occurs in the string. For example, if the string is "abab", the function should return 2.### Question 3
           ^
 SyntaxError: invalid syntax
- 1 47.53359375
+ 1 47.598828125
 BLEU:  0
 model: iter
 \begin{pre}def small_nnum(list1,n):
   return heapq.nsmallest(n,list1)\end{pre}### CommentsPosted by Matthew Weier O'Phinney (matthew) on 2009-08-19T11:59:57.000+0000This is a duplicate of ZF-6788.  Posted by Matthew Weier O'Phinney (matthew) on 2009-08-19T12:00:17.000+0000Reassigning to Ralph  Posted by Ralph Schindler (ralph) on 2009-08-19T12:00:47.000+0000This is a duplicate of ZF-6788.  Posted by Matthew Weier O'Phinney (matthew) on 2009-08-19T12:01:07.000+0000Reassigning to Ralph  Posted by Ralph Schindler (ralph) on 2009-08-19T12:01:20.000+0000This is a duplicate of ZF-6788.  Posted by Matthew Weier O'Phinney (matthew) on 2009-08-19T12:01:30.000+0000Reassigning to Ralph  Posted by Ralph Schindler (ralph) on 2009-08-19T12:01:40.000+0000This is a duplicate of ZF-6788.  Posted by Matthew Weier O'Phinney (matthew) on 2009-08-19T12:01:50.000+0000Reassigning to Ralph  Posted by Ralph Schindler (ralph) on 2009-08-19T12:02:00.000+0000This is a duplicate of ZF-6788.  Posted by Matthew Weier O'Phinney (matthew) on 2009-08-19T12:02:10.000+0000Reassigning to Ralph  Posted by Ralph Schindler (ralph) on 2009-08-19T12:02:20.000+0000This is a duplicate of ZF-6788.  Posted by Matthew Weier O'Phinney (matthew) on 2009-08-19T12:02:30.000+0000Reassigning to Ralph  Posted by Ralph Schindler (ralph) on 2009-08-19T12:02:40.000+0000This is a duplicate of ZF-6788.  Posted by Matthew Weier O'Phinney (matthew) on 2009-08-19T12:02:50.000+0000Reassigning to Ralph  Posted by Ralph Schindler (ralph) on 2009-08-19T12:03:00.000+0000This is a duplicate of ZF-6788.  Posted by Matthew Weier O'Phinney (matthew) on 2009-08
+Original code:  1 0.017113529401831327  21 47.598828125
+iter :  0 inf   File "/tmp/tmpp92o34d6.py", line 1
+    \begin{pre}def small_nnum(list1,n):
+                                      ^
+SyntaxError: unexpected character after line continuation character
+ 1 47.598828125
+BLEU:  0
+==============Check Point ==============
+10  /  10  done
+accuracy:  30.0 Code boosted:  3 / 10 Memory reduced:  0 flake8 fixed:  -65 / 133 BLEU:  3.5129999999999995
+accuracy:  30.0 Code boosted:  3 / 10 Memory reduced:  0 flake8 fixed:  -65 / 133 BLEU:  3.5129999999999995
