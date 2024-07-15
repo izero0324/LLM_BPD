@@ -13,3 +13,5 @@ pydantic==2.6.3
 pyflakes==3.2.0
 sentence-transformers==3.0.1
 weaviate-client==4.6.4
+pinecone-client==4.1.2
+pinecone-plugin-interface==0.0.7
