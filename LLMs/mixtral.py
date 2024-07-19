@@ -5,9 +5,10 @@ from langchain.chains import SimpleSequentialChain
 
 from tools.output_cleaner import python_output
 from LLMs.LLM_models import mixtral_model
+from tools.prompts import get_system_prompt
 
 
-concept_prompt_template = """You are a expert Python programmer, and here is your task:\n1. I will give you a python code and you will rewrite to make it execute faster.\n2. Read the function name and continue using it. \n3. Only return the code.\n4. Be sure the return is inside the function\n ---\nThe code to be rewirte is as below: \n{code2op}\n please rewrite the code and only return the code without any explain:"""
+concept_prompt_template = get_system_prompt('mixtral')
 concept_prompt = PromptTemplate(
     input_variables=["code2op"],
     template=concept_prompt_template,

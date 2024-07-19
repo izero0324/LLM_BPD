@@ -29,8 +29,8 @@ def openAI(model_name, temp=0):
 def llamas(model_name, temp = 0):
 
     def sellect_llama():
-        if model_name == 'llama3':
-            repo_id = "meta-llama/Meta-Llama-3-8B"
+        if model_name == 'llama2':
+            repo_id = "meta-llama/Llama-2-7b-hf"
         elif model_name == 'codellama-13b':
             repo_id = "codellama/CodeLlama-13b-hf"
         else:
