@@ -4,6 +4,8 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from LLMs.LLM_models import openAI
+from tools.prompts import get_system_prompt
+from tools.output_cleaner import python_output
 
 # # Read API key from the secret file
 # with open('secret.json') as f:
@@ -43,8 +45,9 @@ from LLMs.LLM_models import openAI
 
 def optimize_code(code, model_name):
     # Define a prompt to simulate the role of the system
+    systme_prompt = get_system_prompt()
     prompt_template = ChatPromptTemplate.from_messages([
-    ("system", "You are a expert Python programmer, and here is your task:\n 1. I will give you a python code and you will rewrite to make it execute faster.\n 2. Do not change the function name!  \n 3. Only return the code.\n 4. Do not output ```python and ```\n 5. Be sure the return is inside the function"),            ("user", "{input}"),
+    ("system", systme_prompt),            ("user", "{input}"),
         ])
     output_parser = StrOutputParser()
     model = openAI(model_name,temp=0)
@@ -52,6 +55,7 @@ def optimize_code(code, model_name):
         input = code
         pipeline = prompt_template | model | output_parser
         response = pipeline.invoke({"input": input})
+        response = python_output(response)
         return response
     except Exception as e:
         print("An error occurred:", str(e))

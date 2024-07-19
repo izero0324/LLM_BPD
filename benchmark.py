@@ -16,7 +16,7 @@ def benchmark_process(dataset, model, debug = False):
     counter = 0
     Cyclomatic = 0
     Halstead = 0
-
+    already_optimised = 0
 
     for test_data in dataset:
 
@@ -25,7 +25,11 @@ def benchmark_process(dataset, model, debug = False):
         success, runtime, error, flake8_error, mem_kb = test_code(test_data)
 
         # pass code to LLM for optimize
-        test_data['code'] = LLM_revise(code, model = model, debug=debug)
+        optimised_code = LLM_revise(code, model = model, debug=debug)
+        if test_data['code'] == optimised_code: #check if the code didn't change
+            already_optimised += 1
+        
+        test_data['code'] = optimised_code
         LLM_success, LLM_runtime, LLM_error, LLM_flake8_error, LLM_mem_kb = test_code(test_data)
 
         accurate = (LLM_success==1)
@@ -58,12 +62,14 @@ def benchmark_process(dataset, model, debug = False):
             ck_bleu = bleu_sum / counter
             print("accuracy: ",ck_acc * 100, "Code boosted: ", boost, "/", counter, "Memory reduced: ",
             mem_reduce,  "flake8 fixed: ", flake8, "/", total_flake8, "BLEU: ", ck_bleu, 
-            "Cyclomatic: ", Cyclomatic, "Halstead: ", Halstead)
+            "Cyclomatic: ", Cyclomatic, "Halstead: ", Halstead,
+            "Can't optimise: ", already_optimised)
     accuracy /= len(dataset) 
     bleu_sum /= len(dataset)
     print("accuracy: ",accuracy * 100, "Code boosted: ", boost, "/", len(dataset), "Memory reduced: ",
      mem_reduce,  "flake8 fixed: ", flake8, "/", total_flake8, "BLEU: ", bleu_sum,
-     "Cyclomatic: ", Cyclomatic, "Halstead: ", Halstead)
+     "Cyclomatic: ", Cyclomatic, "Halstead: ", Halstead,
+    "Can't optimise: ", already_optimised)
     return accuracy * 100, boost, mem_reduce, flake8, bleu_sum
 
 def parse_arguments():
