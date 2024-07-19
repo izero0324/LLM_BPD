@@ -164,3 +164,4 @@ secret*
 hf_connect.py
 models/
 
+wandb/
