@@ -1,10 +1,9 @@
-import os
 import argparse
 from tools.extract import get_data, extract_code
 from tools.python_exec import test_code
 from tools.bleu import code_bleu
 from LLMs.LLM_api import LLM_revise
-from langchain_community.callbacks import wandb_tracing_enabled
+
 
 def benchmark_process(dataset, model, debug = False):
     accuracy = 0
@@ -68,8 +67,6 @@ def main():
     Entry point
     '''
     args = parse_arguments()
-    os.environ["LANGCHAIN_WANDB_TRACING"] = "true"
-    #weave.init('LLM_BPD')
     benchmark_process(dataset= get_data(args.data), model=args.model, debug=args.debug)
 
 
