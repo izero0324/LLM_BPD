@@ -22,7 +22,7 @@ def LLM_revise(code, model, debug):
     #     result = optimize_code_FAISS(code)
     elif model == 'C2T2C':
         result =  C2T2C(code, debug)
-    elif model == 'codellama' or 'codellama-13b':
+    elif model == 'codellama' or 'codellama-13b' or 'llama3':
         result = codellama_optimise(code, model)
     elif model == 'mixtral':
         result = mixtral_gen(code, model)

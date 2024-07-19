@@ -2,6 +2,7 @@ import argparse
 from tools.extract import get_data, extract_code
 from tools.python_exec import test_code
 from tools.bleu import code_bleu
+from tools.codeMatrix import codeMatrix_improve
 from LLMs.LLM_api import LLM_revise
 
 
@@ -13,6 +14,9 @@ def benchmark_process(dataset, model, debug = False):
     bleu_sum = 0
     total_flake8 = 0
     counter = 0
+    Cyclomatic = 0
+    Halstead = 0
+
 
     for test_data in dataset:
 
@@ -29,6 +33,9 @@ def benchmark_process(dataset, model, debug = False):
 
         if LLM_success ==1:
             BLEU = code_bleu(code, test_data['code'])
+            H_improve , cc_imporve = codeMatrix_improve(code, test_data['code'])
+            Cyclomatic += cc_imporve
+            Halstead += H_improve
             bleu_sum += BLEU
             accuracy += accurate
             boost += effi_boost
@@ -36,11 +43,13 @@ def benchmark_process(dataset, model, debug = False):
             flake8 += int(flake8_error) - int(LLM_flake8_error)
         else:
             BLEU = 0
+            cc_imporve = False
+            H_improve = False
         total_flake8 += int(flake8_error)
         if debug:
             print("Original code: ", success, runtime, error, flake8_error, mem_kb)
             print(model, ": ",LLM_success, LLM_runtime, LLM_error, LLM_flake8_error, LLM_mem_kb)
-            print("BLEU: ", BLEU)
+            print("BLEU: ", BLEU, "Cyclomatic: ", cc_imporve, "Halstead: ", H_improve)
         counter += 1
         if counter%10 == 0:
             print('==============Check Point ==============')
@@ -48,11 +57,13 @@ def benchmark_process(dataset, model, debug = False):
             ck_acc = accuracy / counter 
             ck_bleu = bleu_sum / counter
             print("accuracy: ",ck_acc * 100, "Code boosted: ", boost, "/", counter, "Memory reduced: ",
-            mem_reduce,  "flake8 fixed: ", flake8, "/", total_flake8, "BLEU: ", ck_bleu)
+            mem_reduce,  "flake8 fixed: ", flake8, "/", total_flake8, "BLEU: ", ck_bleu, 
+            "Cyclomatic: ", Cyclomatic, "Halstead: ", Halstead)
     accuracy /= len(dataset) 
     bleu_sum /= len(dataset)
     print("accuracy: ",accuracy * 100, "Code boosted: ", boost, "/", len(dataset), "Memory reduced: ",
-     mem_reduce,  "flake8 fixed: ", flake8, "/", total_flake8, "BLEU: ", bleu_sum)
+     mem_reduce,  "flake8 fixed: ", flake8, "/", total_flake8, "BLEU: ", bleu_sum,
+     "Cyclomatic: ", Cyclomatic, "Halstead: ", Halstead)
     return accuracy * 100, boost, mem_reduce, flake8, bleu_sum
 
 def parse_arguments():
