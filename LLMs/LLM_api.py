@@ -26,7 +26,9 @@ def LLM_revise(code, model, debug):
     elif model == 'codellama' or 'codellama-13b' or 'llama3':
         result = codellama_optimise(code, model)
     elif model == 'codellama_RAG':
-        result = codellama_optimise(code,'codellama' , Retrieval=True)
+        result = codellama_optimise(code,'llama3' , Retrieval=True)
+    elif model == 'llama3_RAG':
+        result = codellama_optimise(code,'llama3' , Retrieval=True)
     elif model == 'mixtral':
         result = mixtral_gen(code, model)
     elif model == 'iter':
