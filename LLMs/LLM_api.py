@@ -16,12 +16,19 @@ def LLM_revise(code, model, debug):
     elif model=='naive RAG':
         from LLMs.naive_rag import use_RAG
         result = use_RAG(RAG_dataset, code)
+    elif model == 'mixtral_RAG':
+        from RAGs.mixtral_RAG import mixtral_RAG
+        result = mixtral_RAG(code, model)
     # elif model == 'OpenAI EMB':
     #     result = optimize_code_FAISS(code)
     elif model == 'C2T2C':
         result =  C2T2C(code, debug)
     elif model == 'codellama' or 'codellama-13b' or 'llama3':
         result = codellama_optimise(code, model)
+    elif model == 'codellama_RAG':
+        result = codellama_optimise(code,'llama3' , Retrieval=True)
+    elif model == 'llama3_RAG':
+        result = codellama_optimise(code,'llama3' , Retrieval=True)
     elif model == 'mixtral':
         result = mixtral_gen(code, model)
     elif model == 'iter':
