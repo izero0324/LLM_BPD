@@ -1,8 +1,28 @@
-from sentence_transformers import CrossEncoder
+import json
+from sentence_transformers import CrossEncoder, SentenceTransformer
+from pinecone import Pinecone, ServerlessSpec
 from tools.extract import get_data
 
+
+with open('secret.json') as f:
+    data = json.load(f)
+pinecone_key = data["pinecone_api"]
+pc = Pinecone(api_key=pinecone_key)
+
+# Check if the index exists, and if not, create a new one
+index_name = 'python-18k-instructions'
+if index_name not in pc.list_indexes().names():
+    pc.create_index(index_name, dimension=384, metric='cosine', #dimension 384 for all-miniLM-L12-v2
+            spec=ServerlessSpec(
+            cloud='aws', 
+            region='us-east-1'
+        ) )
+
+# Connect to your Pinecone index
+index = pc.Index(index_name)
 # Load the model, here we use our base sized model
-model = CrossEncoder("mixedbread-ai/mxbai-rerank-base-v1")
+model = SentenceTransformer('sentence-transformers/all-MiniLM-L12-v2')
+
 input = "def is_Power_Of_Two (x): \r\n    return x and (not(x & (x - 1))) \r\ndef differ_At_One_Bit_Pos(a,b): \r\n    return is_Power_Of_Two(a ^ b)"
 
 
@@ -16,10 +36,21 @@ query = "You are a expert Python programmer, and here is your task:\n 1. I will 
 #     "The 'Harry Potter' series, which consists of seven fantasy novels written by British author J.K. Rowling, is among the most popular and critically acclaimed books of the modern era.",
 #     "'The Great Gatsby', a novel written by American author F. Scott Fitzgerald, was published in 1925. The story is set in the Jazz Age and follows the life of millionaire Jay Gatsby and his pursuit of Daisy Buchanan."
 # ]
-documents = str(get_data('train'))
 
 query+=input
+query_embedding = model.encode(input).tolist()
+
+
+# Query the Pinecone index
+documents = index.query(vector=[query_embedding], top_k=3, include_metadata=True)
+
+# Fetch the results
+for match in documents['matches']:
+    print(f"ID: {match['id']}, Score: {match['score']}")
+
+
+print(documents)
+model = CrossEncoder("mixedbread-ai/mxbai-rerank-base-v1")
 # Lets get the scores
-results = model.rank(query, documents, return_documents=True, top_k=3)
-#results = model.generate(query)
-print(results)
+#results = model.rank(query, documents, return_documents=True, top_k=3)
+# results = model.generate(query)
