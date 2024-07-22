@@ -3,10 +3,11 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from LLMs.mixtral import mixtral_gen
 import LLMs.LLM_models as BaseModels
+from tools.pylint_check import check_pylint
 
 
 # Initialize the LLM with OpenAI GPT model
-error_fix_llm = BaseModels.mixtral_model()
+error_fix_llm = BaseModels.openAI('gpt-3.5-turbo')
 prompt_template_error_fix= ChatPromptTemplate.from_messages([
     ("system", "You are a expert Python programmer, Fix these errors in the following python codes."),
     ("user", "code: {ori_code} \n Errors: {code_error}."),
@@ -17,8 +18,7 @@ pipeline_error_fix = prompt_template_error_fix | error_fix_llm | output_parser_e
 
 def regenerate_code(message, code):
     # Generating code from the description using an OpenAI model
-    input = description
-    response = pipeline_t2c.invoke({"ori_code": code, "code_error": message})
+    response = pipeline_error_fix.invoke({"ori_code": code, "code_error": message})
     try:
         code_response = response.split("only return the fixed code:")[1]
     except:
@@ -44,6 +44,7 @@ def interpret_code(code):
     except Exception as e:
         return False, str(e)
 
+
 def evaluate_code(code):
     """ Dummy function for evaluating the code """
     # This should be replaced with actual implementation for efficiency and style
@@ -54,13 +55,21 @@ def evaluate_code(code):
 
 def iterative_RAG_gen(initial_code,model_name):
     print(model_name, " :")
-    first_result = mixtral_gen(initial_code)
-    print(first_result)
+    first_result = mixtral_gen(initial_code, 'mixtral for iterGAN')
+    
     correct, message = interpret_code(first_result)
+    print('============Iter_check_point============\n',first_result, 'Correct? \n', correct)
+    
+    if correct:
+        suggestion = first_result
+
     while not correct:
         print(f"Error: {message}")
         suggestion = regenerate_code(message, first_result)
         correct, message = interpret_code(suggestion)
-        
+    
+    message = check_pylint(suggestion)
+    suggestion = regenerate_code(message, first_result)
+
     print("Fixed code: ", suggestion)
     return suggestion
