@@ -12,6 +12,9 @@ RAG_dataset = get_data('train')
 def LLM_revise(code, model, debug):
 
     if 'gpt' in model:
+        if 'RAG' in model:
+            model = model.replace('_RAG', '')
+            result = optimize_code(code, model, Retrieval=True)
         result = optimize_code(code,model)
     elif model=='naive RAG':
         from LLMs.naive_rag import use_RAG
