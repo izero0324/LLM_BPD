@@ -6,33 +6,46 @@ from LLMs.codellama import codellama_optimise
 from LLMs.mixtral import mixtral_gen
 from tools.extract import get_data
 
-
-RAG_dataset = get_data('train')
+#self search depricated
+#RAG_dataset = get_data('train')
 
 def LLM_revise(code, model, debug):
 
+    # GPT series
     if 'gpt' in model:
-        result = optimize_code(code,model)
-    elif model=='naive RAG':
-        from LLMs.naive_rag import use_RAG
-        result = use_RAG(RAG_dataset, code)
-    elif model == 'mixtral_RAG':
-        from RAGs.mixtral_RAG import mixtral_RAG
-        result = mixtral_RAG(code, model)
-    # elif model == 'OpenAI EMB':
-    #     result = optimize_code_FAISS(code)
+        if 'RAG' in model:
+            model = model.replace('_RAG', '')
+            result = optimize_code(code, model, Retrieval=True)
+        else:
+            result = optimize_code(code,model)
+    
+    # Mixtral series
+    elif 'mixtral' in model:
+        if 'RAG' in model:
+            model = model.replace('_RAG', '')
+            from RAGs.mixtral_RAG import mixtral_RAG
+            result = mixtral_RAG(code, model)
+        else:
+            result = mixtral_gen(code, model)
+
+    # llama series
+    elif 'llama' in model:
+        if 'RAG' in model:
+            model = model.replace('_RAG', '')
+            result = codellama_optimise(code, model , Retrieval=True)
+        else:
+            result = codellama_optimise(code, model)
+            print('By codellamas')
+    
+    # CCG-RAG
     elif model == 'C2T2C':
         result =  C2T2C(code, debug)
-    elif model == 'codellama' or 'codellama-13b' or 'llama3':
-        result = codellama_optimise(code, model)
-    elif model == 'codellama_RAG':
-        result = codellama_optimise(code,'llama3' , Retrieval=True)
-    elif model == 'llama3_RAG':
-        result = codellama_optimise(code,'llama3' , Retrieval=True)
-    elif model == 'mixtral':
-        result = mixtral_gen(code, model)
+    
+    # iterative RAG
     elif model == 'iter':
+        print("(((((((((((((((((((((((((((Iterative!!)))))))))))))))))))))))))))")
         result = iterative_RAG_gen(code,model)
     else:
+        print(f'==============={model} invalid =================')
         raise BaseException(f"{model} not a valid model. Choose from 'GPT3.5' and 'naive RAG'" )
     return result

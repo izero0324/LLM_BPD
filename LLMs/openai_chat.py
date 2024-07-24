@@ -6,6 +6,7 @@ from langchain_core.output_parsers import StrOutputParser
 from LLMs.LLM_models import openAI
 from tools.prompts import get_system_prompt
 from tools.output_cleaner import python_output
+from tools.retrieval import retrive_docs
 
 # # Read API key from the secret file
 # with open('secret.json') as f:
@@ -43,9 +44,9 @@ from tools.output_cleaner import python_output
 #             )
 #     return llm
 
-def optimize_code(code, model_name):
+def optimize_code(code, model_name, Retrieval = False):
     # Define a prompt to simulate the role of the system
-    systme_prompt = get_system_prompt()
+    systme_prompt = get_system_prompt('gpt35turbo_prompt')
     prompt_template = ChatPromptTemplate.from_messages([
     ("system", systme_prompt),            ("user", "{input}"),
         ])
@@ -53,6 +54,8 @@ def optimize_code(code, model_name):
     model = openAI(model_name,temp=0)
     try:
         input = code
+        if Retrieval:
+            input += retrive_docs(input, k=1)
         pipeline = prompt_template | model | output_parser
         response = pipeline.invoke({"input": input})
         response = python_output(response)
