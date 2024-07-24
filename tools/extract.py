@@ -13,7 +13,8 @@ def get_data(subset):
         eval_data = data[500:600]
     elif subset == "train":
         eval_data = data[600:]
-
+    elif subset == "continue":
+        eval_data = data[840:]
     return eval_data
 
 def extract_code(data):
