@@ -5,6 +5,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 import LLMs.LLM_models as BaseModels
+from tools.retrieval import retrive_docs
 
 with open('secret.json') as f:
     api_key = json.load(f)
@@ -44,9 +45,11 @@ def interpret_and_describe_code(code):
     response = response.split(", do not repeat the code:")[1]
     return response
 
-def generate_code_from_description(description):
+def generate_code_from_description(description, Retrieval):
     # Generating code from the description using an OpenAI model
     input = description
+    if Retrieval:
+        input += retrive_docs(input, k=1)
     response = pipeline_t2c.invoke({"input": input})
     try:
         code_response = response.split("Please give me the codes only")[1]
@@ -68,14 +71,14 @@ def format_check(result):
     result = result.replace("```",'')
     return result
 
-def C2T2C(code, debug = False):
+def C2T2C(code, debug = False, Retrieval = False):
     try:
         code_description = interpret_and_describe_code(code)
         if debug:
             print("Generated Description:", code_description)
 
         # Step 2: Generate new code based on the description
-        generated_code = generate_code_from_description(code_description)
+        generated_code = generate_code_from_description(code_description, Retrieval)
         generated_code = format_check(generated_code)
         if debug:
             print("Generated Code:\n", generated_code)
