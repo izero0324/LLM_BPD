@@ -11,15 +11,9 @@ with open('secret.json') as f:
     api_key = json.load(f)
 os.environ["OPENAI_API_KEY"] = api_key["key"]
 
-# llm = ChatOpenAI(
-#     model="gpt-3.5-turbo", 
-#     temperature=0,
-#     max_tokens=None,
-#     timeout=None,
-#     max_retries=2
-# )
+
+# Set code to text model
 llm = BaseModels.mixtral_model()
-#llm = BaseModels.local_model()
 prompt_template_c2t = ChatPromptTemplate.from_messages([
     ("system", "You are a expert Python programmer, describe the code to make sure a software engineer can reproduce the code by the description. \n Make sure to mention: \n 1. Function name\n 2. The purpose of the code\n3. The input/output format of the code"),
     ("user", "{input}"),
@@ -29,6 +23,7 @@ output_parser_c2t = StrOutputParser()
 pipeline_c2t = prompt_template_c2t | llm | output_parser_c2t
 
 
+# Set text to code model
 llm2 = BaseModels.llamas('codellama-13b')
 prompt_template_t2c = ChatPromptTemplate.from_messages([
     ("system", "You are a expert Python programmer, write a Python code that fits the description I give you. Make sure you only return the code. Do not output ```python and ```"),
@@ -71,8 +66,9 @@ def format_check(result):
     result = result.replace("```",'')
     return result
 
-def C2T2C(code, debug = False, Retrieval = False):
+def CCG_RAG(code, debug = False, Retrieval = False):
     try:
+        #Step 1: Generate description from code
         code_description = interpret_and_describe_code(code)
         if debug:
             print("Generated Description:", code_description)
