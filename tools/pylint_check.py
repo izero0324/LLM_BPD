@@ -7,9 +7,17 @@ def check_pylint(code):
         func_code = code
         f.write(f"{func_code}")
         temp_filename = f.name
-    result = subprocess.run(['pylint', temp_filename, '--disable=missing-docstring'], capture_output=True, text=True, timeout=3)
-    print(result.stdout.split())
+    result = subprocess.run(['pylint', temp_filename, '--disable=missing-docstring,invalid-name'], capture_output=True, text=True, timeout=3)
+    context = result.stdout.split('-----')[0]
+    context = context.split(f'{temp_filename}:')[1:]
+    score = result.returncode
+    print(score)
+    print(context)
     os.remove(temp_filename)
-    return result.stdout.split()
+    return score, context
 
-#check_pylint('tools/test_code.py')
+# check_pylint('''from collections import Counter
+# def count_common(words):
+#     word_counts = Counter(words)
+#     return word_counts.most_common(4)
+# ''')

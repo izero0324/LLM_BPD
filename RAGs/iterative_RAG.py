@@ -63,13 +63,17 @@ def iterative_RAG_gen(initial_code,model_name):
     if correct:
         suggestion = first_result
 
-    while not correct:
+    if not correct:
         print(f"Error: {message}")
         suggestion = regenerate_code(message, first_result)
         correct, message = interpret_code(suggestion)
     
-    message = check_pylint(suggestion)
-    suggestion = regenerate_code(message, first_result)
+    score, messages = check_pylint(suggestion)
+    if score == 0:
+        return suggestion
+    else:
+        message = ''.join(messages)
+        suggestion = regenerate_code(message, first_result)
 
     print("Fixed code: ", suggestion)
     return suggestion
