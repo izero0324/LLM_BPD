@@ -10,10 +10,10 @@ def get_data(subset):
     elif subset ==  "test":
         eval_data = data[10:510]
     elif subset == "validation":
-        eval_data = data[500:600]
+        eval_data = data[510:600]
     elif subset == "train":
         eval_data = data[600:]
-
+        
     return eval_data
 
 def extract_code(data):

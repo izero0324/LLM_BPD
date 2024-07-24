@@ -30,7 +30,7 @@ def test_code(data, debug = False, warmup = 10, iter = 10):
         try:
             subprocess.run(['python3', temp_filename], capture_output=True, text=True, timeout=3)
             warmup -= 1
-        except TimeoutError as e:
+        except Exception as e:
             return 0, float('inf'), e.stderr, 0, 0
             
     
@@ -40,7 +40,7 @@ def test_code(data, debug = False, warmup = 10, iter = 10):
         # Run the temporary python file and capture output
         try:
             result = subprocess.run(['python3', temp_filename], capture_output=True, text=True, timeout=3)
-        except TimeoutError as e:
+        except Exception as e:
             return 0, float('inf'), e.strerror, 0, float('inf')
 
     stop_time = perf_counter()

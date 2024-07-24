@@ -26,15 +26,21 @@ mixtral_prompt = """You are a expert Python programmer, and here is your task: \
  ---\nThe code to be rewirte is as below: \n \
  {code2op}\n please rewrite the code and only return the code without any explain:"""
 
-llama_prompt = """Rewrite the code make it execute faster, read the function name and continue using it. \
-The code to be rewirte is as below: \n{code2op}\n rewrite the code with python :"""
-
+llama_prompt = """You are a expert Python programmer, and here is your task: \
+1. I will give you a python code and you will rewrite to make it execute faster. \
+2. Read the function name and continue using it. \
+3. wrap the code with ```python and ```.\ 
+4. Be sure the return is inside the function\n \
+ ---\nThe code to be rewirte is as below: \n \
+ {code2op}\n please rewrite the code:"""
 
 def get_system_prompt(prompt_name):
     if 'gpt' in prompt_name:
         return gpt35turbo_prompt
-    elif ('mixtral' in prompt_name) or ('llama' in prompt_name):
+    elif 'mixtral' in prompt_name:
         return mixtral_prompt
+    elif 'llama' in prompt_name:
+        return llama_prompt
     elif 'TurinTech' in prompt_name:
         return TurinTech_prompt_adj
     else:

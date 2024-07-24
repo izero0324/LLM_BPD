@@ -27,7 +27,11 @@ def codellama_optimise(input, model, Retrieval = False):
         
     output = concept_chain.invoke(input)
     raw_result = output['text']
-    raw_result = raw_result.split('please rewrite the code and only return the code without any explain:')[1]
+    raw_result = raw_result.split('please rewrite the code:')[1]
+    try:
+        raw_result = raw_result.split('```python')[1].split('```')[0]
+    except:
+        raw_result = raw_result
     # raw_result = raw_result.replace('```python', '```')
     # result = raw_result.replace('```', '').replace('\n\n','')
     result = python_output(raw_result)
