@@ -36,14 +36,24 @@ code_texts = df['codes'].tolist()
 # Generate embeddings
 embeddings = model.encode(code_texts, show_progress_bar=True).tolist()
 
+df['embeddings'] = embeddings
 # Prepare the data for upload
-data_to_upload = zip(df.index, embeddings, df['codes'])
+data_to_upload = list(zip(df.index, df['embeddings'], df['codes']))
 
-# Upload in batches (to avoid request size limits)
+# Function to divide data into chunks for batch processing
+def chunked_data(data, chunk_size):
+    """Yield successive chunk_size chunks from data."""
+    for i in range(0, len(data), chunk_size):
+        yield data[i:i + chunk_size]
+
+# Upload data in batches
 batch_size = 100
-for i in range(0, len(data_to_upload), batch_size):
-    batch = data_to_upload[i:i+batch_size]
-    index.upsert(vectors=batch)
-    print(f"Uploaded batch {i//batch_size + 1}/{len(data_to_upload)//batch_size + 1}")
-
+for batch in chunked_data(data_to_upload, batch_size):
+    batch_to_upsert = [(str(id), vec, {'code': codes}) for id, vec, codes in batch]
+    try:
+        index.upsert(vectors=batch_to_upsert)
+    except Exception as e:
+        print('error, ', e)
+        pass
+        
 print("Upload complete.")
