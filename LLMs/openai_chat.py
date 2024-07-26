@@ -6,7 +6,7 @@ from langchain_core.output_parsers import StrOutputParser
 from LLMs.LLM_models import openAI
 from tools.prompts import get_system_prompt
 from tools.output_cleaner import python_output
-from tools.retrieval import retrive_docs, retrive_codes
+from tools.retrieval import retrive_docs, retrive_codes, retrive_18kcodes
 
 # # Read API key from the secret file
 # with open('secret.json') as f:
@@ -55,8 +55,7 @@ def optimize_code(code, model_name, Retrieval = False):
     try:
         input = code
         if Retrieval:
-            input += retrive_codes(input, k=1)
-        print(input)
+            input += retrive_18kcodes(input, k=3)
         pipeline = prompt_template | model | output_parser
         response = pipeline.invoke({"input": input})
         response = python_output(response)

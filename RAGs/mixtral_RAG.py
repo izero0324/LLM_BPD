@@ -18,7 +18,7 @@ concept_prompt = PromptTemplate(
 def mixtral_RAG(code, model):
     print('model:', model)
     llm = mixtral_model()
-    rd = retrive_docs(code, k=5)
+    rd = retrive_docs(code, k=10)
     concept_chain = LLMChain(llm=llm, prompt=concept_prompt)
     input = code + rd
     output = concept_chain.invoke(input)
