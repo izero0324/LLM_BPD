@@ -4,7 +4,7 @@ from pinecone_con.initail import pc_connect
 
 
 
-def retrive_docs(input_code, k=3):
+def retrive_codes(input_code, k=3):
     _, index = pc_connect('codenet-python800')
     embedding_model = SentenceTransformer('sentence-transformers/all-MiniLM-L12-v2')
     input_embedding = embedding_model.encode(input_code).tolist()
@@ -14,7 +14,7 @@ def retrive_docs(input_code, k=3):
     
     return retireval_prompt
 
-def retrive_codes(input_code, k=3):
+def retrive_docs(input_code, k=3):
     _, index = pc_connect('python-18k-instructions')
     embedding_model = SentenceTransformer('sentence-transformers/all-MiniLM-L12-v2')
     input_embedding = embedding_model.encode(input_code).tolist()
