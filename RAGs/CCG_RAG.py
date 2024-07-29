@@ -14,8 +14,8 @@ os.environ["OPENAI_API_KEY"] = api_key["key"]
 
 # Set code to text model
 #llm = BaseModels.mixtral_model()
-#llm = BaseModels.llamas('llama3')
-llm = BaseModels.openAI('gpt-3.5-turbo')
+llm = BaseModels.llamas('llama3')
+#llm = BaseModels.openAI('gpt-3.5-turbo')
 prompt_template_c2t = ChatPromptTemplate.from_messages([
     ("system", "You are a expert Python programmer, describe the code to make sure a software engineer can reproduce the code by the description. \n Make sure to mention: \n 1. Function name\n 2. The purpose of the code\n3. The input/output format of the code"),
     ("user", "{input}"),

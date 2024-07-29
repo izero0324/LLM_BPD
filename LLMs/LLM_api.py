@@ -46,7 +46,7 @@ def LLM_revise(code, model, debug):
     
     # iterative RAG
     elif model == 'iter':
-        print("(((((((((((((((((((((((((((Iterative!!)))))))))))))))))))))))))))")
+        #print("(((((((((((((((((((((((((((Iterative!!)))))))))))))))))))))))))))")
         result = iterative_RAG_gen(code,model)
     else:
         print(f'==============={model} invalid =================')

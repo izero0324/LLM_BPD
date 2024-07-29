@@ -43,7 +43,7 @@ def llamas(model_name, temp = 0):
     huggingfacehub_api_token = HuggingFaceHub_key
     llm = HuggingFaceHub(huggingfacehub_api_token = huggingfacehub_api_token,
                         repo_id = repo_id,
-                        model_kwargs = {"temperateure":0, "max_new_tokens":4096})
+                        model_kwargs = {"temperateure":0, "max_new_tokens":1024})
 
     return llm 
     
@@ -52,7 +52,7 @@ def mixtral_model(temp=0):
     huggingfacehub_api_token = HuggingFaceHub_key
     llm = HuggingFaceHub(huggingfacehub_api_token = huggingfacehub_api_token,
                         repo_id = repo_id,
-                        model_kwargs = {"temperateure":0, "max_new_tokens":4096})
+                        model_kwargs = {"temperateure":0, "max_new_tokens":1024})
     #model = AutoModelForCausalLM.from_pretrained("mistralai/Mixtral-8x7B-Instruct-v0.1")
     return llm
 
