@@ -55,7 +55,7 @@ def optimize_code(code, model_name, Retrieval = False):
     try:
         input = code
         if Retrieval:
-            input += retrive_18kcodes(input, k=3)
+            input += retrive_18kcodes(input, k=1)
         pipeline = prompt_template | model | output_parser
         response = pipeline.invoke({"input": input})
         response = python_output(response)

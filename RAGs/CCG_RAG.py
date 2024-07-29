@@ -13,7 +13,9 @@ os.environ["OPENAI_API_KEY"] = api_key["key"]
 
 
 # Set code to text model
-llm = BaseModels.mixtral_model()
+#llm = BaseModels.mixtral_model()
+#llm = BaseModels.llamas('llama3')
+llm = BaseModels.openAI('gpt-3.5-turbo')
 prompt_template_c2t = ChatPromptTemplate.from_messages([
     ("system", "You are a expert Python programmer, describe the code to make sure a software engineer can reproduce the code by the description. \n Make sure to mention: \n 1. Function name\n 2. The purpose of the code\n3. The input/output format of the code"),
     ("user", "{input}"),
@@ -25,8 +27,13 @@ pipeline_c2t = prompt_template_c2t | llm | output_parser_c2t
 
 # Set text to code model
 llm2 = BaseModels.llamas('codellama-13b')
+#llm2 = BaseModels.mixtral_model()
+#llm2 = BaseModels.openAI('gpt-3.5-turbo')
 prompt_template_t2c = ChatPromptTemplate.from_messages([
-    ("system", "You are a expert Python programmer, write a Python code that fits the description I give you. Make sure you only return the code. Do not output ```python and ```"),
+    ("system", "You are a expert Python programmer, write a Python code that fits the description I give you.\
+      Make it most efficient and minimise memory usage. \
+      Make sure you only return the code and include all the imports.\
+      Do not output ```python and ```"),
     ("user", "{input}"),
     ("user", "Please give me the codes only")
 ])
@@ -37,7 +44,10 @@ def interpret_and_describe_code(code):
     # Using OpenAI's GPT model to interpret code and generate a description
     input = code
     response = pipeline_c2t.invoke({"input": input})
-    response = response.split(", do not repeat the code:")[1]
+    try:
+        response = response.split(", do not repeat the code:")[1]
+    except:
+        response = response
     return response
 
 def generate_code_from_description(description, Retrieval):

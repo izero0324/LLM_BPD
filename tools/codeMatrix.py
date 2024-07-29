@@ -9,6 +9,9 @@ def cal_codeMatrix(code):
     return h_result[0][9], cc_result[0][7]
 
 def codeMatrix_improve(code1, code2):
-    h1 , c1 = cal_codeMatrix(code1)
-    h2, c2 = cal_codeMatrix(code2)
-    return h1>h2, c1>c2
+    try:
+        h1 , c1 = cal_codeMatrix(code1)
+        h2, c2 = cal_codeMatrix(code2)
+        return h1>h2, c1>c2
+    except:
+        return False, False

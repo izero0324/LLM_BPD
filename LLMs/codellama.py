@@ -6,7 +6,7 @@ from langchain.chains import SimpleSequentialChain
 
 from tools.output_cleaner import python_output
 from tools.prompts import get_system_prompt
-from tools.retrieval import retrive_docs, retrive_codes
+from tools.retrieval import retrive_docs, retrive_codes,retrive_18kcodes
 from LLMs.LLM_models import llamas
 
 
@@ -23,7 +23,7 @@ def codellama_optimise(input, model, Retrieval = False):
     concept_chain = LLMChain(llm=llm, prompt=concept_prompt)
     #input = "def is_Power_Of_Two (x): \r\n    return x and (not(x & (x - 1))) \r\ndef differ_At_One_Bit_Pos(a,b): \r\n    return is_Power_Of_Two(a ^ b)"
     if Retrieval:
-        input += retrive_codes(input, k=1)
+        input += retrive_18kcodes(input, k=1)
         
     output = concept_chain.invoke(input)
     raw_result = output['text']
