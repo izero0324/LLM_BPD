@@ -47,8 +47,8 @@ def test_code(data, debug = False, warmup = 10, iter = 10):
     run_time = (stop_time - start_time)/iter
 
     try:
-        memtest = subprocess.run(['memray', 'run', '-o output.bin', temp_filename],  timeout=3)
-        mem_result = subprocess.run(['memray', 'stats', ' output.bin'],capture_output=True)
+        memtest = subprocess.run(['memray', 'run', '-o memoutput.bin', temp_filename],  timeout=3)
+        mem_result = subprocess.run(['memray', 'stats', ' memoutput.bin'],capture_output=True)
         mem_use = mem_result.stdout.decode("utf-8").split('Total memory allocated:\n\t')[1].split('\n\n')[0]
         if 'KB' in mem_use:
             mem_used_kb = float(mem_use.split('KB')[0])
@@ -75,7 +75,7 @@ def test_code(data, debug = False, warmup = 10, iter = 10):
     try:
         import os
         os.remove(temp_filename)
-        os.remove(' output.bin')
+        os.remove(' memoutput.bin')
     except OSError as e:
         print(f"Error: {e.strerror}")
     if result.returncode != 0:

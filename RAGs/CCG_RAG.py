@@ -27,6 +27,8 @@ pipeline_c2t = prompt_template_c2t | llm | output_parser_c2t
 
 # Set text to code model
 llm2 = BaseModels.llamas('codellama-13b')
+#llm2 = BaseModels.mixtral_model()
+#llm2 = BaseModels.openAI('gpt-3.5-turbo')
 prompt_template_t2c = ChatPromptTemplate.from_messages([
     ("system", "You are a expert Python programmer, write a Python code that fits the description I give you.\
       Make it most efficient and minimise memory usage. \

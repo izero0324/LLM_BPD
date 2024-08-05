@@ -3,6 +3,8 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from LLMs.mixtral import mixtral_gen
 import LLMs.LLM_models as BaseModels
+from LLMs.openai_chat import optimize_code
+from RAGs.CCG_RAG import CCG_RAG
 from tools.pylint_check import check_pylint
 
 
@@ -45,18 +47,11 @@ def interpret_code(code):
         return False, str(e)
 
 
-def evaluate_code(code):
-    """ Dummy function for evaluating the code """
-    # This should be replaced with actual implementation for efficiency and style
-    if "inefficient" in code:  # Example condition
-        return False
-    return True
-
-
 def iterative_RAG_gen(initial_code,model_name):
     print(model_name, " :")
-    first_result = mixtral_gen(initial_code, 'mixtral for iterGAN')
-    
+    #first_result = mixtral_gen(initial_code, 'mixtral for iterGAN')
+    first_result = CCG_RAG(initial_code)
+    first_result = optimize_code(initial_code, 'gpt-3.5-turbo')
     correct, message = interpret_code(first_result)
     print('============Iter_check_point============\n',first_result, 'Correct? \n', correct)
     
