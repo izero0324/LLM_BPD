@@ -55,10 +55,12 @@ def optimize_code(code, model_name, Retrieval = False):
     try:
         input = code
         if Retrieval:
-            input += retrive_18kcodes(input, k=3)
+            input += retrive_18kcodes(input, k=1)
+        print("Input: \n", input)
         pipeline = prompt_template | model | output_parser
         response = pipeline.invoke({"input": input})
         response = python_output(response)
+        print("---\n Response:\n",response)
         return response
     except Exception as e:
         print("An error occurred:", str(e))

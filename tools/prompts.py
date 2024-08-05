@@ -29,7 +29,7 @@ mixtral_prompt = """You are a expert Python programmer, and here is your task: \
 llama_prompt = """You are a expert Python programmer, and here is your task: \
 1. I will give you a python code and you will rewrite to make it execute faster. \
 2. Read the function name and continue using it. \
-3. wrap the code with ```python and ```.\ 
+3. Wrap the code with ```python and ```.\ 
 4. Be sure the return is inside the function\n \
  ---\nThe code to be rewirte is as below: \n \
  {code2op}\n please rewrite the code:"""
